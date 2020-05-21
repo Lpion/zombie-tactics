@@ -1,0 +1,22 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://ASSETS/TEXTURES/LVL-Props/Asphalt_01/Asphalt_01[DIFF].jpg" type="Texture" id=1]
+[ext_resource path="res://ASSETS/TEXTURES/LVL-Props/Asphalt_01/Asphalt_01[ROUGH].jpg" type="Texture" id=2]
+[ext_resource path="res://ASSETS/TEXTURES/LVL-Props/Asphalt_01/Asphalt_01[NORM].jpg" type="Texture" id=3]
+[ext_resource path="res://ASSETS/TEXTURES/LVL-Props/Asphalt_01/Asphalt_01[DISP].jpg" type="Texture" id=4]
+
+[resource]
+albedo_texture = ExtResource( 1 )
+roughness_texture = ExtResource( 2 )
+normal_enabled = true
+normal_scale = -3.69
+normal_texture = ExtResource( 3 )
+depth_enabled = true
+depth_scale = -0.01
+depth_deep_parallax = true
+depth_min_layers = 8
+depth_max_layers = 32
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = ExtResource( 4 )
+uv1_scale = Vector3( 55, 55, 55 )

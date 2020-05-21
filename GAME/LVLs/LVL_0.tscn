@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ASSETS/PRE_FABS/Characters/Player/Moric.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ASSETS/MATERIALS/LVL-Props/Asphalt_01.tres" type="Material" id=2]
+[ext_resource path="res://Game_Environment.tres" type="Environment" id=3]
+[ext_resource path="res://ASSETS/PRE_FABS/Characters/Enemy/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ASSETS/PRE_FABS/Pickups/Magazine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/LampPost.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="LVL_0" type="Spatial"]
+
+[node name="Moric" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.0093118, 0.0716458, 14.1092 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( -0.0144683, 0, 0.999895, 0, 1, 0, -0.999895, 0, -0.0144683, -7.30753, -0.00416502, 4.37187 )
+
+[node name="Pickups" type="Node" parent="."]
+
+[node name="Magazine" parent="Pickups" instance=ExtResource( 5 )]
+transform = Transform( 1.22646, 0, 0, 0, 1.22646, 0, 0, 0, 1.22646, -4.09154, 0.00190339, 10.18 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )
+
+[node name="Sun" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.999292, 0.0370705, 0.00648908, -0.0300144, 0.681008, 0.731661, 0.0227039, -0.731337, 0.681638, 0, 8.61439, 0.163114 )
+light_energy = 0.51
+light_indirect_energy = 0.27
+shadow_enabled = true
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Floor" type="CSGMesh" parent="Objects"]
+transform = Transform( -194.565, 0, 0, 0, 0.447265, 0, 0, 0, -194.565, -0.637609, -0.445713, -3.55447 )
+use_collision = true
+mesh = SubResource( 1 )
+material = ExtResource( 2 )
+
+[node name="Lamps" type="Node" parent="Objects"]
+
+[node name="LampPost" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.918767, 0, 0, 0, 0.918767, 0, 0, 0, 0.918767, -5.76552, 0, 13.0501 )

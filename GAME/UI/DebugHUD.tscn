@@ -1,0 +1,44 @@
+[gd_scene format=2]
+
+[node name="DebugHUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Velocity" type="Label" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Direction" type="Label" parent="."]
+margin_left = 73.8666
+margin_top = 5.77386
+margin_right = 108.867
+margin_bottom = 19.7739
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP" type="Label" parent="."]
+anchor_left = 0.97
+anchor_top = 0.97
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ammo" type="Label" parent="."]
+anchor_top = 0.914
+anchor_right = 0.083
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 2.59998
+margin_right = 1.008
+margin_bottom = -7.0
