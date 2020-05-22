@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://ASSETS/MATERIALS/Tools/RangeCircle.tres" type="Material" id=1]
+[ext_resource path="res://ASSETS/MATERIALS/Tools/Debug_red.tres" type="Material" id=1]
 
-
-[sub_resource type="PlaneMesh" id=1]
+[sub_resource type="CylinderMesh" id=1]
 
 [node name="RangeCircle" type="Spatial"]
 
 [node name="Circle" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.00430143, 0, 0, 0, 1, 0, 0, 0 )
 cast_shadow = 0
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
