@@ -4,8 +4,7 @@ extends KinematicBody
 var HPBar = preload("res://UI/HPBar.tscn")
 var Bullet = preload("res://ASSETS/PRE_FABS/Weapons/Bullet.tscn")
 
-export var ENEMY_DISTANCE = 5
-export var ENEMY_DETECTION_RANGE = 8
+export var SHOOTING_RANGE = 8
 export var MAX_SPEED : float = 4
 export(float, 0, 100, 0.01) var FRICTION : float = 100
 export(float, 0, 100, 0.01) var ACCELARATION : float = 30
@@ -17,13 +16,13 @@ var isDead = false
 var isHit = false
 var playerDetected = false
 var inShootingRange = false
+var searchPlayer = false
 var remove = false
 var moveDirection = Vector3()
 var vectorToPlayer = Vector3()
 var playerPos = Vector3()
 var selfPos = Vector3()
 var vel = Vector3()
-
 
 onready var HEALTH = MAX_HEALTH
 onready var HP = HPBar.instance()
@@ -35,49 +34,60 @@ func _ready():
 	$Body/Skeleton/HPBarPos.add_child(HP)
 
 	# Tools
-	$RangeCircle.scale = Vector3(ENEMY_DETECTION_RANGE, 1, ENEMY_DETECTION_RANGE)
+	$RangeCircle.scale = Vector3(SHOOTING_RANGE, 1, SHOOTING_RANGE)
 
 func _process(delta):
 	if(!isDead):
 		look_at_player()
-		player_detection() #needs to be called after look_at_player for playerPos
+		check_shooting_range() #needs to be called after look_at_player
 		move(delta)
 		shooting()
 		enemy_anim()
 	if remove:
 		removeCorpse()
 
+# player detection
+func _on_DetectionArea_body_entered(body: Node) -> void:
+	if body.is_in_group("Player"):
+		playerDetected = true
+func _on_DetectionArea_body_exited(body: Node) -> void:
+	if body.is_in_group("Player"):
+		playerDetected = false
+		# save last known location of player and start searching
+		playerPos = Global.PlayerPosition
+		searchPlayer = true
+
 
 func look_at_player():
-	playerPos = Global.PlayerPosition
 	selfPos = self.get_translation()
-	moveDirection = (playerPos-selfPos).normalized()
-	vectorToPlayer = playerPos-selfPos
 
-	look_at(playerPos, Vector3.UP)
-	# set rotation after look_at with x,z = 0 so the enemy only rotates around the y axis
-	set_rotation(Vector3(0, get_rotation().y, 0))
-	# Rotate to player
-	rotate(Vector3.UP, PI)
+	# stop search for player at the last known location
+	if selfPos.round() == playerPos.round():
+		searchPlayer = false
+
+	if playerDetected:
+		playerPos = Global.PlayerPosition
+		moveDirection = (playerPos-selfPos).normalized()
+		vectorToPlayer = playerPos-selfPos
+
+		look_at(playerPos, Vector3.UP)
+		# set rotation after look_at with x,z = 0 so the enemy only rotates around the y axis
+		set_rotation(Vector3(0, get_rotation().y, 0))
+		# Rotate to player
+		rotate(Vector3.UP, PI)
 
 	# get the direction the enemy is faceing (for shooting)
 	Global.enemyLookDirection = get_global_transform().basis.z
 
 
-func player_detection():
+func check_shooting_range():
 	# get distance to player
 	var playerDistance = vectorToPlayer.length()
 
-	# check if player is detected
-	if playerDistance < ENEMY_DETECTION_RANGE:
-		playerDetected = true
-	elif playerDistance > ENEMY_DETECTION_RANGE && !isHit:
-		playerDetected = false
-
 	# check if in shooting range
-	if playerDistance <= ENEMY_DISTANCE:
+	if playerDistance <= SHOOTING_RANGE:
 		inShootingRange = true
-	if playerDistance > ENEMY_DISTANCE:
+	if playerDistance > SHOOTING_RANGE:
 		inShootingRange = false
 
 
@@ -87,7 +97,7 @@ func move(delta):
 	# apply Gravity
 	vel.y -= GRAVITY * delta
 	# Move torwards player if detected
-	if playerDetected && !inShootingRange:
+	if playerDetected && !inShootingRange || searchPlayer:
 		vel = move_and_slide(vel, Vector3.UP, true, 1)
 	else:
 		vel = Vector3()
@@ -107,8 +117,9 @@ func apply_friction(friction):
 	else: vel = Vector3.ZERO
 
 func shooting():
-	if CAN_SHOOT && inShootingRange && !Global.playerDead:
+	if CAN_SHOOT && inShootingRange && playerDetected && !Global.playerDead:
 		AnimTree["parameters/Transition/current"] = 2
+
 		# Bullet = Ref to Bullet Scene
 		var bullet = Bullet.instance()
 		# spawn bullet
@@ -117,6 +128,7 @@ func shooting():
 		var BulletDmg = 5
 		bullet.on_pew(BulletDir, BulletDmg)
 		bullet.set_as_toplevel(true)
+
 		CAN_SHOOT = false
 		yield(get_tree().create_timer(0.2), "timeout")
 		CAN_SHOOT = true
@@ -166,5 +178,3 @@ func enemy_anim():
 	# MOVE
 	elif vel.length() > 0:
 		AnimTree["parameters/Transition/current"] = 1
-
-
