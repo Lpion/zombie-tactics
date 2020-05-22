@@ -226,7 +226,7 @@ func pickup_magazine():
 		CURRENT_MAGS += 1
 
 func feed():
-	if Input.is_action_just_pressed("FEED") && CAN_FEED && (HEALTH < 100):
+	if Input.is_action_just_pressed("FEED") && CAN_FEED && (HEALTH < MAX_HEALTH):
 
 		# activate counter for HP-Regen
 		healthRegenCounter = 1
@@ -260,6 +260,6 @@ func player_anim():
 # Health Regeneration
 func increase_health_over_time():
 	healthRegenCounter += 1
-	if healthRegenCounter == 8 && HEALTH < 100:
+	if healthRegenCounter == 8 && HEALTH < MAX_HEALTH:
 		healthRegenCounter = 1
 		HEALTH = Global.set_health(FEED_AMOUNT, HEALTH, MAX_HEALTH)
