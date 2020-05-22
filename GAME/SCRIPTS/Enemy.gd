@@ -96,7 +96,7 @@ func move(delta):
 	apply_friction(FRICTION * delta) if moveDirection == Vector3.ZERO else apply_movement(moveDirection * ACCELARATION * delta)
 	# apply Gravity
 	vel.y -= GRAVITY * delta
-	# Move torwards player if detected
+	# Move torwards player if detected or searching
 	if playerDetected && !inShootingRange || searchPlayer:
 		vel = move_and_slide(vel, Vector3.UP, true, 1)
 	else:
