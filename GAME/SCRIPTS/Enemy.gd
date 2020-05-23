@@ -128,9 +128,10 @@ func shooting():
 		var BulletDmg = 5
 		bullet.on_pew(BulletDir, BulletDmg)
 		bullet.set_as_toplevel(true)
-
+		$Body/Skeleton/BoneAttachment/Rifle/AudioStreamPlayer3D.playing = true
 		CAN_SHOOT = false
 		yield(get_tree().create_timer(0.2), "timeout")
+		$Body/Skeleton/BoneAttachment/Rifle/AudioStreamPlayer3D.playing = false
 		CAN_SHOOT = true
 
 func hit(dmg):
@@ -175,6 +176,9 @@ func enemy_anim():
 	# IDLE
 	if vel.length() == 0 && !playerDetected:
 		AnimTree["parameters/Transition/current"] = 0
+		$AudioStreamPlayer3D.playing = false
 	# MOVE
 	elif vel.length() > 0:
 		AnimTree["parameters/Transition/current"] = 1
+		if $AudioStreamPlayer3D.playing == false:
+			$AudioStreamPlayer3D.playing = true
