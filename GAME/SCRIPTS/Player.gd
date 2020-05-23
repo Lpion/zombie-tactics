@@ -199,10 +199,10 @@ func shooting():
 		var BulletDmg = 10
 		bullet.on_pew(BulletDir, BulletDmg)
 		bullet.set_as_toplevel(true)
-		$Body/Skeleton/BoneAttachment/Shotgun/AudioStreamPlayer3D.playing = true
+		$Body/Skeleton/BoneAttachment/Shotgun/Shooting.playing = true
 		CAN_SHOOT = false
 		yield(get_tree().create_timer(0.2), "timeout")
-		$Body/Skeleton/BoneAttachment/Shotgun/AudioStreamPlayer3D.playing = false
+		#$Body/Skeleton/BoneAttachment/Shotgun/Shooting.playing = false
 		CAN_SHOOT = true
 
 	if Input.is_action_just_released("SHOOT") || (CURRENT_BULLETS_MAG == 0):
@@ -254,12 +254,12 @@ func player_anim():
 	# IDLE
 	if vel.length() == 0:
 		AnimTree["parameters/movement/blend_position"] = Vector2(0, 0)
-		$AudioStreamPlayer3D.playing = false
+		$Running.playing = false
 	# MOVE
 	else:
 		AnimTree["parameters/movement/blend_position"] = Vector2(vel.x / MAX_SPEED, -vel.z / MAX_SPEED)
-		if $AudioStreamPlayer3D.playing == false:
-			$AudioStreamPlayer3D.playing = true
+		if $Running.playing == false:
+			$Running.playing = true
 
 # Health Regeneration
 func increase_health_over_time():
