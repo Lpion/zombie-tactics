@@ -4,7 +4,7 @@ extends KinematicBody
 var HPBar = preload("res://UI/HPBar.tscn")
 var Bullet = preload("res://ASSETS/PRE_FABS/Weapons/Bullet.tscn")
 
-export var SHOOTING_RANGE = 8
+export var SHOOTING_RANGE = 10
 export var MAX_SPEED : float = 4
 export(float, 0, 100, 0.01) var FRICTION : float = 100
 export(float, 0, 100, 0.01) var ACCELARATION : float = 30
