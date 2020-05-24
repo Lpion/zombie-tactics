@@ -6,14 +6,19 @@ var Bullet = preload("res://ASSETS/PRE_FABS/Weapons/Bullet.tscn")
 
 export var SHOOTING_RANGE = 10
 export var MAX_SPEED : float = 4
+export var WALK_FACTOR : float = 0.5
 export(float, 0, 100, 0.01) var FRICTION : float = 100
 export(float, 0, 100, 0.01) var ACCELARATION : float = 30
 export(float, 0, 999, 0.01) var GRAVITY : float = 150
 export var MAX_HEALTH = 100
 
+var SPEED = MAX_SPEED * WALK_FACTOR
+var BulletDmg = 10
+var BulletDir
 var CAN_SHOOT = true
 var isDead = false
 var isHit = false
+var isPatroling = true
 var playerDetected = false
 var inShootingRange = false
 var searchPlayer = false
@@ -23,6 +28,11 @@ var vectorToPlayer = Vector3()
 var playerPos = Vector3()
 var selfPos = Vector3()
 var vel = Vector3()
+
+var targetPos
+var patrolArray = PoolVector3Array( [] )
+var patrolTarget
+var i =0
 
 onready var HEALTH = MAX_HEALTH
 onready var HP = HPBar.instance()
@@ -38,7 +48,8 @@ func _ready():
 
 func _process(delta):
 	if(!isDead):
-		look_at_player()
+		get_patrol_points()
+		look_at_target()
 		check_shooting_range() #needs to be called after look_at_player
 		move(delta)
 		shooting()
@@ -50,6 +61,8 @@ func _process(delta):
 func _on_DetectionArea_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		playerDetected = true
+		isPatroling = false
+		SPEED = MAX_SPEED
 func _on_DetectionArea_body_exited(body: Node) -> void:
 	if body.is_in_group("Player"):
 		playerDetected = false
@@ -58,24 +71,22 @@ func _on_DetectionArea_body_exited(body: Node) -> void:
 		searchPlayer = true
 
 
-func look_at_player():
+func look_at_target():
 	selfPos = self.get_translation()
-
-	# stop search for player at the last known location
-	if selfPos.round() == playerPos.round():
-		searchPlayer = false
 
 	if playerDetected:
 		playerPos = Global.PlayerPosition
-		moveDirection = (playerPos-selfPos).normalized()
-		vectorToPlayer = playerPos-selfPos
+		targetPos = playerPos
+	
+	if isPatroling:
+		targetPos = patrolTarget
 
-		look_at(playerPos, Vector3.UP)
+	moveDirection = (targetPos-selfPos).normalized()
+	look_at(targetPos, Vector3.UP)
 		# set rotation after look_at with x,z = 0 so the enemy only rotates around the y axis
-		set_rotation(Vector3(0, get_rotation().y, 0))
+	set_rotation(Vector3(0, get_rotation().y, 0))
 		# Rotate to player
-		rotate(Vector3.UP, PI)
-
+	rotate(Vector3.UP, PI)
 	# get the direction the enemy is faceing (for shooting)
 	Global.enemyLookDirection = get_global_transform().basis.z
 
@@ -97,17 +108,34 @@ func move(delta):
 	# apply Gravity
 	vel.y -= GRAVITY * delta
 	# Move torwards player if detected or searching
-	if playerDetected && !inShootingRange || searchPlayer:
+	if playerDetected && !inShootingRange || searchPlayer || isPatroling:
 		vel = move_and_slide(vel, Vector3.UP, true, 1)
 	else:
 		vel = Vector3()
+		
+	# stop search for player at the last known location
+	if selfPos.round() == playerPos.round():
+		searchPlayer = false
+		isPatroling = true
+		SPEED = MAX_SPEED * WALK_FACTOR
+
+func get_patrol_points():
+	var patrolPoints = $PatrolPoints.get_children()
+	for point in patrolPoints:
+		patrolArray.append(point.get_translation())
+	
+	patrolTarget = patrolArray[i]
+	if self.get_translation().round() == patrolTarget.round():
+		i += 1
+	if i >= patrolArray.size():
+		i = 0
 
 func apply_movement(acceleration):
 	# add amount of acc each frame until we hit our MAX_SPEED
 	vel += acceleration
 	# when MAX_SPEED reached, set vel to MAX_SPEED || TODO: maybe use clamp function instead of if
-	if vel.length() > MAX_SPEED:
-		vel = vel.normalized() * MAX_SPEED
+	if vel.length() > SPEED:
+		vel = vel.normalized() * SPEED
 
 func apply_friction(friction):
 	# as long as the velocity is bigger than the friction ...
@@ -125,7 +153,7 @@ func shooting():
 		# spawn bullet
 		BulletEmitter.add_child(bullet)
 		var BulletDir = Vector3(Global.enemyLookDirection.x,0 , Global.enemyLookDirection.z)
-		var BulletDmg = 5
+		
 		bullet.on_pew(BulletDir, BulletDmg)
 		bullet.set_as_toplevel(true)
 		$Body/Skeleton/BoneAttachment/Rifle/Shooting.playing = true
@@ -138,6 +166,7 @@ func hit(dmg):
 	# set true to follow player
 	isHit = true
 	playerDetected = true
+	isPatroling = false
 
 	$HitParticle.emitting = true
 	HEALTH = Global.set_health(-dmg, HEALTH, MAX_HEALTH)
