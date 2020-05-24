@@ -10,6 +10,9 @@ export(float, 0, 100, 0.01) var ACCELARATION : float = 30
 export(float, 0, 999, 0.01) var GRAVITY : float = 150
 export(float) var MAX_HEALTH = 100
 
+var BulletDmg = 10
+var BulletDir
+var isReloading = false
 var CAN_SHOOT = false # false if no bullets && mags anymore, no shoot before spawn anim is done
 var CAN_MOVE = false  # player can not move on init, but after spawn anim
 var CAN_FEED = false
@@ -180,13 +183,17 @@ func check_ammo():
 # Reload, possible if there are any MAGs left
 func reload():
 	if Input.is_action_just_pressed("RELOAD") && (CURRENT_MAGS > 0):
+		isReloading = true
+		$Body/Skeleton/BoneAttachment/Shotgun/Reload.playing = true
+		yield(get_tree().create_timer(2.6), "timeout")
 		CURRENT_BULLETS_MAG = MAX_BULLETS_MAG
 		CURRENT_MAGS -= 1
 		CAN_SHOOT = true
+		isReloading = false
 
 # Shooting, possible if there are bullets in the current mag
 func shooting():
-	if Input.is_action_pressed("SHOOT") && CAN_SHOOT:
+	if Input.is_action_pressed("SHOOT") && CAN_SHOOT && !isReloading:
 		AnimTree["parameters/Transition/current"] = 1
 
 		# Bullet = Ref to Bullet Scene
@@ -195,8 +202,7 @@ func shooting():
 		CURRENT_BULLETS_MAG -= 1
 		# spawn bullet
 		BulletEmitter.add_child(bullet)
-		var BulletDir = Vector3(-Global.lookDirection.x,0 , -Global.lookDirection.z)
-		var BulletDmg = 10
+		BulletDir = Vector3(-Global.lookDirection.x,0 , -Global.lookDirection.z)
 		bullet.on_pew(BulletDir, BulletDmg)
 		bullet.set_as_toplevel(true)
 		$Body/Skeleton/BoneAttachment/Shotgun/Shooting.playing = true
@@ -205,7 +211,7 @@ func shooting():
 		#$Body/Skeleton/BoneAttachment/Shotgun/Shooting.playing = false
 		CAN_SHOOT = true
 
-	if Input.is_action_just_released("SHOOT") || (CURRENT_BULLETS_MAG == 0):
+	if Input.is_action_just_released("SHOOT") || (CURRENT_BULLETS_MAG == 0) || isReloading:
 		AnimTree["parameters/Transition/current"] = 0
 
 
