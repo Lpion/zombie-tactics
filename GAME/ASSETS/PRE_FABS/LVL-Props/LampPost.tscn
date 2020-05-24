@@ -83,10 +83,12 @@ material/0 = ExtResource( 1 )
 material/1 = null
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1.08842, 0, 0, 0, 1.42728e-07, 1.08842, 0, -1.08842, 1.42728e-07, 1.60299, 8.70706, -0.00913175 )
-light_color = Color( 0.996078, 0.956863, 0.866667, 1 )
-light_energy = 1.72
+transform = Transform( 1.2193, 0, 0, 0, -5.32974e-08, 1.2193, 0, -1.2193, -5.32974e-08, 1.61135, 8.1425, 0 )
+light_color = Color( 0.937255, 1, 1, 1 )
+light_energy = 4.09
+light_indirect_energy = 6.61
+light_bake_mode = 2
 shadow_enabled = true
-shadow_color = Color( 0.219608, 0.219608, 0.219608, 1 )
-spot_range = 17.0378
-spot_angle = 62.1363
+shadow_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
+spot_range = 9.89028
+spot_angle = 47.6166
