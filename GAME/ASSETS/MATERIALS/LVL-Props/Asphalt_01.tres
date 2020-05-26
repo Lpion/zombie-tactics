@@ -4,7 +4,6 @@
 [ext_resource path="res://ASSETS/TEXTURES/LVL-Props/Asphalt_01/Asphalt_01[ROUGH].jpg" type="Texture" id=2]
 
 [resource]
-params_blend_mode = 1
 albedo_color = Color( 0.619608, 0.615686, 0.615686, 1 )
 albedo_texture = ExtResource( 1 )
 roughness_texture = ExtResource( 2 )
