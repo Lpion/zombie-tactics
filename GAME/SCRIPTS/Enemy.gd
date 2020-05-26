@@ -16,9 +16,10 @@ var SPEED = MAX_SPEED * WALK_FACTOR
 var BulletDmg = 10
 var BulletDir
 var CAN_SHOOT = true
+var CAN_PATROL = false
 var isDead = false
 var isHit = false
-var isPatroling = true
+var isPatroling = false
 var playerDetected = false
 var inShootingRange = false
 var searchPlayer = false
@@ -32,7 +33,7 @@ var vel = Vector3()
 var targetPos
 var patrolArray = PoolVector3Array( [] )
 var patrolTarget
-var i =0
+var i = 0
 
 onready var HEALTH = MAX_HEALTH
 onready var HP = HPBar.instance()
@@ -46,6 +47,10 @@ func _ready():
 	# Tools
 	$RangeCircle.scale = Vector3(SHOOTING_RANGE, 1, SHOOTING_RANGE)
 
+	if self.has_node("PatrolPoints"):
+		CAN_PATROL = true
+		isPatroling = true
+
 func _process(delta):
 	if(!isDead):
 		get_patrol_points()
@@ -56,6 +61,7 @@ func _process(delta):
 		enemy_anim()
 	if remove:
 		removeCorpse()
+
 
 # player detection
 func _on_DetectionArea_body_entered(body: Node) -> void:
@@ -76,19 +82,21 @@ func look_at_target():
 
 	if playerDetected:
 		playerPos = Global.PlayerPosition
+		vectorToPlayer = playerPos-selfPos
 		targetPos = playerPos
-	
+
 	if isPatroling:
 		targetPos = patrolTarget
 
-	moveDirection = (targetPos-selfPos).normalized()
-	look_at(targetPos, Vector3.UP)
+	if isPatroling || playerDetected:
+		moveDirection = (targetPos-selfPos).normalized()
+		look_at(targetPos, Vector3.UP)
 		# set rotation after look_at with x,z = 0 so the enemy only rotates around the y axis
-	set_rotation(Vector3(0, get_rotation().y, 0))
+		set_rotation(Vector3(0, get_rotation().y, 0))
 		# Rotate to player
-	rotate(Vector3.UP, PI)
-	# get the direction the enemy is faceing (for shooting)
-	Global.enemyLookDirection = get_global_transform().basis.z
+		rotate(Vector3.UP, PI)
+		# get the direction the enemy is faceing (for shooting)
+		Global.enemyLookDirection = get_global_transform().basis.z
 
 
 func check_shooting_range():
@@ -112,23 +120,24 @@ func move(delta):
 		vel = move_and_slide(vel, Vector3.UP, true, 1)
 	else:
 		vel = Vector3()
-		
+
 	# stop search for player at the last known location
 	if selfPos.round() == playerPos.round():
 		searchPlayer = false
-		isPatroling = true
+		if CAN_PATROL: isPatroling = true
 		SPEED = MAX_SPEED * WALK_FACTOR
 
 func get_patrol_points():
-	var patrolPoints = $PatrolPoints.get_children()
-	for point in patrolPoints:
-		patrolArray.append(point.get_translation())
-	
-	patrolTarget = patrolArray[i]
-	if self.get_translation().round() == patrolTarget.round():
-		i += 1
-	if i >= patrolArray.size():
-		i = 0
+	if CAN_PATROL:
+		var patrolPoints = $PatrolPoints.get_children()
+		for point in patrolPoints:
+			patrolArray.append(point.get_translation())
+
+		patrolTarget = patrolArray[i]
+		if self.get_translation().round() == patrolTarget.round():
+			i += 1
+		if i >= patrolArray.size():
+			i = 0
 
 func apply_movement(acceleration):
 	# add amount of acc each frame until we hit our MAX_SPEED
@@ -153,7 +162,7 @@ func shooting():
 		# spawn bullet
 		BulletEmitter.add_child(bullet)
 		var BulletDir = Vector3(Global.enemyLookDirection.x,0 , Global.enemyLookDirection.z)
-		
+
 		bullet.on_pew(BulletDir, BulletDmg)
 		bullet.set_as_toplevel(true)
 		$Body/Skeleton/BoneAttachment/Rifle/Shooting.playing = true
