@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://ASSETS/PRE_FABS/Characters/Player/Moric.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ASSETS/MATERIALS/LVL-Props/Asphalt_01.tres" type="Material" id=2]
@@ -29,15 +29,29 @@
 [ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Boxes/Wooden_box_big.tscn" type="PackedScene" id=27]
 [ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Road_block.tscn" type="PackedScene" id=28]
 [ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Palet.tscn" type="PackedScene" id=29]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Roads/Road_straight_long.tscn" type="PackedScene" id=30]
+[ext_resource path="res://ASSETS/TEXTURES/Decals/SurfaceImperfections_Dirt.png" type="Texture" id=31]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Roads/Road_bend_round_big.tscn" type="PackedScene" id=32]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Roads/Road_bend_round_small.tscn" type="PackedScene" id=33]
+[ext_resource path="res://ASSETS/TEXTURES/LVL-Props/Grass.jpg" type="Texture" id=34]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Barrels/Barrel_v2.tscn" type="PackedScene" id=35]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Buildings/Building_v3a.tscn" type="PackedScene" id=36]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Pipes/Pipe_Straight.tscn" type="PackedScene" id=37]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Pipes/Pipe_Joint.tscn" type="PackedScene" id=38]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Barrels/Barrel_v1.tscn" type="PackedScene" id=39]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/ElectricBoxes/Electric_box_v1.tscn" type="PackedScene" id=40]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Walls/Concrete_Wall_Corner_v1.tscn" type="PackedScene" id=41]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Pipes/Thick_Vent.tscn" type="PackedScene" id=42]
+[ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Boxes/Dumpster_empty.tscn" type="PackedScene" id=43]
 
 [sub_resource type="GIProbeData" id=1]
-bounds = AABB( -236.203, -139.054, -249.606, 472.407, 278.107, 499.211 )
-cell_size = 1.95004
-to_cell_xform = Transform( 0.512809, 0, 0, 0, 0.512809, 0, 0, 0, 0.512809, 121.127, 71.308, 128 )
-dynamic_data = PoolIntArray( 0, 9, 256, 256, 256, 1, 0, 1, 165928, 0, 268566528, 31441975, 0, 520, 67372036, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
+bounds = AABB( -236.203, -139.054, -249.606, 472.406, 278.108, 499.212 )
+cell_size = 1.95005
+to_cell_xform = Transform( 0.512808, 0, 0, 0, 0.512808, 0, 0, 0, 0.512808, 121.127, 71.308, 128 )
+dynamic_data = PoolIntArray( 0, 9, 256, 256, 256, 1, 0, 1, 163876, 0, 268435456, 31441975, 0, 520, 67372036, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
 dynamic_range = 4
 energy = 0.54
-bias = 1.5
+bias = 0.15
 normal_bias = 0.0
 propagation = 0.7
 
@@ -46,17 +60,20 @@ propagation = 0.7
 [node name="LVL_0" type="Spatial"]
 
 [node name="Moric" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 8.78046, 0.0716458, 122.726 )
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11.7327, 0.0716458, 85.1505 )
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
-transform = Transform( 0.845159, 0, 0.534515, 0, 1, 0, -0.534515, 0, 0.845159, 8.3808, -0.00416502, 91.8869 )
+transform = Transform( 0.885296, 0, -0.465027, 0, 1, 0, 0.465027, 0, 0.885296, 11.7151, 0.106307, 43.6212 )
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( -0.485664, 0, 0.874145, 0, 1, 0, -0.874145, 0, -0.485664, -22.8233, 0.106307, 32.8945 )
 
 [node name="Pickups" type="Node" parent="."]
 
 [node name="Magazine" parent="Pickups" instance=ExtResource( 5 )]
-transform = Transform( 0.600451, 0, 1.06942, 0, 1.22646, 0, -1.06942, 0, 0.600451, 23.8506, 0.00190339, 69.0281 )
+transform = Transform( 0.600451, 0, 1.06942, 0, 1.22646, 0, -1.06942, 0, 0.600451, 23.8506, 0.0264204, 69.0281 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
@@ -65,1070 +82,1820 @@ environment = ExtResource( 3 )
 subdiv = 2
 extents = Vector3( 236.203, 139.054, 249.606 )
 energy = 0.54
+bias = 0.15
 data = SubResource( 1 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
 transform = Transform( 0.121049, -0.788359, 0.60319, 0.151384, 0.615212, 0.773691, -0.981035, -0.0023415, 0.193816, 0, 13.1971, 0 )
 light_color = Color( 0.372549, 0.392157, 0.431373, 1 )
-light_energy = 0.15
-shadow_enabled = true
+light_energy = 0.36
 shadow_color = Color( 0.101961, 0.101961, 0.101961, 1 )
 
 [node name="Objects" type="Node" parent="."]
 
 [node name="Floor" type="CSGMesh" parent="Objects"]
-transform = Transform( -194.565, 0, 0, 0, 0.447265, 0, 0, 0, -194.565, -0.572408, -0.442058, -3.48848 )
+transform = Transform( -194.565, 0, -1.70094e-05, 0, 0.447265, 0, 1.70094e-05, 0, -194.565, -0.572408, -0.442058, -3.48848 )
 use_collision = true
 mesh = SubResource( 2 )
 material = ExtResource( 2 )
 
-[node name="ParkingLot" type="Node" parent="Objects"]
+[node name="DECALS" type="Node" parent="Objects"]
 
-[node name="Fences" type="Node" parent="Objects/ParkingLot"]
+[node name="OilDirt" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 23.8664, 0.204366, 82.8142 )
+texture = ExtResource( 31 )
 
-[node name="Concrete_fence_Gate" parent="Objects/ParkingLot/Fences" instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.8421, 0, 124.502 )
+[node name="OilDirt2" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 23.8725, 0.204366, 68.1483 )
+texture = ExtResource( 31 )
 
-[node name="Concrete_fence_Gate4" parent="Objects/ParkingLot/Fences" instance=ExtResource( 7 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.6987, 0, 25.9098 )
+[node name="OilDirt3" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 23.8367, 0.227718, 53.4692 )
+texture = ExtResource( 31 )
 
-[node name="Concrete_fence_Gate2" parent="Objects/ParkingLot/Fences" instance=ExtResource( 7 )]
+[node name="OilDirt6" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.7443, 0.204366, 46.9369 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt5" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.7382, 0.204366, 32.271 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt4" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.774, 0.227718, 17.5919 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt9" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.2507, 0.204366, 2.93475 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt8" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.2446, 0.204366, -11.7312 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt7" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.2804, 0.227718, -26.4103 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt15" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -58.2855, 0.204366, 46.9369 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt14" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -58.2794, 0.204366, 32.271 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt13" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -58.3152, 0.227718, 17.5919 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt12" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -57.7919, 0.204366, 2.93475 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt11" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -57.7858, 0.204366, -11.7312 )
+texture = ExtResource( 31 )
+
+[node name="OilDirt10" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -57.8216, 0.227718, -26.4103 )
+texture = ExtResource( 31 )
+
+[node name="Grass" type="Node" parent="Objects/DECALS"]
+
+[node name="Grass1" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 40.5839, 0.0836967, 53.5287 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass2" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 56.115, 0.0836967, 53.5287 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass15" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 58.8866, 0.0836967, -8.54461 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass19" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 44.8268, 0.0836967, -72.0798 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass51" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 60.3333, 0.0836967, -70.6858 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass21" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 29.3122, 0.0284846, -72.0051 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass23" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 13.7774, 0.0284846, -72.0051 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass27" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, -1.73789, 0.0284846, -72.0051 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass25" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, 3.39178, 0.0284885, -39.3929 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass28" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -12.1285, 0.0284885, -39.3929 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass29" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -27.6567, 0.0284885, -39.3929 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass30" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -32.8236, 0.0284885, -57.9848 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass42" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -32.8236, 0.0284885, -76.6048 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass47" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, 44.8137, 0.0284885, -89.0923 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass33" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -43.1907, 0.0284885, -39.3929 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass32" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -48.3576, 0.0284885, -57.9848 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass41" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -48.3576, 0.0284885, -76.6048 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass46" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, 29.2797, 0.0284885, -89.0923 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass35" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -58.722, 0.0284885, -39.3929 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass34" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -63.889, 0.0284885, -57.9848 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass40" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -63.889, 0.0284885, -76.6048 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass45" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, 13.7484, 0.0284885, -89.0923 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass37" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -74.2615, 0.0284885, -39.3929 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass36" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -79.4284, 0.0284885, -57.9848 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass31" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -17.308, 0.0284885, -57.9848 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass39" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -79.4284, 0.0284885, -76.6048 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass38" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -17.308, 0.0284885, -76.6048 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass44" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, -1.79113, 0.0284885, -89.0923 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass43" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, 60.3293, 0.0284885, -87.731 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass4" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 40.5839, 0.0836967, 69.0603 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass3" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 56.115, 0.0836967, 69.0603 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass14" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 58.9221, 0.0836986, 6.98425 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass18" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 44.7806, 0.0836967, -56.5483 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass50" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 60.2871, 0.0836967, -55.1542 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass20" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 29.2501, 0.0284885, -56.4626 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass22" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 13.7298, 0.0284846, -56.4735 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass26" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, -1.7855, 0.0284846, -56.4735 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass24" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( -3.31598e-08, -0.758607, -3.31598e-08, 0, -3.31598e-08, 0.758607, -0.908853, 3.97272e-08, 1.73653e-15, 18.9234, 0.0284885, -39.3929 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass8" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 40.5839, 0.0836967, 84.553 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass7" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 56.115, 0.0836967, 84.553 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass13" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 58.8866, 0.0836967, 22.4797 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass17" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 44.6996, 0.0836967, -41.0079 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass49" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 60.2061, 0.0836967, -39.6138 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass6" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 40.5839, 0.0836967, 100.085 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass5" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 56.115, 0.0836967, 100.085 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass12" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 58.8866, 0.0836967, 38.0113 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass16" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 44.6925, 0.078173, -25.451 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass48" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 60.2061, 0.0836967, -24.0822 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass10" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 9.49881, 0.0836967, 98.1217 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass11" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, -6.04542, 0.0836967, 98.1217 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Grass9" type="Sprite3D" parent="Objects/DECALS/Grass"]
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 25.0299, 0.0836967, 98.1217 )
+opacity = 0.31
+shaded = true
+texture = ExtResource( 34 )
+
+[node name="Fences" type="Node" parent="Objects"]
+
+[node name="Concrete_fence_Gate4" parent="Objects/Fences" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 1.09459e-07, 0, -1.25207, 16.6987, 0, 24.4124 )
+
+[node name="Concrete_fence_Gate2" parent="Objects/Fences" instance=ExtResource( 7 )]
 transform = Transform( -6.88707e-08, 0, 1.57558, 0, 1, 0, -1, 0, -4.37114e-08, 16.6625, 0, 90.159 )
 
-[node name="Concrete_fence_Gate3" parent="Objects/ParkingLot/Fences" instance=ExtResource( 7 )]
+[node name="Concrete_fence_Gate6" parent="Objects/Fences" instance=ExtResource( 7 )]
+transform = Transform( -3.65719e-08, 0, 0.836668, 0, 1, 0, -1, 0, -4.37114e-08, 34.4894, 0.00708699, -49.7805 )
+
+[node name="Concrete_fence_Gate5" parent="Objects/Fences" instance=ExtResource( 7 )]
+transform = Transform( -6.88707e-08, 0, 1.57558, 0, 1, 0, -1, 0, -4.37114e-08, 16.6625, 0, 104.647 )
+
+[node name="Concrete_fence_Gate3" parent="Objects/Fences" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 16.5273, 0, 71.7251 )
 
-[node name="Concrete_fence_Straight" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.08469, 0, 124.497 )
+[node name="Concrete_fence_Straight" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.50898, 0, 104.628 )
 
-[node name="Concrete_fence_Straight11" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.25759, 0, 124.497 )
+[node name="Concrete_fence_Straight11" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.68188, 0, 104.628 )
 
-[node name="Concrete_fence_Straight10" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.57631, 0, 124.497 )
+[node name="Concrete_fence_Straight10" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.15202, 0, 104.628 )
 
-[node name="Concrete_fence_Straight9" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.41032, 0, 124.497 )
+[node name="Concrete_fence_Straight9" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.98603, 0, 104.628 )
 
-[node name="Concrete_fence_Straight8" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.24496, 0, 124.497 )
+[node name="Concrete_fence_Straight8" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.82067, 0, 104.628 )
 
-[node name="Concrete_fence_Straight7" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.0806, 0, 124.497 )
+[node name="Concrete_fence_Straight7" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.65631, 0, 104.628 )
 
-[node name="Concrete_fence_Straight16" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.7681, 0, 124.497 )
+[node name="Concrete_fence_Straight16" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.7459, 0, 104.604 )
 
-[node name="Concrete_fence_Straight15" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.9733, 1.90735e-06, 124.503 )
+[node name="Concrete_fence_Straight15" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.9511, 1.90735e-06, 104.61 )
 
-[node name="Concrete_fence_Straight14" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.1393, 1.90735e-06, 124.503 )
+[node name="Concrete_fence_Straight14" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.1171, 1.90735e-06, 104.61 )
 
-[node name="Concrete_fence_Straight13" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.3047, 1.90735e-06, 124.503 )
+[node name="Concrete_fence_Straight13" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.2825, 1.90735e-06, 104.61 )
 
-[node name="Concrete_fence_Straight12" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.469, 1.90735e-06, 124.503 )
+[node name="Concrete_fence_Straight29" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.5036, 0, 101.818 )
 
-[node name="Concrete_fence_Straight21" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4347, 0, 110.324 )
+[node name="Concrete_fence_Straight28" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.5036, 0, 104.653 )
 
-[node name="Concrete_fence_Straight20" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4347, 0, 113.158 )
+[node name="Concrete_fence_Straight34" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30.4109, -0.00897241, 101.807 )
 
-[node name="Concrete_fence_Straight19" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4347, 0, 115.992 )
+[node name="Concrete_fence_Straight33" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30.4109, -0.00897241, 104.642 )
 
-[node name="Concrete_fence_Straight18" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4347, 0, 118.826 )
-
-[node name="Concrete_fence_Straight17" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4347, 0, 121.662 )
-
-[node name="Concrete_fence_Straight26" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 110.324 )
-
-[node name="Concrete_fence_Straight25" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 113.158 )
-
-[node name="Concrete_fence_Straight24" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 115.992 )
-
-[node name="Concrete_fence_Straight23" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 118.826 )
-
-[node name="Concrete_fence_Straight22" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 121.662 )
-
-[node name="Concrete_fence_Straight29" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 101.818 )
-
-[node name="Concrete_fence_Straight28" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 104.653 )
-
-[node name="Concrete_fence_Straight27" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 107.488 )
-
-[node name="Concrete_fence_Straight34" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4331, -0.00897241, 101.831 )
-
-[node name="Concrete_fence_Straight33" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4331, -0.00897241, 104.666 )
-
-[node name="Concrete_fence_Straight32" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4345, 0, 107.488 )
-
-[node name="Concrete_fence_Straight41" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
+[node name="Concrete_fence_Straight41" parent="Objects/Fences" instance=ExtResource( 13 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 40.321 )
 
-[node name="Concrete_fence_Straight40" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
+[node name="Concrete_fence_Straight40" parent="Objects/Fences" instance=ExtResource( 13 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 43.156 )
 
-[node name="Concrete_fence_Straight43" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
+[node name="Concrete_fence_Straight43" parent="Objects/Fences" instance=ExtResource( 13 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 34.6581 )
 
-[node name="Concrete_fence_Straight42" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
+[node name="Concrete_fence_Straight42" parent="Objects/Fences" instance=ExtResource( 13 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 37.4931 )
 
-[node name="Concrete_fence_Straight47" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 23.3304 )
+[node name="Concrete_fence_Straight47" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 21.8457 )
 
-[node name="Concrete_fence_Straight46" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 26.1654 )
+[node name="Concrete_fence_Straight46" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 24.6807 )
 
-[node name="Concrete_fence_Straight45" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 17.6675 )
+[node name="Concrete_fence_Straight45" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 16.1828 )
 
-[node name="Concrete_fence_Straight44" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 20.5025 )
+[node name="Concrete_fence_Straight44" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.701, -0.00897241, 19.0178 )
 
-[node name="Concrete_fence_Straight51" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.364, -0.00897241, 11.9956 )
+[node name="Concrete_fence_Straight51" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.1055, 0.00745272, -21.4854 )
 
-[node name="Concrete_fence_Straight50" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.529, -0.00897241, 11.9956 )
+[node name="Concrete_fence_Straight50" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.1189, -0.0089705, -18.6503 )
 
-[node name="Concrete_fence_Straight49" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.0269, -0.00897241, 11.9956 )
+[node name="Concrete_fence_Straight49" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.1055, 0.00745272, -27.1483 )
 
-[node name="Concrete_fence_Straight48" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.1919, -0.00897241, 11.9956 )
+[node name="Concrete_fence_Straight48" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.1055, 0.00745272, -24.3133 )
 
-[node name="Concrete_fence_Straight55" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.692, -0.00896955, 11.9992 )
+[node name="Concrete_fence_Straight55" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.1091, 0.00745558, -32.8134 )
 
-[node name="Concrete_fence_Straight54" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.857, -0.00896955, 11.9992 )
+[node name="Concrete_fence_Straight54" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.1091, 0.00745558, -29.9784 )
 
-[node name="Concrete_fence_Straight53" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.3548, -0.00896955, 11.9992 )
+[node name="Concrete_fence_Straight53" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.1091, 0.00745558, -38.4762 )
 
-[node name="Concrete_fence_Straight52" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.5198, -0.00896955, 11.9992 )
+[node name="Concrete_fence_Straight52" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.1091, 0.00745558, -35.6412 )
 
-[node name="Concrete_fence_Straight57" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45.0158, -0.00896955, 17.6562 )
+[node name="Concrete_fence_Straight59" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.1091, 0.00745558, -44.1349 )
 
-[node name="Concrete_fence_Straight56" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45.0051, -0.0257061, 20.4495 )
+[node name="Concrete_fence_Straight58" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.1091, 0.00745558, -41.2999 )
 
-[node name="Concrete_fence_Straight39" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
+[node name="Concrete_fence_Straight70" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 26.695, -0.00897241, -35.5639 )
+
+[node name="Concrete_fence_Straight69" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 26.695, -0.00897241, -32.7289 )
+
+[node name="Concrete_fence_Straight68" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 26.695, -0.00897241, -41.2268 )
+
+[node name="Concrete_fence_Straight67" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 26.695, -0.00897241, -38.3918 )
+
+[node name="Concrete_fence_Straight65" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 26.6986, -0.00896955, -44.0569 )
+
+[node name="Concrete_fence_Straight39" parent="Objects/Fences" instance=ExtResource( 13 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.7024, 0, 45.978 )
 
-[node name="Concrete_fence_Straight38" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 93.317 )
+[node name="Concrete_fence_Straight38" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.5036, 0, 93.317 )
 
-[node name="Concrete_fence_Straight31" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 96.1516 )
+[node name="Concrete_fence_Straight31" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.5036, 0, 96.1516 )
 
-[node name="Concrete_fence_Straight30" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.9279, 0, 98.9873 )
+[node name="Concrete_fence_Straight30" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.5036, 0, 98.9873 )
 
-[node name="Concrete_fence_Straight37" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4345, 0, 93.317 )
+[node name="Concrete_fence_Straight37" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30.4123, 0, 93.293 )
 
-[node name="Concrete_fence_Straight36" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4345, 0, 96.1516 )
+[node name="Concrete_fence_Straight36" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30.4123, 0, 96.1276 )
 
-[node name="Concrete_fence_Straight35" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4345, 0, 98.9873 )
+[node name="Concrete_fence_Straight35" parent="Objects/Fences" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30.4123, 0, 98.9633 )
 
-[node name="Concrete_fence_Straight2" parent="Objects/ParkingLot/Fences" instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.6334, 1.90735e-06, 124.503 )
+[node name="Concrete_fence_Corner" parent="Objects/Fences" instance=ExtResource( 12 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -11.1354, 0, 103.273 )
 
-[node name="Concrete_fence_Corner" parent="Objects/ParkingLot/Fences" instance=ExtResource( 12 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -12.5597, 0, 123.142 )
+[node name="Concrete_fence_Corner2" parent="Objects/Fences" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 29.059, 0, 103.249 )
 
-[node name="Concrete_fence_Corner2" parent="Objects/ParkingLot/Fences" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 30.0812, 0, 123.142 )
+[node name="Concrete_fence_Corner3" parent="Objects/Fences" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 25.3323, -0.00702405, -31.2619 )
 
-[node name="Lamps" type="Node" parent="Objects/ParkingLot"]
+[node name="Concrete_fence_Corner4" parent="Objects/Fences" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 28.0525, -0.00702405, -48.4193 )
 
-[node name="LampPost" parent="Objects/ParkingLot/Lamps" instance=ExtResource( 6 )]
-transform = Transform( 0.820141, 0, 0, 0, 0.820141, 0, 0, 0, 0.820141, -1.96197, -0.480625, 114.024 )
+[node name="Concrete_fence_Corner5" parent="Objects/Fences" instance=ExtResource( 12 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 35.7372, -0.00702405, -48.4254 )
 
-[node name="LampPost2" parent="Objects/ParkingLot/Lamps" instance=ExtResource( 6 )]
-transform = Transform( 0.820141, 0, 0, 0, 0.820141, 0, 0, 0, 0.820141, -1.96197, -0.480625, 100.024 )
+[node name="Lamps" type="Node" parent="Objects"]
 
-[node name="LampPost4" parent="Objects/ParkingLot/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 19.4824, -0.480625, 100.024 )
+[node name="LampPost4" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 71.0479 )
 
-[node name="LampPost5" parent="Objects/ParkingLot/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 4.44887, -0.480625, 71.5856 )
+[node name="LampPost9" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 61.8208 )
 
-[node name="LampPost6" parent="Objects/ParkingLot/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 4.44887, -0.480625, 54.4527 )
+[node name="LampPost11" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 52.5948 )
 
-[node name="LampPost3" parent="Objects/ParkingLot/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 19.4824, -0.480625, 114.024 )
+[node name="LampPost17" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9917, -0.480625, 52.5948 )
 
-[node name="Area1" type="Node" parent="Objects"]
+[node name="LampPost15" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9917, -0.480625, 61.8219 )
 
-[node name="Pipe_Set_Horizontal" parent="Objects/Area1" instance=ExtResource( 15 )]
+[node name="LampPost14" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9917, -0.480625, 71.0479 )
+
+[node name="LampPost13" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 43.335 )
+
+[node name="LampPost30" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9164, -0.480625, 43.335 )
+
+[node name="LampPost32" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 36.1091 )
+
+[node name="LampPost31" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9164, -0.480625, 36.1091 )
+
+[node name="LampPost29" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, -30.2636, -0.480625, 7.87933 )
+
+[node name="LampPost28" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, -30.2636, -0.480625, -1.34777 )
+
+[node name="LampPost27" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, -30.2636, -0.480625, -10.5738 )
+
+[node name="LampPost26" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, -25.9843, -0.480625, -10.5738 )
+
+[node name="LampPost24" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, -25.9843, -0.480625, -1.34667 )
+
+[node name="LampPost23" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, -25.9843, -0.480625, 7.87933 )
+
+[node name="LampPost22" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.61329, 0, -0.544524, 0, 0.820141, 0, 0.544524, 0, 0.61329, -26.4966, -0.480625, -20.4407 )
+
+[node name="LampPost47" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.613291, 0, 0.544524, 0, 0.820141, 0, -0.544524, 0, -0.613291, -23.3529, -0.480625, -17.6495 )
+
+[node name="LampPost46" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.322417, 0, -0.754108, 0, 0.820141, 0, 0.754108, 0, 0.322417, -19.6099, -0.480625, -25.4845 )
+
+[node name="LampPost45" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.322417, 0, 0.754108, 0, 0.820141, 0, -0.754108, 0, -0.322417, -17.9572, -0.480625, -21.6189 )
+
+[node name="LampPost57" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 1.07548e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07548e-07, -13.0362, -0.480625, -26.8236 )
+
+[node name="LampPost56" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 1.07548e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07548e-07, -3.80912, -0.480625, -26.8236 )
+
+[node name="LampPost55" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 1.07548e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07548e-07, 5.41688, -0.480625, -26.8236 )
+
+[node name="LampPost54" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 5.41687, -0.480625, -22.5443 )
+
+[node name="LampPost63" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 29.7805, -0.480625, -33.883 )
+
+[node name="LampPost62" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 34.0599, -0.480625, -33.883 )
+
+[node name="LampPost65" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.675673, 0, -0.464863, 0, 0.820141, 0, 0.464863, 0, 0.675673, 29.0181, -0.480625, -27.975 )
+
+[node name="LampPost64" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.675673, 0, 0.464863, 0, 0.820141, 0, -0.464863, 0, -0.675673, 32.5437, -0.480625, -25.5494 )
+
+[node name="LampPost53" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, -3.81022, -0.480625, -22.5443 )
+
+[node name="LampPost52" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, -13.0362, -0.480625, -22.5443 )
+
+[node name="LampPost51" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 1.07548e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07548e-07, 14.6767, -0.480625, -26.8236 )
+
+[node name="LampPost50" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 14.6767, -0.480625, -22.6196 )
+
+[node name="LampPost49" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 1.07548e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07548e-07, 21.9026, -0.480625, -26.8236 )
+
+[node name="LampPost48" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 21.9026, -0.480625, -22.6196 )
+
+[node name="LampPost61" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 29.7805, -0.480625, -43.1428 )
+
+[node name="LampPost60" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 33.9845, -0.480625, -43.1428 )
+
+[node name="LampPost59" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 29.7805, -0.480625, -49.2825 )
+
+[node name="LampPost58" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 33.9845, -0.480625, -49.2825 )
+
+[node name="LampPost36" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 1.07548e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07548e-07, 1.78395, -0.480624, 23.2202 )
+
+[node name="LampPost35" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 1.78395, -0.480624, 27.4242 )
+
+[node name="LampPost38" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 1.07548e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07548e-07, -6.96146, -0.480624, 23.2202 )
+
+[node name="LampPost37" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, -6.96052, -0.480625, 27.3569 )
+
+[node name="LampPost40" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.18689, 0, -0.798563, 0, 0.820141, 0, 0.798563, 0, -0.18689, -15.5005, -0.480625, 22.9174 )
+
+[node name="LampPost39" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.18689, 0, 0.798563, 0, 0.820141, 0, -0.798563, 0, 0.18689, -16.4585, -0.480625, 27.0108 )
+
+[node name="LampPost42" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.496836, 0, -0.652522, 0, 0.820141, 0, 0.652522, 0, -0.496836, -21.2293, -0.480625, 20.2723 )
+
+[node name="LampPost41" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.496836, 0, 0.652522, 0, 0.820141, 0, -0.652522, 0, 0.496836, -23.7761, -0.480625, 23.6171 )
+
+[node name="LampPost44" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.787516, 0, -0.229018, 0, 0.820141, 0, 0.229018, 0, -0.787516, -25.2712, -0.480625, 14.6248 )
+
+[node name="LampPost43" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.787516, 0, 0.229018, 0, 0.820141, 0, -0.229018, 0, 0.787516, -29.308, -0.480625, 15.7987 )
+
+[node name="LampPost34" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.582341, 0, 0.577503, 0, 0.820141, 0, -0.577503, 0, 0.582341, 8.88615, -0.480625, 28.232 )
+
+[node name="LampPost33" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.579482, 0, -0.580373, 0, 0.820141, 0, 0.580373, 0, -0.579482, 11.8566, -0.480625, 25.257 )
+
+[node name="LampPost21" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, -24.9225, -0.480625, 40.8953 )
+
+[node name="LampPost25" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, -12.7135, -0.480625, 40.8953 )
+
+[node name="LampPost19" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 19.0071, -0.480625, 42.0833 )
+
+[node name="LampPost20" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.50947e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.50947e-07, 19.0071, -0.480625, 16.2119 )
+
+[node name="LampPost18" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 47.107, -0.480625, 40.5228 )
+
+[node name="LampPost16" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 35.3292, -0.480625, 7.81248 )
+
+[node name="LampPost8" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 14.3306, -0.480625, 84.5278 )
+
+[node name="LampPost5" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 4.44887, -0.480625, 71.041 )
+
+[node name="LampPost6" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 4.44887, -0.480625, 61.8138 )
+
+[node name="LampPost10" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 4.44887, -0.480625, 52.5878 )
+
+[node name="LampPost7" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 18.6079, -0.480625, 71.7575 )
+
+[node name="LampPost12" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 18.6079, -0.480625, 65.472 )
+
+[node name="Pipes" type="Node" parent="Objects"]
+
+[node name="Pipe_Set_Horizontal" parent="Objects/Pipes" instance=ExtResource( 15 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.55379, 0, 80.8569 )
 
-[node name="Pipe_Set_Horizontal2" parent="Objects/Area1" instance=ExtResource( 15 )]
+[node name="Pipe_Set_Horizontal2" parent="Objects/Pipes" instance=ExtResource( 15 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.1313, 0, 80.8569 )
 
-[node name="Pipe_Set_Horizontal3" parent="Objects/Area1" instance=ExtResource( 15 )]
+[node name="Pipe_Set_Horizontal3" parent="Objects/Pipes" instance=ExtResource( 15 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.7113, 0, 80.8569 )
 
-[node name="Wooden_box_small" parent="Objects/Area1" instance=ExtResource( 14 )]
-transform = Transform( 0.943182, 0, -0.332276, 0, 1, 0, 0.332276, 0, 0.943182, 18.5779, 0.0381057, 86.7871 )
+[node name="Pipes_Double_Short" parent="Objects/Pipes" instance=ExtResource( 17 )]
+transform = Transform( 1.97743, 0, 0.800978, 0, 2.13348, 0, -0.800978, 0, 1.97743, 14.914, -0.12913, -6.45166 )
 
-[node name="Wooden_box_small2" parent="Objects/Area1" instance=ExtResource( 14 )]
-transform = Transform( 0.790828, 0, -0.612038, 0, 1, 0, 0.612038, 0, 0.790828, 18.5779, 0.0381057, 85.5726 )
+[node name="Pipes_Double_Short4" parent="Objects/Pipes" instance=ExtResource( 17 )]
+transform = Transform( -0.413044, 0, 2.09313, 0, 2.13348, 0, -2.09313, 0, -0.413044, 32.9468, -0.12913, -12.9553 )
 
-[node name="Wooden_box_small3" parent="Objects/Area1" instance=ExtResource( 14 )]
-transform = Transform( -0.0645673, 0, -0.997913, 0, 1, 0, 0.997913, 0, -0.0645673, 19.6906, 0.0381057, 86.1576 )
-
-[node name="Concrete_Wall_Corner_v2" parent="Objects/Area1" instance=ExtResource( 16 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.7299, -0.0766352, 89.1977 )
-
-[node name="Concrete_Wall_Corner_v3" parent="Objects/Area1" instance=ExtResource( 16 )]
-transform = Transform( 1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, 17.4773, 0.00241673, 47.0785 )
-
-[node name="Pipes_Double_Short" parent="Objects/Area1" instance=ExtResource( 17 )]
+[node name="Pipes_Double_Short2" parent="Objects/Pipes" instance=ExtResource( 17 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24.8108, -0.0766352, 74.958 )
 
-[node name="Pipes_Double_Short2" parent="Objects/Area1" instance=ExtResource( 17 )]
+[node name="Pipes_Double_Short3" parent="Objects/Pipes" instance=ExtResource( 17 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 24.608, -0.0766352, 62.3739 )
 
-[node name="Palet" parent="Objects/Area1" instance=ExtResource( 29 )]
-transform = Transform( 0.496022, -0.867305, 0.0417567, 0.864249, 0.497776, 0.0727553, -0.0838865, 0, 0.996475, 15.9503, 0.692081, 74.5443 )
+[node name="Pipe_Straight" parent="Objects/Pipes" instance=ExtResource( 37 )]
+transform = Transform( -2.18557e-07, 5, 0, 5, 2.18557e-07, 4.37114e-07, 4.37114e-07, 1.91069e-14, -5, 13.705, 2.70737, -0.515821 )
 
-[node name="Oil_tank_v1" parent="Objects/Area1" instance=ExtResource( 19 )]
-transform = Transform( 0.996475, 0, 0.0838865, 0, 1, 0, -0.0838865, 0, 0.996475, 24.8108, -0.0766352, 80.6492 )
+[node name="Pipe_Straight2" parent="Objects/Pipes" instance=ExtResource( 37 )]
+transform = Transform( -2.18557e-07, 5, 0, 5, 2.18557e-07, 4.37114e-07, 4.37114e-07, 1.91069e-14, -5, 13.7063, 8.09109, -0.514158 )
 
-[node name="Oil_tank_v2" parent="Objects/Area1" instance=ExtResource( 19 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6474, -0.0766352, 56.6701 )
+[node name="Pipe_Straight4" parent="Objects/Pipes" instance=ExtResource( 37 )]
+transform = Transform( -2.18557e-07, 5, 0, 5, 2.18557e-07, 4.37114e-07, 4.37114e-07, 1.91069e-14, -5, -13.3812, 3.89513, -1.79807 )
 
-[node name="Cargo_container_v1" parent="Objects/Area1" instance=ExtResource( 20 )]
-transform = Transform( 0.967876, 0, -0.251428, 0, 1, 0, 0.251428, 0, 0.967876, -1.18643, -0.0116053, 67.7551 )
+[node name="Pipe_Straight3" parent="Objects/Pipes" instance=ExtResource( 37 )]
+transform = Transform( -2.18557e-07, 5, 0, 5, 2.18557e-07, 4.37114e-07, 4.37114e-07, 1.91069e-14, -5, -16.8853, 7.66106, -1.78442 )
 
-[node name="Cargo_container_v2" parent="Objects/Area1" instance=ExtResource( 20 )]
-transform = Transform( 0.989288, 0, -0.145979, 0, 1, 0, 0.145979, 0, 0.989288, -1.18643, -0.0116053, 63.7373 )
+[node name="Pipe_Straight5" parent="Objects/Pipes" instance=ExtResource( 37 )]
+transform = Transform( -5, -4.37114e-07, -4.37114e-07, -4.37114e-07, 5, -1.91069e-14, 4.37114e-07, 1.91069e-14, -5, -19.8441, -6.77873, -1.78442 )
 
-[node name="Cargo_container_v3" parent="Objects/Area1" instance=ExtResource( 20 )]
-transform = Transform( 0.998035, 0, 0.0626512, 0, 1, 0, -0.0626512, 0, 0.998035, -1.84649, -0.0116053, 58.2547 )
+[node name="Pipe_Straight6" parent="Objects/Pipes" instance=ExtResource( 37 )]
+transform = Transform( -5, -4.37114e-07, -4.37114e-07, -4.37114e-07, 5, -1.91069e-14, 4.37114e-07, 1.91069e-14, -5, -16.3824, -10.5365, -1.77009 )
 
-[node name="Oil_tank_v3" parent="Objects/Area1" instance=ExtResource( 19 )]
-transform = Transform( 0.890515, 0, 0.454954, 0, 1, 0, -0.454954, 0, 0.890515, -24.77, -0.0766352, 79.2651 )
+[node name="Pipe_Joint" parent="Objects/Pipes" instance=ExtResource( 38 )]
+transform = Transform( -5, -4.37114e-07, -4.37114e-07, -4.37114e-07, 5, -1.91069e-14, 4.37114e-07, 1.91069e-14, -5, -16.0551, 0.850632, -1.7171 )
 
-[node name="Pipes_Double_Short" parent="Objects/Area1/Oil_tank_v3" instance=ExtResource( 17 )]
-transform = Transform( 0.996181, 0, -0.0873474, 0, 1, 0, 0.0873474, 0, 0.996181, 5.68711, -0.033506, 0.32766 )
+[node name="Pipe_Joint2" parent="Objects/Pipes" instance=ExtResource( 38 )]
+transform = Transform( -5, -4.37114e-07, -4.37114e-07, -4.37114e-07, 5, -1.91069e-14, 4.37114e-07, 1.91069e-14, -5, -19.5218, 4.66127, -1.7171 )
 
-[node name="Conditioner" parent="Objects/Area1" instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.847601, 0.874676, 90.7372 )
+[node name="Walls" type="Node" parent="Objects"]
 
-[node name="Building_v4" parent="Objects/Area1" instance=ExtResource( 8 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -3.26123, -0.0143509, 85.1535 )
-
-[node name="Building_v5" parent="Objects/Area1" instance=ExtResource( 8 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -21.4515, -0.0143509, 47.003 )
-
-[node name="Walls" type="Node" parent="Objects/Area1"]
-
-[node name="Concrete_Wall_Straight_v3" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v3" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.819, 0, 90.1633 )
 
-[node name="Concrete_Wall_Pillar2" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar2" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5267, 0, 90.164 )
 
-[node name="Concrete_Wall_Straight_v4" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v4" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23.4359, 0, 90.1633 )
 
-[node name="Concrete_Wall_Straight_v9" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v9" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.0854, 0, 90.1633 )
 
-[node name="Concrete_Wall_Pillar3" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar3" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1436, 0, 90.164 )
 
-[node name="Concrete_Wall_Pillar4" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar4" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7611, 0, 90.164 )
 
-[node name="Concrete_Wall_Straight_v19" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v19" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.686, 0, 85.4399 )
 
-[node name="Concrete_Wall_Pillar18" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar18" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.6867, 0, 87.7322 )
 
-[node name="Concrete_Wall_Straight_v18" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v18" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.686, 0, 80.823 )
 
-[node name="Concrete_Wall_Straight_v17" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v17" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.686, 0, 76.1735 )
 
-[node name="Concrete_Wall_Pillar17" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar17" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.6867, 0, 83.1153 )
 
-[node name="Concrete_Wall_Pillar16" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar16" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.6867, 0, 78.4978 )
 
-[node name="Concrete_Wall_Straight_v22" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v22" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.686, 0, 71.5716 )
 
-[node name="Concrete_Wall_Pillar21" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar21" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.6867, 0, 73.8639 )
 
-[node name="Concrete_Wall_Straight_v21" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v21" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.686, 0, 66.9547 )
 
-[node name="Concrete_Wall_Straight_v20" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v20" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.686, 0, 62.3052 )
 
-[node name="Concrete_Wall_Pillar20" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar20" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.6867, 0, 69.247 )
 
-[node name="Concrete_Wall_Pillar19" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar19" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.6867, 0, 64.6295 )
 
-[node name="Concrete_Wall_Straight_v25" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v25" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.686, 0, 57.6987 )
 
-[node name="Concrete_Wall_Pillar24" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar24" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.6867, 0, 59.991 )
 
-[node name="Concrete_Wall_Straight_v24" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v24" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.686, 0, 53.0818 )
 
-[node name="Concrete_Wall_Straight_v23" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v23" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.686, 0, 48.4324 )
 
-[node name="Concrete_Wall_Pillar23" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar23" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.6867, 0, 55.3741 )
 
-[node name="Concrete_Wall_Pillar22" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar22" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.6867, 0, 50.7566 )
 
-[node name="Concrete_Wall_Pillar15" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar15" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.4106, 0, 90.164 )
 
-[node name="Concrete_Wall_Straight_v7" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v7" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.5431, 0, 87.9783 )
 
-[node name="Concrete_Wall_Straight_v6" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v6" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.5431, 0, 83.3495 )
 
-[node name="Concrete_Wall_Pillar7" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar7" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5438, 0, 85.6418 )
 
-[node name="Concrete_Wall_Straight_v5" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v5" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.5431, 0, 78.7326 )
 
-[node name="Concrete_Wall_Pillar6" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar6" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5438, 0, 81.0249 )
 
-[node name="Concrete_Wall_Pillar5" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar5" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5438, 0, 76.4074 )
 
-[node name="Concrete_Wall_Straight_v10" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v10" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.5431, 0, 74.1081 )
 
-[node name="Concrete_Wall_Straight_v28" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v28" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.5431, 0, 58.6393 )
 
-[node name="Concrete_Wall_Pillar27" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar27" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5438, 0, 60.9316 )
 
-[node name="Concrete_Wall_Straight_v27" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v27" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.5431, 0, 54.0224 )
 
-[node name="Concrete_Wall_Pillar26" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar26" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5438, 0, 56.3147 )
 
-[node name="Concrete_Wall_Pillar25" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar25" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5438, 0, 51.6972 )
 
-[node name="Concrete_Wall_Pillar32" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar32" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5438, 0, 48.3418 )
 
-[node name="Concrete_Wall_Straight_v26" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v26" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.5431, 0, 49.3979 )
 
-[node name="Concrete_Wall_Straight_v31" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v31" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 30.4206, 0, 46.095 )
 
-[node name="Concrete_Wall_Pillar30" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar30" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.7129, 0, 46.0943 )
 
-[node name="Concrete_Wall_Straight_v30" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v30" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 25.8037, 0, 46.095 )
 
-[node name="Concrete_Wall_Pillar29" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar29" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28.096, 0, 46.0943 )
 
-[node name="Concrete_Wall_Pillar28" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar28" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 23.4785, 0, 46.0943 )
 
-[node name="Concrete_Wall_Straight_v40" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v40" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 44.2369, 0, 46.095 )
 
-[node name="Concrete_Wall_Pillar41" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar41" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 46.5292, 0, 46.0943 )
 
-[node name="Concrete_Wall_Straight_v39" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v39" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 39.62, 0, 46.095 )
 
-[node name="Concrete_Wall_Pillar40" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar40" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 41.9123, 0, 46.0943 )
 
-[node name="Concrete_Wall_Pillar39" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar39" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.2948, 0, 46.0943 )
 
-[node name="Concrete_Wall_Straight_v60" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.580072, 0, 12.0166 )
+[node name="Concrete_Wall_Straight_v60" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1.66957, 0, 13.2925 )
 
-[node name="Concrete_Wall_Pillar60" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.87237, 0, 12.0159 )
+[node name="Concrete_Wall_Pillar60" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.622729, 0, 13.2918 )
 
-[node name="Concrete_Wall_Straight_v59" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4.03683, 0, 12.0166 )
+[node name="Concrete_Wall_Straight_v59" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -6.28647, 0, 13.2925 )
 
-[node name="Concrete_Wall_Pillar59" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.74453, 0, 12.0159 )
+[node name="Concrete_Wall_Pillar59" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.99417, 0, 13.2918 )
 
-[node name="Concrete_Wall_Pillar58" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.36203, 0, 12.0159 )
+[node name="Concrete_Wall_Pillar58" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.61167, 0, 13.2918 )
 
-[node name="Concrete_Wall_Straight_v58" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 14.3964, 0, 12.0166 )
+[node name="Concrete_Wall_Straight_v58" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12.1468, 0, 13.2925 )
 
-[node name="Concrete_Wall_Pillar57" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.6887, 0, 12.0159 )
+[node name="Concrete_Wall_Pillar57" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.4391, 0, 13.2918 )
 
-[node name="Concrete_Wall_Straight_v57" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 9.77947, 0, 12.0166 )
+[node name="Concrete_Wall_Straight_v57" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 7.52983, 0, 13.2925 )
 
-[node name="Concrete_Wall_Pillar56" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.0718, 0, 12.0159 )
+[node name="Concrete_Wall_Pillar56" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.82216, 0, 13.2918 )
 
-[node name="Concrete_Wall_Pillar55" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.45427, 0, 12.0159 )
+[node name="Concrete_Wall_Pillar55" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.20463, 0, 13.2918 )
 
-[node name="Concrete_Wall_Straight_v67" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -31.9737, 0, 30.6383 )
+[node name="Concrete_Wall_Straight_v86" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 25.7624, 0, 13.2925 )
 
-[node name="Concrete_Wall_Pillar66" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -31.9744, 0, 28.346 )
+[node name="Concrete_Wall_Pillar99" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28.0547, 0, 13.2918 )
 
-[node name="Concrete_Wall_Straight_v66" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -31.9737, 0, 35.2552 )
+[node name="Concrete_Wall_Straight_v85" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 21.1455, 0, 13.2925 )
 
-[node name="Concrete_Wall_Pillar65" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -31.9744, 0, 32.9629 )
+[node name="Concrete_Wall_Pillar98" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 23.4378, 0, 13.2918 )
 
-[node name="Concrete_Wall_Pillar64" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -31.9744, 0, 37.5804 )
+[node name="Concrete_Wall_Pillar84" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18.8203, 0, 13.2918 )
 
-[node name="Concrete_Wall_Straight_v65" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -31.9737, 0, 16.822 )
+[node name="Concrete_Wall_Straight_v84" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 39.5788, 0, 13.2925 )
 
-[node name="Concrete_Wall_Pillar63" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -31.9744, 0, 14.5297 )
+[node name="Concrete_Wall_Straight_v88" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 44.119, 0, 13.2925 )
 
-[node name="Concrete_Wall_Straight_v64" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -31.9737, 0, 21.4389 )
+[node name="Concrete_Wall_Straight_v96" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 48.397, 0, 13.2925 )
 
-[node name="Concrete_Wall_Pillar62" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -31.9744, 0, 19.1466 )
+[node name="Concrete_Wall_Pillar81" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 41.8711, 0, 13.2918 )
 
-[node name="Concrete_Wall_Pillar61" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -31.9744, 0, 23.7641 )
+[node name="Concrete_Wall_Pillar100" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 46.1112, 0, 13.2918 )
 
-[node name="Concrete_Wall_Straight_v81" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v83" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 34.9618, 0, 13.2925 )
+
+[node name="Concrete_Wall_Pillar80" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.2542, 0, 13.2918 )
+
+[node name="Concrete_Wall_Pillar79" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.6366, 0, 13.2918 )
+
+[node name="Concrete_Wall_Straight_v67" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, 30.6383 )
+
+[node name="Concrete_Wall_Pillar66" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, 28.346 )
+
+[node name="Concrete_Wall_Straight_v66" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, 35.2552 )
+
+[node name="Concrete_Wall_Pillar65" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, 32.9629 )
+
+[node name="Concrete_Wall_Pillar64" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, 37.5804 )
+
+[node name="Concrete_Wall_Pillar68" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, 42.1425 )
+
+[node name="Concrete_Wall_Straight_v65" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, 16.822 )
+
+[node name="Concrete_Wall_Pillar63" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, 14.5297 )
+
+[node name="Concrete_Wall_Straight_v64" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, 21.4389 )
+
+[node name="Concrete_Wall_Pillar62" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, 19.1466 )
+
+[node name="Concrete_Wall_Pillar61" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, 23.7641 )
+
+[node name="Concrete_Wall_Straight_v74" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, -1.53033 )
+
+[node name="Concrete_Wall_Pillar122" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, -3.82263 )
+
+[node name="Concrete_Wall_Straight_v73" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, 3.08657 )
+
+[node name="Concrete_Wall_Pillar95" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, 0.794271 )
+
+[node name="Concrete_Wall_Pillar94" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, 5.41177 )
+
+[node name="Concrete_Wall_Pillar72" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, 9.97386 )
+
+[node name="Concrete_Wall_Straight_v72" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, -15.3466 )
+
+[node name="Concrete_Wall_Pillar71" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, -17.6389 )
+
+[node name="Concrete_Wall_Straight_v71" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, -10.7297 )
+
+[node name="Concrete_Wall_Pillar70" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, -13.022 )
+
+[node name="Concrete_Wall_Pillar69" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, -8.40453 )
+
+[node name="Concrete_Wall_Straight_v137" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, -29.0729 )
+
+[node name="Concrete_Wall_Straight_v138" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -31.0242, 0, -31.3684 )
+
+[node name="Concrete_Wall_Pillar131" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, -26.7477 )
+
+[node name="Concrete_Wall_Pillar132" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, -31.3655 )
+
+[node name="Concrete_Wall_Pillar130" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -33.2706, 0, -22.1856 )
+
+[node name="Concrete_Wall_Straight_v81" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -10.8159, 0, 5.05309 )
 
-[node name="Concrete_Wall_Pillar78" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Straight_v95" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -10.8159, 0, 9.38643 )
+
+[node name="Concrete_Wall_Pillar78" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.8166, 0, 2.76079 )
 
-[node name="Concrete_Wall_Straight_v80" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -10.8159, 0, 9.66998 )
-
-[node name="Concrete_Wall_Pillar77" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar77" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.8166, 0, 7.37769 )
 
-[node name="Concrete_Wall_Pillar76" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.8166, 0, 11.9952 )
+[node name="Concrete_Wall_Pillar76" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.8166, 0, 11.2462 )
 
-[node name="Concrete_Wall_Straight_v79" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v79" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -10.8159, 0, -8.76321 )
 
-[node name="Concrete_Wall_Pillar75" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar75" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.8166, 0, -11.0555 )
 
-[node name="Concrete_Wall_Straight_v78" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Corner_v1" parent="Objects/Walls" instance=ExtResource( 41 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -9.9202, 0, -16.7634 )
+
+[node name="Concrete_Wall_Corner_v4" parent="Objects/Walls" instance=ExtResource( 41 )]
+transform = Transform( -1, 0, -2.68221e-07, 0, 1, 0, 2.68221e-07, 0, -1, -9.9118, 0, 12.3856 )
+
+[node name="Concrete_Wall_Pillar141" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.8166, 0, -15.3819 )
+
+[node name="Concrete_Wall_Straight_v78" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -10.8159, 0, -4.14631 )
 
-[node name="Concrete_Wall_Pillar74" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar74" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.8166, 0, -6.43861 )
 
-[node name="Concrete_Wall_Pillar73" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar73" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.8166, 0, -1.82111 )
 
-[node name="Concrete_Wall_Straight_v88" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -11.164, 0, -58.5972 )
+[node name="Concrete_Wall_Straight_v87" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -5.6371, 0, -29.87 )
 
-[node name="Concrete_Wall_Pillar84" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -13.4563, 0, -58.5965 )
+[node name="Concrete_Wall_Pillar83" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -7.9294, 0, -29.8693 )
 
-[node name="Concrete_Wall_Straight_v87" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -6.54707, 0, -58.5972 )
+[node name="Concrete_Wall_Pillar82" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -3.3119, 0, -29.8693 )
 
-[node name="Concrete_Wall_Pillar83" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -8.83937, 0, -58.5965 )
+[node name="Concrete_Wall_Straight_v94" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 17.2178, 0, -29.87 )
 
-[node name="Concrete_Wall_Pillar82" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -4.22187, 0, -58.5965 )
+[node name="Concrete_Wall_Pillar90" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 14.9255, 0, -29.8693 )
 
-[node name="Concrete_Wall_Straight_v86" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -24.9803, 0, -58.5972 )
+[node name="Concrete_Wall_Straight_v93" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 21.8216, 0, -29.87 )
 
-[node name="Concrete_Wall_Pillar81" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -27.2726, 0, -58.5965 )
+[node name="Concrete_Wall_Pillar89" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 19.5424, 0, -29.8693 )
 
-[node name="Concrete_Wall_Straight_v85" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -20.3634, 0, -58.5972 )
+[node name="Concrete_Wall_Pillar88" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 24.1468, 0, -29.8693 )
 
-[node name="Concrete_Wall_Pillar80" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -22.6557, 0, -58.5965 )
+[node name="Concrete_Wall_Straight_v92" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 3.40149, 0, -29.87 )
 
-[node name="Concrete_Wall_Pillar79" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -18.0382, 0, -58.5965 )
+[node name="Concrete_Wall_Pillar87" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 1.13711, 0, -29.8693 )
 
-[node name="Concrete_Wall_Straight_v95" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 15.1737, 0, -33.2131 )
+[node name="Concrete_Wall_Straight_v91" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 8.01839, 0, -29.87 )
 
-[node name="Concrete_Wall_Pillar90" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 12.8814, 0, -33.2124 )
+[node name="Concrete_Wall_Pillar86" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5.72609, 0, -29.8693 )
 
-[node name="Concrete_Wall_Straight_v94" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 19.7906, 0, -33.2131 )
+[node name="Concrete_Wall_Pillar85" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 10.3436, 0, -29.8693 )
 
-[node name="Concrete_Wall_Pillar89" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 17.4983, 0, -33.2124 )
+[node name="Concrete_Wall_Straight_v102" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 48.8479, 0, -17.6552 )
 
-[node name="Concrete_Wall_Pillar88" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 22.1158, 0, -33.2124 )
+[node name="Concrete_Wall_Pillar96" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 46.5556, 0, -17.6545 )
 
-[node name="Concrete_Wall_Straight_v93" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1.35737, 0, -33.2131 )
+[node name="Concrete_Wall_Straight_v100" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 35.0316, 0, -17.6552 )
 
-[node name="Concrete_Wall_Pillar87" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.934917, 0, -33.2124 )
+[node name="Concrete_Wall_Pillar93" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32.7393, 0, -17.6566 )
 
-[node name="Concrete_Wall_Straight_v92" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 5.97427, 0, -33.2131 )
+[node name="Concrete_Wall_Straight_v99" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 39.6485, 0, -17.6552 )
 
-[node name="Concrete_Wall_Pillar86" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 3.68197, 0, -33.2124 )
+[node name="Concrete_Wall_Straight_v101" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 37.2268, 0, -19.9995 )
 
-[node name="Concrete_Wall_Pillar85" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 8.29947, 0, -33.2124 )
+[node name="Concrete_Wall_Pillar92" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 37.3118, 0, -17.6545 )
 
-[node name="Concrete_Wall_Straight_v102" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 48.8479, 0, -31.8644 )
+[node name="Concrete_Wall_Pillar97" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 37.1191, 0, -22.1985 )
 
-[node name="Concrete_Wall_Pillar96" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 46.5556, 0, -31.8637 )
+[node name="Concrete_Wall_Pillar91" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 41.9737, 0, -17.6545 )
 
-[node name="Concrete_Wall_Straight_v100" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 35.0316, 0, -31.8644 )
+[node name="Concrete_Wall_Straight_v141" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 30.4729, 0, -17.6552 )
 
-[node name="Concrete_Wall_Pillar93" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32.7393, 0, -31.8637 )
+[node name="Concrete_Wall_Pillar135" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 28.1806, 0, -17.6545 )
 
-[node name="Concrete_Wall_Straight_v99" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 39.6485, 0, -31.8644 )
+[node name="Concrete_Wall_Straight_v140" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 16.6566, 0, -17.6552 )
 
-[node name="Concrete_Wall_Pillar92" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 37.3562, 0, -31.8637 )
+[node name="Concrete_Wall_Pillar124" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 14.3643, 0, -17.6545 )
 
-[node name="Concrete_Wall_Pillar91" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 41.9737, 0, -31.8637 )
+[node name="Concrete_Wall_Straight_v139" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 21.2735, 0, -17.6552 )
 
-[node name="Concrete_Wall_Straight_v109" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6492, 0, -57.8358 )
+[node name="Concrete_Wall_Pillar123" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 18.9812, 0, -17.6545 )
 
-[node name="Concrete_Wall_Pillar102" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.6499, 0, -55.5435 )
+[node name="Concrete_Wall_Pillar121" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 23.5987, 0, -17.6545 )
 
-[node name="Concrete_Wall_Straight_v108" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6492, 0, -62.4527 )
+[node name="Concrete_Wall_Straight_v145" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 12.0878, 0, -17.6552 )
 
-[node name="Concrete_Wall_Pillar101" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.6499, 0, -60.1604 )
+[node name="Concrete_Wall_Pillar139" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 9.79552, 0, -17.6545 )
 
-[node name="Concrete_Wall_Pillar100" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.6499, 0, -64.7779 )
+[node name="Concrete_Wall_Straight_v144" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.72848, 0, -17.6552 )
 
-[node name="Concrete_Wall_Straight_v107" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6492, 0, -44.0195 )
+[node name="Concrete_Wall_Pillar138" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -4.02078, 0, -17.6545 )
 
-[node name="Concrete_Wall_Pillar99" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.6499, 0, -41.7272 )
+[node name="Concrete_Wall_Straight_v143" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 2.88842, 0, -17.6552 )
 
-[node name="Concrete_Wall_Straight_v106" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6492, 0, -48.6364 )
+[node name="Concrete_Wall_Pillar137" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.596125, 0, -17.6545 )
 
-[node name="Concrete_Wall_Pillar98" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.6499, 0, -46.3441 )
+[node name="Concrete_Wall_Straight_v146" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -6.22626, 0, -17.6552 )
 
-[node name="Concrete_Wall_Pillar97" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.6499, 0, -50.9616 )
+[node name="Concrete_Wall_Pillar140" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -8.51856, 0, -17.6545 )
 
-[node name="Concrete_Wall_Straight_v116" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 27.217, 0, -91.4114 )
+[node name="Concrete_Wall_Pillar136" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5.21363, 0, -17.6545 )
 
-[node name="Concrete_Wall_Pillar108" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 27.2177, 0, -89.1191 )
-
-[node name="Concrete_Wall_Straight_v115" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 27.217, 0, -96.0283 )
-
-[node name="Concrete_Wall_Pillar107" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 27.2177, 0, -93.736 )
-
-[node name="Concrete_Wall_Pillar106" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 27.2177, 0, -98.3535 )
-
-[node name="Concrete_Wall_Straight_v114" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 27.217, 0, -77.5951 )
-
-[node name="Concrete_Wall_Pillar105" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 27.2177, 0, -75.3028 )
-
-[node name="Concrete_Wall_Straight_v113" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 27.217, 0, -82.212 )
-
-[node name="Concrete_Wall_Pillar104" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 27.2177, 0, -79.9197 )
-
-[node name="Concrete_Wall_Pillar103" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 27.2177, 0, -84.5372 )
-
-[node name="Concrete_Wall_Straight_v123" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6003, 0, -91.4114 )
-
-[node name="Concrete_Wall_Pillar114" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.601, 0, -89.1191 )
-
-[node name="Concrete_Wall_Straight_v122" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6003, 0, -96.0283 )
-
-[node name="Concrete_Wall_Pillar113" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.601, 0, -93.736 )
-
-[node name="Concrete_Wall_Pillar112" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.601, 0, -98.3535 )
-
-[node name="Concrete_Wall_Straight_v121" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6003, 0, -77.5951 )
-
-[node name="Concrete_Wall_Pillar111" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.601, 0, -75.3028 )
-
-[node name="Concrete_Wall_Straight_v120" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6003, 0, -82.212 )
-
-[node name="Concrete_Wall_Pillar110" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.601, 0, -79.9197 )
-
-[node name="Concrete_Wall_Pillar109" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 62.601, 0, -84.5372 )
-
-[node name="Concrete_Wall_Straight_v130" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 12.5851, 0, -58.2395 )
-
-[node name="Concrete_Wall_Pillar120" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 14.8774, 0, -58.2402 )
-
-[node name="Concrete_Wall_Straight_v129" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 7.96817, 0, -58.2395 )
-
-[node name="Concrete_Wall_Pillar119" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 10.2605, 0, -58.2402 )
-
-[node name="Concrete_Wall_Pillar118" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 5.64297, 0, -58.2402 )
-
-[node name="Concrete_Wall_Straight_v128" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 26.4014, 0, -58.2395 )
-
-[node name="Concrete_Wall_Pillar117" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 28.6937, 0, -58.2402 )
-
-[node name="Concrete_Wall_Straight_v127" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 21.7845, 0, -58.2395 )
-
-[node name="Concrete_Wall_Pillar116" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 24.0768, 0, -58.2402 )
-
-[node name="Concrete_Wall_Pillar115" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 19.4593, 0, -58.2402 )
-
-[node name="Concrete_Wall_Straight_v43" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v43" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, 39.1659 )
 
-[node name="Concrete_Wall_Pillar44" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar44" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 36.8736 )
 
-[node name="Concrete_Wall_Straight_v42" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v42" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, 43.7828 )
 
-[node name="Concrete_Wall_Pillar43" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar43" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 41.4905 )
 
-[node name="Concrete_Wall_Straight_v45" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v45" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, 29.995 )
 
-[node name="Concrete_Wall_Pillar46" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar46" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 27.7027 )
 
-[node name="Concrete_Wall_Straight_v44" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v44" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, 34.6119 )
 
-[node name="Concrete_Wall_Pillar45" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar45" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 32.3196 )
 
-[node name="Concrete_Wall_Straight_v47" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v47" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, 20.8694 )
 
-[node name="Concrete_Wall_Pillar48" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar48" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 18.5771 )
 
-[node name="Concrete_Wall_Straight_v46" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v46" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, 25.4863 )
 
-[node name="Concrete_Wall_Pillar47" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar47" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 23.194 )
 
-[node name="Concrete_Wall_Straight_v49" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v49" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, 11.6809 )
 
-[node name="Concrete_Wall_Pillar50" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar50" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 9.38863 )
 
-[node name="Concrete_Wall_Straight_v48" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v48" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, 16.2978 )
 
-[node name="Concrete_Wall_Pillar49" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 14.0055 )
+[node name="Concrete_Wall_Pillar49" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 14.0079 )
 
-[node name="Concrete_Wall_Straight_v53" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Pillar67" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 50.3389, 0, 13.289 )
+
+[node name="Concrete_Wall_Pillar101" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0682, 0, 13.289 )
+
+[node name="Concrete_Wall_Straight_v53" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, 2.52028 )
 
-[node name="Concrete_Wall_Pillar54" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar54" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 0.227993 )
 
-[node name="Concrete_Wall_Straight_v52" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v52" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, 7.13718 )
 
-[node name="Concrete_Wall_Pillar53" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar53" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, 4.84488 )
 
-[node name="Concrete_Wall_Straight_v51" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v51" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, -6.66816 )
 
-[node name="Concrete_Wall_Pillar52" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar52" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, -8.96045 )
 
-[node name="Concrete_Wall_Straight_v50" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v50" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, -2.05127 )
 
-[node name="Concrete_Wall_Pillar51" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar51" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, -4.34356 )
 
-[node name="Concrete_Wall_Straight_v133" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v133" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, -15.8417 )
 
-[node name="Concrete_Wall_Pillar126" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, -18.134 )
+[node name="Concrete_Wall_Pillar126" parent="Objects/Walls" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, -17.648 )
 
-[node name="Concrete_Wall_Straight_v132" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v132" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, -11.2248 )
 
-[node name="Concrete_Wall_Pillar125" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar125" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, -13.5171 )
 
-[node name="Concrete_Wall_Straight_v131" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, -25.0024 )
-
-[node name="Concrete_Wall_Pillar124" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, -27.2947 )
-
-[node name="Concrete_Wall_Straight_v77" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, -20.3855 )
-
-[node name="Concrete_Wall_Pillar123" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, -22.6778 )
-
-[node name="Concrete_Wall_Straight_v54" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 51.0889, 0, -29.5739 )
-
-[node name="Concrete_Wall_Pillar121" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 51.0882, 0, -31.8662 )
-
-[node name="Concrete_Wall_Pillar42" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar42" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 51.0858, 0, 46.0943 )
 
-[node name="Concrete_Wall_Pillar31" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar31" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18.8942, 0, 46.0943 )
 
-[node name="Concrete_Wall_Straight_v29" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v29" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 21.1792, 0, 46.095 )
 
-[node name="Concrete_Wall_Straight_v38" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v38" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 34.9955, 0, 46.095 )
 
-[node name="Concrete_Wall_Straight_v41" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v41" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 48.7865, 0, 46.095 )
 
-[node name="Concrete_Wall_Straight_v56" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.66134, 0, 12.0166 )
+[node name="Concrete_Wall_Straight_v55" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.90532, 0, 13.2925 )
 
-[node name="Concrete_Wall_Straight_v55" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5.15496, 0, 12.0166 )
+[node name="Concrete_Wall_Straight_v82" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 16.521, 0, 13.2925 )
 
-[node name="Concrete_Wall_Straight_v63" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -31.9737, 0, 39.8797 )
+[node name="Concrete_Wall_Straight_v77" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 30.3373, 0, 13.2925 )
 
-[node name="Concrete_Wall_Straight_v62" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -31.9737, 0, 26.0634 )
+[node name="Concrete_Wall_Straight_v63" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, 39.8797 )
 
-[node name="Concrete_Wall_Straight_v61" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -31.9737, 0, 12.2725 )
+[node name="Concrete_Wall_Straight_v62" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, 26.0634 )
 
-[node name="Concrete_Wall_Straight_v76" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v61" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, 12.2725 )
+
+[node name="Concrete_Wall_Straight_v70" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, 7.71107 )
+
+[node name="Concrete_Wall_Straight_v69" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, -6.10523 )
+
+[node name="Concrete_Wall_Straight_v68" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, -19.8961 )
+
+[node name="Concrete_Wall_Straight_v134" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -33.2699, 0, -24.4484 )
+
+[node name="Concrete_Wall_Straight_v76" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -10.8159, 0, 0.478197 )
 
-[node name="Concrete_Wall_Straight_v75" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v75" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -10.8159, 0, -13.3127 )
 
-[node name="Concrete_Wall_Straight_v84" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.92256, 0, -58.5972 )
+[node name="Concrete_Wall_Straight_v90" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 12.6429, 0, -29.87 )
 
-[node name="Concrete_Wall_Straight_v83" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -15.7389, 0, -58.5972 )
+[node name="Concrete_Wall_Straight_v89" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.12009, 0, -29.87 )
 
-[node name="Concrete_Wall_Straight_v82" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -29.5298, 0, -58.5972 )
+[node name="Concrete_Wall_Straight_v97" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 44.273, 0, -17.6552 )
 
-[node name="Concrete_Wall_Straight_v91" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 24.4151, 0, -33.2131 )
+[node name="Concrete_Wall_Straight_v131" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 25.898, 0, -17.6552 )
 
-[node name="Concrete_Wall_Straight_v90" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 10.5988, 0, -33.2131 )
+[node name="Concrete_Wall_Straight_v142" parent="Objects/Walls" instance=ExtResource( 10 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 7.51292, 0, -17.6552 )
 
-[node name="Concrete_Wall_Straight_v89" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -3.19216, 0, -33.2131 )
-
-[node name="Concrete_Wall_Straight_v97" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 44.273, 0, -31.8644 )
-
-[node name="Concrete_Wall_Straight_v96" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 30.4821, 0, -31.8644 )
-
-[node name="Concrete_Wall_Straight_v105" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6492, 0, -67.0772 )
-
-[node name="Concrete_Wall_Straight_v104" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6492, 0, -53.2609 )
-
-[node name="Concrete_Wall_Straight_v103" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6492, 0, -39.4699 )
-
-[node name="Concrete_Wall_Straight_v112" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 27.217, 0, -100.653 )
-
-[node name="Concrete_Wall_Straight_v111" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 27.217, 0, -86.8365 )
-
-[node name="Concrete_Wall_Straight_v110" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 27.217, 0, -73.0456 )
-
-[node name="Concrete_Wall_Straight_v119" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6003, 0, -100.653 )
-
-[node name="Concrete_Wall_Straight_v118" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6003, 0, -86.8365 )
-
-[node name="Concrete_Wall_Straight_v117" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 62.6003, 0, -73.0456 )
-
-[node name="Concrete_Wall_Straight_v126" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 3.34366, 0, -58.2395 )
-
-[node name="Concrete_Wall_Straight_v125" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 17.16, 0, -58.2395 )
-
-[node name="Concrete_Wall_Straight_v124" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
-transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 30.9509, 0, -58.2395 )
-
-[node name="Concrete_Wall_Pillar10" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar10" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5438, 0, 71.7716 )
 
-[node name="Concrete_Wall_Straight_v8" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v8" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.5431, 0, 63.2004 )
 
-[node name="Concrete_Wall_Pillar9" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar9" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5438, 0, 65.4927 )
 
-[node name="Concrete_Wall_Straight_v16" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v16" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.08383, 0, 78.0165 )
 
-[node name="Concrete_Wall_Straight_v15" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v15" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.08383, 0, 73.3877 )
 
-[node name="Concrete_Wall_Pillar14" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar14" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.08454, 0, 75.68 )
 
-[node name="Concrete_Wall_Straight_v14" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v14" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.08383, 0, 68.7708 )
 
-[node name="Concrete_Wall_Pillar13" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar13" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.08454, 0, 71.0631 )
 
-[node name="Concrete_Wall_Pillar8" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar8" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.08454, 0, 66.4456 )
 
-[node name="Concrete_Wall_Straight_v13" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v13" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.08383, 0, 64.1463 )
 
-[node name="Concrete_Wall_Straight_v12" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v12" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.08383, 0, 59.5175 )
 
-[node name="Concrete_Wall_Pillar12" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar12" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.08454, 0, 61.8098 )
 
-[node name="Concrete_Wall_Straight_v11" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v11" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.08383, 0, 54.9006 )
 
-[node name="Concrete_Wall_Pillar11" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar11" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.08454, 0, 57.1929 )
 
-[node name="Concrete_Wall_Straight_v36" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v36" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.08383, 0, 50.3175 )
 
-[node name="Concrete_Wall_Pillar37" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar37" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.08454, 0, 52.6098 )
 
-[node name="Concrete_Wall_Straight_v35" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v35" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.08383, 0, 45.7006 )
 
-[node name="Concrete_Wall_Pillar36" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar36" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.08454, 0, 47.9929 )
 
-[node name="Concrete_Wall_Pillar35" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar35" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.08454, 0, 43.3754 )
 
-[node name="Concrete_Wall_Straight_v34" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v34" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4.88509, 0, 43.3716 )
 
-[node name="Concrete_Wall_Straight_v33" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v33" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.256287, 0, 43.3716 )
 
-[node name="Concrete_Wall_Pillar34" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar34" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.54858, 0, 43.3709 )
 
-[node name="Concrete_Wall_Straight_v32" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v32" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4.36061, 0, 43.3716 )
 
-[node name="Concrete_Wall_Pillar33" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar33" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.06831, 0, 43.3709 )
 
-[node name="Concrete_Wall_Straight_v37" parent="Objects/Area1/Walls" instance=ExtResource( 10 )]
+[node name="Concrete_Wall_Straight_v37" parent="Objects/Walls" instance=ExtResource( 10 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.92985, 0, 43.3716 )
 
-[node name="Concrete_Wall_Pillar38" parent="Objects/Area1/Walls" instance=ExtResource( 9 )]
+[node name="Concrete_Wall_Pillar38" parent="Objects/Walls" instance=ExtResource( 9 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.63755, 0, 43.3709 )
 
-[node name="Hangar_v2" parent="." instance=ExtResource( 23 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.8146, -0.10463, 28.4628 )
+[node name="Concrete_Wall_Corner_v2" parent="Objects/Walls" instance=ExtResource( 16 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.7299, -0.0766352, 89.1977 )
 
-[node name="Concrete_fence_Corner" parent="." instance=ExtResource( 12 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18.0546, -0.00702405, 13.3682 )
+[node name="Concrete_Wall_Corner_v3" parent="Objects/Walls" instance=ExtResource( 16 )]
+transform = Transform( 1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, 17.4773, 0.00241673, 47.0785 )
 
-[node name="Concrete_fence_Corner2" parent="." instance=ExtResource( 12 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.6547, -0.00702405, 13.3594 )
+[node name="Containers" type="Node" parent="Objects"]
 
-[node name="Electric_box_v3" parent="." instance=ExtResource( 21 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 47.8163, -0.0335739, 27.3373 )
+[node name="Cargo_container_v1" parent="Objects/Containers" instance=ExtResource( 20 )]
+transform = Transform( 0.995501, 0, -0.0947517, 0, 1, 0, 0.0947517, 0, 0.995501, 2.14123, -0.0116053, 67.7256 )
 
-[node name="Oil_tank_v2" parent="." instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.878008, -0.0106776, 47.7013 )
+[node name="Cargo_container_v2" parent="Objects/Containers" instance=ExtResource( 20 )]
+transform = Transform( 0.999919, 0, 0.0127585, 0, 1, 0, -0.0127585, 0, 0.999919, 1.50406, -0.0116053, 63.7587 )
 
-[node name="Oil_tank_v3" parent="." instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8086, -0.0106776, 47.7013 )
+[node name="Cargo_container_v3" parent="Objects/Containers" instance=ExtResource( 20 )]
+transform = Transform( 0.975469, 0, 0.220136, 0, 1, 0, -0.220136, 0, 0.975469, 1.11478, -0.0116053, 59.519 )
 
-[node name="Oil_tank_v4" parent="." instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79629, -0.0106776, 47.7013 )
+[node name="Cargo_container_v7" parent="Objects/Containers" instance=ExtResource( 20 )]
+transform = Transform( 0.0151837, 0, 0.999884, 0, 1, 0, -0.999884, 0, 0.0151837, -19.2664, -0.0116053, 6.73273 )
 
-[node name="Building_v1" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99874, -0.0382376, 5.21272 )
+[node name="Cargo_container_v8" parent="Objects/Containers" instance=ExtResource( 20 )]
+transform = Transform( 0.0151837, 0, 0.999884, 0, 1, 0, -0.999884, 0, 0.0151837, -15.2428, -0.0116053, 6.73273 )
 
-[node name="Building_v2" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99874, -0.0382376, -3.62755 )
+[node name="Cargo_container_v6" parent="Objects/Containers" instance=ExtResource( 20 )]
+transform = Transform( 0.995501, 0, -0.0947517, 0, 1, 0, 0.0947517, 0, 0.995501, 2.14123, 2.98989, 67.7256 )
 
-[node name="Building_v3" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99874, -0.0382376, -12.6701 )
+[node name="Cargo_container_v5" parent="Objects/Containers" instance=ExtResource( 20 )]
+transform = Transform( 0.999919, 0, 0.0127585, 0, 1, 0, -0.0127585, 0, 0.999919, 1.50406, 2.98989, 63.7587 )
 
-[node name="Chimney" parent="." instance=ExtResource( 24 )]
-transform = Transform( 2.79076, 0, 0, 0, 2.79076, 0, 0, 0, 2.79076, -42.8137, -0.067019, 35.4496 )
+[node name="Cargo_container_v4" parent="Objects/Containers" instance=ExtResource( 20 )]
+transform = Transform( 0.975469, 0, 0.220136, 0, 1, 0, -0.220136, 0, 0.975469, 1.11478, 2.98989, 59.519 )
 
-[node name="Chimney2" parent="." instance=ExtResource( 24 )]
-transform = Transform( 2.79076, 0, 0, 0, 2.79076, 0, 0, 0, 2.79076, -42.8137, -0.067019, 21.4869 )
+[node name="Buildings" type="Node" parent="Objects"]
 
-[node name="Chimney3" parent="." instance=ExtResource( 24 )]
-transform = Transform( 2.79076, 0, 0, 0, 2.79076, 0, 0, 0, 2.79076, -42.7649, -0.0939088, 5.61502 )
+[node name="Building_v1" parent="Objects/Buildings" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.72508, -0.0382376, 36.3909 )
 
-[node name="Dumpster_full" parent="." instance=ExtResource( 25 )]
-transform = Transform( -0.079764, 0, -0.996814, 0, 1, 0, 0.996814, 0, -0.079764, 14.0992, -0.00534105, 15.7879 )
+[node name="Building_v6" parent="Objects/Buildings" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.69824, -0.0382376, 36.3909 )
 
-[node name="Dumpster_full2" parent="." instance=ExtResource( 25 )]
-transform = Transform( -0.0130722, 0, -0.999915, 0, 1, 0, 0.999915, 0, -0.0130722, 11.5316, -0.00534105, 15.7806 )
+[node name="Hangar_v2" parent="Objects/Buildings" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.1977, -0.10463, 27.1737 )
 
-[node name="Dumpster_full3" parent="." instance=ExtResource( 25 )]
-transform = Transform( -4.36908e-08, 0.0306606, -0.99953, 1.34022e-09, 0.99953, 0.0306606, 1, 0, -4.37114e-08, 8.89395, -0.00534105, 15.7806 )
+[node name="Hangar_v3" parent="Objects/Buildings" instance=ExtResource( 23 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -45.3826, -0.10463, -18.5985 )
 
-[node name="Dumpster_full4" parent="." instance=ExtResource( 25 )]
-transform = Transform( 0.163291, 0, -0.986578, 0, 1, 0, 0.986578, 0, 0.163291, 6.01695, -0.00534105, 15.7806 )
+[node name="Hangar_v4" parent="Objects/Buildings" instance=ExtResource( 23 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -45.3826, -0.10463, 5.27913 )
 
-[node name="Dumpster_full5" parent="." instance=ExtResource( 25 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.55228, -0.0053401, 15.7875 )
+[node name="Building_v4" parent="Objects/Buildings" instance=ExtResource( 8 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -3.26123, -0.0143509, 85.1535 )
 
-[node name="Electric_box_v4" parent="." instance=ExtResource( 21 )]
-transform = Transform( 3.95165, 0, 0, 0, 1, 0, 0, 0, 3.95165, 8.7829, -1.88483, 15.7851 )
+[node name="Building_v5" parent="Objects/Buildings" instance=ExtResource( 8 )]
+transform = Transform( 1.42491e-07, 0, -1.0866, 0, 1.0866, 0, 1.0866, 0, 1.42491e-07, -21.4515, -0.0143509, 47.9095 )
 
-[node name="Generator" parent="." instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.80476, -0.0176278, 91.3052 )
+[node name="Building_v7" parent="Objects/Buildings" instance=ExtResource( 8 )]
+transform = Transform( 1.42491e-07, 0, -1.0866, 0, 1.0866, 0, 1.0866, 0, 1.42491e-07, -19.8383, -0.0143509, -35.637 )
 
-[node name="Road_block" parent="." instance=ExtResource( 28 )]
-transform = Transform( 0.996919, 0, -0.0784417, 0, 1, 0, 0.0784417, 0, 0.996919, 10.0801, -0.0148805, 88.9721 )
+[node name="Building_v3a" parent="Objects/Buildings" instance=ExtResource( 36 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7244, 0.190354, -39.278 )
 
-[node name="Road_block2" parent="." instance=ExtResource( 28 )]
-transform = Transform( 0.989878, 0, 0.141921, 0, 1, 0, -0.141921, 0, 0.989878, 13.9705, -0.0148805, 88.9721 )
+[node name="OilTanks" type="Node" parent="Objects"]
 
-[node name="Wooden_box_big" parent="." instance=ExtResource( 27 )]
-transform = Transform( 0.939913, 0, 0.341413, 0, 1, 0, -0.341413, 0, 0.939913, 8.50046, -0.022338, 77.0261 )
+[node name="Oil_tank_v2" parent="Objects/OilTanks" instance=ExtResource( 22 )]
+transform = Transform( 1.58697, 0, 0, 0, 1.58697, 0, 0, 0, 1.58697, 3.32351, -0.0106776, 48.5201 )
+
+[node name="Oil_tank_v3" parent="Objects/OilTanks" instance=ExtResource( 22 )]
+transform = Transform( 1.58697, 0, 0, 0, 1.58697, 0, 0, 0, 1.58697, -0.940071, -0.0106776, 48.5201 )
+
+[node name="Oil_tank_v4" parent="Objects/OilTanks" instance=ExtResource( 22 )]
+transform = Transform( 1.58697, 0, 0, 0, 1.58697, 0, 0, 0, 1.58697, -5.68146, -0.0106776, 48.5201 )
+
+[node name="Oil_tank_v1" parent="Objects/OilTanks" instance=ExtResource( 19 )]
+transform = Transform( 0.996475, 0, 0.0838865, 0, 1, 0, -0.0838865, 0, 0.996475, 24.8108, -0.0766352, 80.6492 )
+
+[node name="Oil_tank_v5" parent="Objects/OilTanks" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6474, -0.0766352, 56.6701 )
+
+[node name="Oil_tank_v6" parent="Objects/OilTanks" instance=ExtResource( 19 )]
+transform = Transform( 1.8999, 0, 0.970637, 0, 2.13348, 0, -0.970637, 0, 1.8999, 3.79104, -0.057646, -1.55403 )
+
+[node name="Oil_tank_v7" parent="Objects/OilTanks" instance=ExtResource( 19 )]
+transform = Transform( -0.594293, 0, 2.04904, 0, 2.13348, 0, -2.04904, 0, -0.594293, 35.6552, -0.057646, -1.10753 )
+
+[node name="Dumpsters" type="Node" parent="Objects"]
+
+[node name="Dumpster_full" parent="Objects/Dumpsters" instance=ExtResource( 25 )]
+transform = Transform( -0.079764, 0, -0.996814, 0, 1, 0, 0.996814, 0, -0.079764, 13.8902, -0.00534105, 16.7563 )
+
+[node name="Dumpster_full2" parent="Objects/Dumpsters" instance=ExtResource( 25 )]
+transform = Transform( -0.0130722, 0, -0.999915, 0, 1, 0, 0.999915, 0, -0.0130722, 11.3226, -0.00534105, 16.749 )
+
+[node name="Dumpster_full3" parent="Objects/Dumpsters" instance=ExtResource( 25 )]
+transform = Transform( -4.36908e-08, 0.0306606, -0.99953, 1.34022e-09, 0.99953, 0.0306606, 1, 0, -4.37114e-08, 8.6849, -0.00534105, 16.749 )
+
+[node name="Dumpster_full4" parent="Objects/Dumpsters" instance=ExtResource( 25 )]
+transform = Transform( 0.163291, 0, -0.986578, 0, 1, 0, 0.986578, 0, 0.163291, 5.8079, -0.00534105, 16.749 )
+
+[node name="Dumpster_full5" parent="Objects/Dumpsters" instance=ExtResource( 25 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.34323, -0.0053401, 16.7559 )
+
+[node name="Dumpsters_empty" parent="Objects/Dumpsters" instance=ExtResource( 43 )]
+transform = Transform( 0.485023, 0, 0.874501, 0, 1, 0, -0.874501, 0, 0.485023, -2.18482, 0.173762, 16.8902 )
+
+[node name="Dumpsters_empty2" parent="Objects/Dumpsters" instance=ExtResource( 43 )]
+transform = Transform( 0.485023, 0, 0.874501, 0, 1, 0, -0.874501, 0, 0.485023, -5.40108, 0.173762, 16.8902 )
+
+[node name="Dumpsters_empty3" parent="Objects/Dumpsters" instance=ExtResource( 43 )]
+transform = Transform( 0.485023, 0, 0.874501, 0, 1, 0, -0.874501, 0, 0.485023, -9.56201, 0.173762, 16.8902 )
+
+[node name="Boxes" type="Node" parent="Objects"]
+
+[node name="Wooden_box_big" parent="Objects/Boxes" instance=ExtResource( 27 )]
+transform = Transform( 0.723925, 0, -0.0238761, 0, 0.724319, 0, 0.0238761, 0, 0.723925, 7.83442, 0.170713, 77.0261 )
+
+[node name="Wooden_box_big2" parent="Objects/Boxes" instance=ExtResource( 27 )]
+transform = Transform( 1.36009, 0, -0.0448576, 0, 1.36083, 0, 0.0448576, 0, 1.36009, -10.8385, 0.170713, 36.0639 )
+
+[node name="Wooden_box_big3" parent="Objects/Boxes" instance=ExtResource( 27 )]
+transform = Transform( 1.31943, 0, 0.333107, 0, 1.36083, 0, -0.333107, 0, 1.31943, -10.8385, 0.170713, 39.2049 )
+
+[node name="Wooden_box_small" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( 1.53699, 0, -0.541471, 0, 1.62958, 0, 0.541471, 0, 1.53699, 18.7846, 0.0615356, 88.1621 )
+
+[node name="Wooden_box_small2" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( 1.28872, 0, -0.997365, 0, 1.62958, 0, 0.997365, 0, 1.28872, 18.7846, 0.0615356, 86.183 )
+
+[node name="Wooden_box_small4" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( 1.07966, 0, -0.495678, 0, 1.18801, 0, 0.495678, 0, 1.07966, -13.8463, 0.0615356, -13.9334 )
+
+[node name="Wooden_box_small5" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( 1.15013, 0, 0.297615, 0, 1.18801, 0, -0.297615, 0, 1.15013, -13.457, 0.0706927, -12.2997 )
+
+[node name="Wooden_box_small6" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( -1.10646, 0, 0.43257, 0, 1.18801, 0, -0.43257, 0, -1.10646, -13.317, 0.0530579, -10.5661 )
+
+[node name="Wooden_box_small9" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( -0.157595, 0, -1.17751, 0, 1.18801, 0, 1.17751, 0, -0.157595, -12.325, 0.0706927, -16.5099 )
+
+[node name="Wooden_box_small8" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( 0.621529, 0, -1.01246, 0, 1.18801, 0, 1.01246, 0, 0.621529, -13.7939, 0.0615356, -15.6495 )
+
+[node name="Wooden_box_small7" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( 0.363978, 0, -1.13088, 0, 1.18801, 0, 1.13088, 0, 0.363978, -12.4603, 0.0706927, -14.9503 )
+
+[node name="Wooden_box_small15" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( -0.812993, 0, 0.866264, 0, 1.18801, 0, -0.866264, 0, -0.812993, -12.1962, 0.0615356, -9.48325 )
+
+[node name="Wooden_box_small14" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( 1.18764, 0, 0.0296679, 0, 1.18801, 0, -0.0296679, 0, 1.18764, -12.1128, 0.0615356, -11.351 )
+
+[node name="Wooden_box_small13" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( 1.18789, 0, 0.0166698, 0, 1.18801, 0, -0.0166698, 0, 1.18789, -12.3879, 0.0706927, -13.3596 )
+
+[node name="Wooden_box_small12" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( 0.590051, 0, 1.03112, 0, 1.18801, 0, -1.03112, 0, 0.590051, -14.5633, 0.0530579, -7.67214 )
+
+[node name="Wooden_box_small11" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( -0.193788, 0, 1.1721, 0, 1.18801, 0, -1.1721, 0, -0.193788, -12.8919, 0.0615356, -7.91367 )
+
+[node name="Wooden_box_small10" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( 0.0894064, 0, 1.18464, 0, 1.18801, 0, -1.18464, 0, 0.0894064, -13.8498, 0.0530579, -9.06557 )
+
+[node name="Wooden_box_small3" parent="Objects/Boxes" instance=ExtResource( 14 )]
+transform = Transform( -0.105218, 0, -1.62618, 0, 1.62958, 0, 1.62618, 0, -0.105218, 20.5979, 0.0615356, 87.1363 )
+
+[node name="Roads" type="Node" parent="Objects"]
+
+[node name="Road_straight_long" parent="Objects/Roads" instance=ExtResource( 30 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.0988698, 80.2332 )
+
+[node name="Road_straight_long2" parent="Objects/Roads" instance=ExtResource( 30 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.0988698, 60.2477 )
+
+[node name="Road_straight_long5" parent="Objects/Roads" instance=ExtResource( 30 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 31.8778, 0.0988698, -39.7005 )
+
+[node name="Road_straight_long9" parent="Objects/Roads" instance=ExtResource( 30 )]
+transform = Transform( -1.31134e-07, 1, -4.37114e-08, 3.82137e-15, -4.37114e-08, -1, -1, -1.31134e-07, 1.91068e-15, 31.8778, -0.0423841, -58.6795 )
+
+[node name="Road_straight_long3" parent="Objects/Roads" instance=ExtResource( 30 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.0988698, 40.262 )
+
+[node name="Road_straight_long7" parent="Objects/Roads" instance=ExtResource( 30 )]
+transform = Transform( -1, -8.74228e-08, -3.82138e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -3.12269, 0.0988698, -24.7091 )
+
+[node name="Road_straight_long8" parent="Objects/Roads" instance=ExtResource( 30 )]
+transform = Transform( -1, -8.74228e-08, -3.82138e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 16.8822, 0.0988698, -24.7091 )
+
+[node name="Road_straight_long6" parent="Objects/Roads" instance=ExtResource( 30 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -28.1196, 0.0988698, 0.299622 )
+
+[node name="Road_straight_long4" parent="Objects/Roads" instance=ExtResource( 30 )]
+transform = Transform( -1, -8.74228e-08, -3.82138e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -3.14375, 0.0988698, 25.2723 )
+
+[node name="Road_bend_round_small" parent="Objects/Roads" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11.8553, 0.102277, 25.268 )
+
+[node name="Road_bend_round_small2" parent="Objects/Roads" instance=ExtResource( 33 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 31.8414, 0.102278, -24.7101 )
+
+[node name="Road_set_v1_b_bend_4" parent="Objects/Roads" instance=ExtResource( 32 )]
+transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -23.1251, 0.116564, 20.2778 )
+
+[node name="Road_set_v1_b_bend_5" parent="Objects/Roads" instance=ExtResource( 32 )]
+transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91068e-15, -23.1251, 0.116564, -19.7095 )
+
+[node name="Palets" type="Node" parent="Objects"]
+
+[node name="Palet" parent="Objects/Palets" instance=ExtResource( 29 )]
+transform = Transform( 0.496022, -0.867305, 0.0417567, 0.864249, 0.497776, 0.0727553, -0.0838865, 0, 0.996475, 15.9503, 0.692081, 74.5443 )
+
+[node name="Palet2" parent="Objects/Palets" instance=ExtResource( 29 )]
+transform = Transform( 0.994803, 0, -0.10182, 0.0561999, 0.833876, 0.549083, 0.0849055, -0.551952, 0.829542, -23.1283, 0.35388, 41.0643 )
+
+[node name="Palet3" parent="Objects/Palets" instance=ExtResource( 29 )]
+transform = Transform( 0.971854, 0, 0.235583, 0, 1, 0, -0.235583, 0, 0.971854, -24.424, 0, 39.4558 )
+
+[node name="Palet5" parent="Objects/Palets" instance=ExtResource( 29 )]
+transform = Transform( 0.053277, 0, -0.99858, 0, 1, 0, 0.99858, 0, 0.053277, -31.9515, 0, 32.0298 )
+
+[node name="Palet6" parent="Objects/Palets" instance=ExtResource( 29 )]
+transform = Transform( 0.360485, 0, -0.932765, 0, 1, 0, 0.932765, 0, 0.360485, -12.183, 0, 9.67516 )
+
+[node name="Palet7" parent="Objects/Palets" instance=ExtResource( 29 )]
+transform = Transform( -0.0211345, 0, -0.999777, 0, 1, 0, 0.999777, 0, -0.0211345, -30.9433, 0, -24.2041 )
+
+[node name="Palet4" parent="Objects/Palets" instance=ExtResource( 29 )]
+transform = Transform( 0.999679, 0, 0.0253395, 0, 1, 0, -0.0253395, 0, 0.999679, -26.8536, 0, 40.3311 )
+
+[node name="Chimneys" type="Node" parent="Objects"]
+
+[node name="Chimney" parent="Objects/Chimneys" instance=ExtResource( 24 )]
+transform = Transform( 1.32954, 0, 0, 0, 1.32954, 0, 0, 0, 1.32954, -38.8369, -0.00637754, 37.858 )
+
+[node name="Chimney2" parent="Objects/Chimneys" instance=ExtResource( 24 )]
+transform = Transform( 1.32954, 0, 0, 0, 1.32954, 0, 0, 0, 1.32954, -38.8323, -0.0327157, 30.6303 )
+
+[node name="Chimney3" parent="Objects/Chimneys" instance=ExtResource( 24 )]
+transform = Transform( 1.32954, 0, 0, 0, 1.32954, 0, 0, 0, 1.32954, -38.8091, -0.0455262, 23.7034 )
+
+[node name="RoadBlocks" type="Node" parent="Objects"]
+
+[node name="Road_block" parent="Objects/RoadBlocks" instance=ExtResource( 28 )]
+transform = Transform( 0.996919, 0, -0.0784417, 0, 1, 0, 0.0784417, 0, 0.996919, 9.42243, -0.0148805, 90.0293 )
+
+[node name="Road_block4" parent="Objects/RoadBlocks" instance=ExtResource( 28 )]
+transform = Transform( 0.996919, 0, -0.0784417, 0, 1, 0, 0.0784417, 0, 0.996919, 9.65752, -0.0148805, 44.3969 )
+
+[node name="Road_block6" parent="Objects/RoadBlocks" instance=ExtResource( 28 )]
+transform = Transform( 0.999903, 0, -0.0139447, 0, 1, 0, 0.0139447, 0, 0.999903, 11.8026, -0.0148805, 90.1899 )
+
+[node name="Road_block2" parent="Objects/RoadBlocks" instance=ExtResource( 28 )]
+transform = Transform( 0.989878, 0, 0.141921, 0, 1, 0, -0.141921, 0, 0.989878, 14.1852, -0.01488, 90.0582 )
+
+[node name="Road_block3" parent="Objects/RoadBlocks" instance=ExtResource( 28 )]
+transform = Transform( 0.989878, 0, 0.141921, 0, 1, 0, -0.141921, 0, 0.989878, 13.9784, -0.01488, 44.4258 )
+
+[node name="Barrels" type="Node" parent="Objects"]
+
+[node name="Barrel_v2" parent="Objects/Barrels" instance=ExtResource( 35 )]
+transform = Transform( -0.573147, 0, 0.819452, 0, 1, 0, -0.819452, 0, -0.573147, -24.7544, 0.20647, 39.7214 )
+
+[node name="Barrel_v3" parent="Objects/Barrels" instance=ExtResource( 35 )]
+transform = Transform( 0.971854, 0, 0.235583, 0, 1, 0, -0.235583, 0, 0.971854, -24.0901, 0.20647, 39.236 )
+
+[node name="Barrel_v4" parent="Objects/Barrels" instance=ExtResource( 35 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.4174, 0.20647, 40.6527 )
+
+[node name="Barrel_v6" parent="Objects/Barrels" instance=ExtResource( 35 )]
+transform = Transform( 0.0137875, 0, -0.999905, 0, 1, 0, 0.999905, 0, 0.0137875, -26.4217, 0.20647, 39.9928 )
+
+[node name="Barrel_v5" parent="Objects/Barrels" instance=ExtResource( 35 )]
+transform = Transform( 0.230338, 0, -0.973111, 0, 1, 0, 0.973111, 0, 0.230338, -27.1136, 0.20647, 40.6527 )
+
+[node name="Barrel_v7" parent="Objects/Barrels" instance=ExtResource( 35 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1136, 0.20647, 39.9932 )
+
+[node name="Barrel_v1" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( 0.0847386, 0, 0.996403, 0, 1, 0, -0.996403, 0, 0.0847386, -31.6274, 0.211367, 31.5556 )
+
+[node name="Barrel_v8" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( 0.0847386, 0, 0.996403, 0, 1, 0, -0.996403, 0, 0.0847386, -31.6274, 0.211367, 32.2624 )
+
+[node name="Barrel_v9" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( 0.74125, 0, -0.671229, 0, 1, 0, 0.671229, 0, 0.74125, -32.2917, 0.211367, 32.432 )
+
+[node name="Barrel_v10" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( 0.433502, 0, -0.901153, 0, 1, 0, 0.901153, 0, 0.433502, -32.2917, 0.211367, 31.6551 )
+
+[node name="Barrel_v14" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( -0.228606, 0, 0.973519, 0, 1, 0, -0.973519, 0, -0.228606, -12.022, 0.211367, 9.12384 )
+
+[node name="Barrel_v13" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( -0.228606, 0, 0.973519, 0, 1, 0, -0.973519, 0, -0.228606, -11.8027, 0.211367, 9.79567 )
+
+[node name="Barrel_v12" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( 0.912934, 0, -0.408107, 0, 1, 0, 0.408107, 0, 0.912934, -12.3816, 0.211367, 10.1631 )
+
+[node name="Barrel_v11" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( 0.691715, 0, -0.722171, 0, 1, 0, 0.722171, 0, 0.691715, -12.6227, 0.211367, 9.42452 )
+
+[node name="Barrel_v18" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( 0.158606, 0, 0.987342, 0, 1, 0, -0.987342, 0, 0.158606, -30.5848, 0.211367, -24.6528 )
+
+[node name="Barrel_v17" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( 0.158606, 0, 0.987342, 0, 1, 0, -0.987342, 0, 0.158606, -30.6374, 0.211367, -23.948 )
+
+[node name="Barrel_v16" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( 0.689278, 0, -0.724497, 0, 1, 0, 0.724497, 0, 0.689278, 15.9893, 0.177595, 63.1755 )
+
+[node name="Barrel_v15" parent="Objects/Barrels" instance=ExtResource( 39 )]
+transform = Transform( 0.365283, 0, -0.930896, 0, 1, 0, 0.930896, 0, 0.365283, -31.2547, 0.211367, -24.603 )
+
+[node name="Electric_Boxes" type="Node" parent="Objects"]
+
+[node name="Generator" parent="Objects/Electric_Boxes" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5022, -0.0176278, 18.4463 )
+
+[node name="Generator2" parent="Objects/Electric_Boxes" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05449, -0.0176278, 41.8827 )
+
+[node name="Generator3" parent="Objects/Electric_Boxes" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68991, -0.0176278, 41.8827 )
+
+[node name="Electric_box_v3" parent="Objects/Electric_Boxes" instance=ExtResource( 21 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 46.3631, -0.0335739, 27.3373 )
+
+[node name="Electric_box_v4" parent="Objects/Electric_Boxes" instance=ExtResource( 21 )]
+transform = Transform( 3.95165, 0, 0, 0, 1, 0, 0, 0, 3.95165, 8.57385, -1.88483, 16.7535 )
+
+[node name="Electric_box_v5" parent="Objects/Electric_Boxes" instance=ExtResource( 21 )]
+transform = Transform( 3.95165, 0, 0, 0, 1, 0, 0, 0, 3.95165, -6.58437, -1.88483, 16.7535 )
+
+[node name="Electric_box_v1" parent="Objects/Electric_Boxes" instance=ExtResource( 40 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9.48333, -0.00677037, 33.2584 )
+
+[node name="Conditioner" parent="." instance=ExtResource( 18 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.0046, 0.957181, 42.0354 )
+
+[node name="Thick_Vent" parent="." instance=ExtResource( 42 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5025, 10.271, -8.30674 )
+
+[node name="Thick_Vent2" parent="." instance=ExtResource( 42 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6212, 7.20968, -35.2839 )
