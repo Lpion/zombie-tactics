@@ -70,6 +70,14 @@ transform = Transform( 0.885296, 0, -0.465027, 0, 1, 0, 0.465027, 0, 0.885296, 1
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( -0.485664, 0, 0.874145, 0, 1, 0, -0.874145, 0, -0.485664, -22.8233, 0.106307, 32.8945 )
 
+[node name="PatrolPoints" type="Node" parent="Enemies/Enemy2"]
+
+[node name="Position3D" type="Position3D" parent="Enemies/Enemy2/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0182, 0, 20.3363 )
+
+[node name="Position3D2" type="Position3D" parent="Enemies/Enemy2/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0558, 0, 28.3307 )
+
 [node name="Pickups" type="Node" parent="."]
 
 [node name="Magazine" parent="Pickups" instance=ExtResource( 5 )]
