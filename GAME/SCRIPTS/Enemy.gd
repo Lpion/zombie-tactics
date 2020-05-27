@@ -187,6 +187,7 @@ func hit(dmg):
 func dead():
 	isDead = true
 	AnimTree["parameters/Transition/current"] = 3
+	$Running.playing = false
 	$CollisionShape.disabled = true
 
 	# Feed the player
@@ -219,4 +220,5 @@ func enemy_anim():
 	elif vel.length() > 0:
 		AnimTree["parameters/Transition/current"] = 1
 		if $Running.playing == false:
+			$Running.pitch_scale = 0.375 #Running Sound Scale to fit Animation
 			$Running.playing = true

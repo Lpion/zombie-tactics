@@ -265,6 +265,7 @@ func player_anim():
 	else:
 		AnimTree["parameters/movement/blend_position"] = Vector2(vel.x / MAX_SPEED, -vel.z / MAX_SPEED)
 		if $Running.playing == false:
+			$Running.pitch_scale = 0.66 #Running Sound Scale to fit Animation
 			$Running.playing = true
 
 # Health Regeneration
