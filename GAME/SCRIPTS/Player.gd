@@ -127,8 +127,8 @@ func look_at_cursor():
 	Cursor.global_transform.origin = cursorPos + Vector3.UP
 	# make player always look at cursorPos
 	look_at(cursorPos, Vector3.UP)
-
-
+	
+	
 # move player relative to the camera
 func get_move_input():
 	moveDirection = Vector3()
@@ -263,7 +263,7 @@ func player_anim():
 		$Running.playing = false
 	# MOVE
 	else:
-		AnimTree["parameters/movement/blend_position"] = Vector2(vel.x / MAX_SPEED, -vel.z / MAX_SPEED)
+		AnimTree["parameters/movement/blend_position"] = Vector2(vel.x / MAX_SPEED, -vel.z / MAX_SPEED).rotated(-self.rotation.y)
 		if $Running.playing == false:
 			$Running.pitch_scale = 0.66 #Running Sound Scale to fit Animation
 			$Running.playing = true
