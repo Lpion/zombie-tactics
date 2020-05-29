@@ -8,8 +8,7 @@ var enemyLookDirection = Vector3()
 var PlayerPosition = Vector3()
 
 func _ready() -> void:
-	# Hide mouse cursor
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pass
 
 # Close Game on Esc
 func _input(_event):
