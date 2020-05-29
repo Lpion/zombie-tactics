@@ -219,6 +219,9 @@ func enemy_anim():
 	# MOVE
 	elif vel.length() > 0:
 		AnimTree["parameters/Transition/current"] = 1
+		if isPatroling:
+			AnimTree["parameters/Transition/current"] = 4
+
 		if $Running.playing == false:
 			$Running.pitch_scale = 0.375 #Running Sound Scale to fit Animation
 			$Running.playing = true
