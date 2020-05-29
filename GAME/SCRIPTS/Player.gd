@@ -252,7 +252,7 @@ func feed():
 		# activate counter for HP-Regen
 		healthRegenCounter = 1
 		$HealParticle.emitting = true
-
+		$Feeding.playing = true
 		# Play anim then wait for finish before proceeding
 		$AnimationPlayer.play("Biting-loop")
 		# disable movement and shooting
@@ -267,7 +267,7 @@ func after_feed():
 	healthRegenCounter = 0
 	feedDone = true
 	$HealParticle.emitting = false
-
+	$Feeding.playing = false
 
 # Handle Animation States
 func player_anim():
