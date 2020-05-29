@@ -1,6 +1,7 @@
 extends KinematicBody
 
 #imports
+var ReloadProgBar = preload("res://ASSETS/UI/ProgressBars/ReloadBar.tscn")
 var Bullet = preload("res://ASSETS/PRE_FABS/Weapons/Bullet.tscn")
 
 export(float, 0, 1, 0.01) var WALK_FACTOR : float = 0.9
@@ -23,6 +24,7 @@ var MAX_MAGS = 3 # can only pick up new mags if CURRENT_MAGS < MAX_MAGS
 var CURRENT_MAGS = 1 # currently owned mags, can only be <= MAX_MAGS
 var MAX_BULLETS_MAG = 100 # bullets in mag after reload
 var CURRENT_BULLETS_MAG = MAX_BULLETS_MAG # current bullets in mag
+var reloadTimer = 0
 
 var moveDirection = Vector3()
 var vel = Vector3() # Velocity = speed with a direction
@@ -41,6 +43,7 @@ onready var DebugDir = $DebugHUD/Direction
 onready var DebugHP  = $DebugHUD/HP
 onready var DebugAmmo  = $DebugHUD/Ammo
 onready var PlayerBody = $"/root/Global"
+onready var ReloadBar
 
 
 func _ready():
@@ -127,8 +130,8 @@ func look_at_cursor():
 	Cursor.global_transform.origin = cursorPos + Vector3.UP
 	# make player always look at cursorPos
 	look_at(cursorPos, Vector3.UP)
-	
-	
+
+
 # move player relative to the camera
 func get_move_input():
 	moveDirection = Vector3()
@@ -184,12 +187,23 @@ func check_ammo():
 func reload():
 	if Input.is_action_just_pressed("RELOAD") && (CURRENT_MAGS > 0):
 		isReloading = true
+
+		ReloadBar = ReloadProgBar.instance()
+		$Body/ReloadBarPos.add_child(ReloadBar)
+
 		$Body/Skeleton/BoneAttachment/Shotgun/Reload.playing = true
-		yield(get_tree().create_timer(2.6), "timeout")
+		reloadTimer = get_tree().create_timer(2.6)
+		yield(reloadTimer, "timeout")
+
 		CURRENT_BULLETS_MAG = MAX_BULLETS_MAG
 		CURRENT_MAGS -= 1
 		CAN_SHOOT = true
 		isReloading = false
+		$Body/ReloadBarPos.remove_child(ReloadBar)
+	if isReloading:
+		var reloadProgress = min(((2.6 - reloadTimer.time_left) / 2.6 * 100), 100)
+		if(reloadProgress < 100):
+			ReloadBar.updateProgress(reloadProgress)
 
 # Shooting, possible if there are bullets in the current mag
 func shooting():
