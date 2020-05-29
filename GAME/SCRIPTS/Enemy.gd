@@ -1,7 +1,7 @@
 extends KinematicBody
 
 #imports
-var HPBar = preload("res://UI/HPBar.tscn")
+var HPBar = preload("res://ASSETS/UI/ProgressBars/HPBar.tscn")
 var Bullet = preload("res://ASSETS/PRE_FABS/Weapons/Bullet.tscn")
 
 export var SHOOTING_RANGE = 10
