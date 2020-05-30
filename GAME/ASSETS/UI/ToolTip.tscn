@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ASSETS/UI/Fonts/ToolTipFont.tres" type="DynamicFont" id=3]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Spatial
+
+export var remove = true
+export (String, MULTILINE) var ToolTip = \"Text for ToolTip\"
+
+func _ready() -> void:
+	$Viewport/RichTextLabel.text = ToolTip
+
+
+func _on_Area_body_entered(body: Node) -> void:
+	if body.is_in_group(\"Player\") && remove:
+		self.visible = false
+"
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 8.40064, 11.271, 0.167042 )
+
+[sub_resource type="ViewportTexture" id=3]
+viewport_path = NodePath("Viewport")
+
+[node name="ToolTip" type="Spatial"]
+script = SubResource( 2 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 512, 512 )
+transparent_bg = true
+hdr = false
+usage = 0
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Viewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 0
+text = "TOOLTIP"
+override_selected_font_color = true
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.08045, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture = SubResource( 3 )
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
