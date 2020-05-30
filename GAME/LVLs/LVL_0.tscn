@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://ASSETS/PRE_FABS/Characters/Player/Moric.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ASSETS/MATERIALS/LVL-Props/Asphalt_01.tres" type="Material" id=2]
@@ -43,6 +43,8 @@
 [ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Walls/Concrete_Wall_Corner_v1.tscn" type="PackedScene" id=41]
 [ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Pipes/Thick_Vent.tscn" type="PackedScene" id=42]
 [ext_resource path="res://ASSETS/PRE_FABS/LVL-Props/Boxes/Dumpster_empty.tscn" type="PackedScene" id=43]
+[ext_resource path="res://ASSETS/UI/ToolTip.tscn" type="PackedScene" id=44]
+[ext_resource path="res://ASSETS/TEXTURES/Decals/Grafity1.png" type="Texture" id=45]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -50,9 +52,46 @@ script/source = "extends Spatial
 func _ready() -> void:
 	# Hide mouse cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	# For Reset after restarting the lvl
+	Global.playerDead = false
 "
 
-[sub_resource type="GIProbeData" id=2]
+[sub_resource type="Animation" id=2]
+resource_name = "CamAnim"
+length = 7.0
+tracks/0/type = "transform"
+tracks/0/path = NodePath("SpawnCam")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpawnCam:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 13.2922, 2.43063, 83.0307 ), Vector3( 13.2922, 2.43063, 86.2709 ), Vector3( 11.6549, 11.6367, 86.5405 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpawnCam:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -39.596, 128.061, -2.21599e-06 ), Vector3( -39.596, 48.586, -2.21599e-06 ), Vector3( -69.5887, -14.5627, 11.0306 ) ]
+}
+
+[sub_resource type="GIProbeData" id=3]
 bounds = AABB( -236.203, -139.054, -249.606, 472.406, 278.108, 499.212 )
 cell_size = 1.95005
 to_cell_xform = Transform( 0.512808, 0, 0, 0, 0.512808, 0, 0, 0, 0.512808, 121.127, 71.308, 128 )
@@ -63,18 +102,72 @@ bias = 0.15
 normal_bias = 0.0
 propagation = 0.7
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="CubeMesh" id=4]
 
 [node name="LVL_0" type="Spatial"]
 script = SubResource( 1 )
 
+[node name="SpawnCam" type="Camera" parent="."]
+transform = Transform( -0.6165, -0.501836, 0.606702, -2.98023e-08, 0.770558, 0.63737, -0.787355, 0.392939, -0.475049, 13.2922, 2.43063, 83.0307 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "CamAnim"
+anims/CamAnim = SubResource( 2 )
+
 [node name="Moric" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 11.7327, 0.0716458, 85.1505 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )
+
+[node name="GIProbe" type="GIProbe" parent="WorldEnvironment"]
+subdiv = 2
+extents = Vector3( 236.203, 139.054, 249.606 )
+energy = 0.54
+bias = 0.15
+data = SubResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.121049, -0.788359, 0.60319, 0.151384, 0.615212, 0.773691, -0.981035, -0.0023415, 0.193816, 0, 13.1971, 0 )
+light_color = Color( 0.137255, 0.137255, 0.137255, 1 )
+light_energy = 8.48
+light_indirect_energy = 8.64
+shadow_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+
+[node name="ToolTips" type="Node" parent="."]
+
+[node name="ToolTip (HEAL)" parent="ToolTips" instance=ExtResource( 44 )]
+transform = Transform( 0.999841, 0, -0.0178362, 0, 1, 0, 0.0178362, 0, 0.999841, 13.2392, 5.70118, 83.4973 )
+ToolTip = "PRESS 'Q' OVER CORPSE
+TO HEAL UP"
+
+[node name="ToolTip (MOVE)" parent="ToolTips" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5484, 5.51693, 82.5551 )
+visible = false
+ToolTip = "MOVE : W A S D
+LOOK AROUND : MOVE MOUSE"
+
+[node name="ToolTip (SHOOT)" parent="ToolTips" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5484, 5.51693, 77.2315 )
+ToolTip = "SHOOT WITH LEFT MOUSE CLICK
+AT CURSOR POSITION"
+
+[node name="ToolTip (RELOAD)" parent="ToolTips" instance=ExtResource( 44 )]
+transform = Transform( 0.979966, 0, -0.199163, 0, 1, 0, 0.199163, 0, 0.979966, 24.9603, 5.51693, 66.9052 )
+ToolTip = "PRESS 'R' TO  RELOAD"
+
+[node name="ToolTip (WATCHOUT)" parent="ToolTips" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6947, 5.51693, 59.993 )
+ToolTip = "WATCH FOR ENEMIES"
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.885296, 0, -0.465027, 0, 1, 0, 0.465027, 0, 0.885296, 11.7151, 0.106307, 43.6212 )
+
+[node name="EnemyDEAD" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( 0.885296, 0, -0.465027, 0, 1, 0, 0.465027, 0, 0.885296, 9.73435, 0.106307, 84.918 )
+isDead = true
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( -0.485664, 0, 0.874145, 0, 1, 0, -0.874145, 0, -0.485664, -22.8233, 0.106307, 32.8945 )
@@ -90,33 +183,36 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0558, 0, 28.3307 )
 [node name="Pickups" type="Node" parent="."]
 
 [node name="Magazine" parent="Pickups" instance=ExtResource( 5 )]
-transform = Transform( 0.600451, 0, 1.06942, 0, 1.22646, 0, -1.06942, 0, 0.600451, 23.8506, 0.0264204, 69.0281 )
+transform = Transform( 0.600451, 0, 1.06942, 0, 1.22646, 0, -1.06942, 0, 0.600451, 24.7029, 0.0264204, 69.0281 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 3 )
+[node name="ToolTip(Pickup)" parent="Pickups/Magazine" instance=ExtResource( 44 )]
+transform = Transform( 0.395318, 0, -0.713112, 0, 0.815354, 0, 0.713112, 0, 0.395318, -2.35552, 2.48218, -6.75905 )
+remove = false
+ToolTip = "YOU HAVE NOT MANY  BULLETS
+PICK UP THE  MAGAZINE  ---->"
 
-[node name="GIProbe" type="GIProbe" parent="WorldEnvironment"]
-subdiv = 2
-extents = Vector3( 236.203, 139.054, 249.606 )
-energy = 0.54
-bias = 0.15
-data = SubResource( 2 )
+[node name="ToolTip(Pickup)2" parent="Pickups/Magazine" instance=ExtResource( 44 )]
+transform = Transform( 0.395318, 0, -0.713112, 0, 0.815352, 0, 0.713112, 0, 0.395318, 0.0504189, -0.482081, 1.66108 )
+remove = false
+ToolTip = "MAGAZINE"
 
-[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
-transform = Transform( 0.121049, -0.788359, 0.60319, 0.151384, 0.615212, 0.773691, -0.981035, -0.0023415, 0.193816, 0, 13.1971, 0 )
-light_color = Color( 0.372549, 0.392157, 0.431373, 1 )
-light_energy = 0.36
-shadow_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+[node name="Magazine2" parent="Pickups" instance=ExtResource( 5 )]
+transform = Transform( 0.600451, 0, 1.06942, 0, 1.22646, 0, -1.06942, 0, 0.600451, 7.76005, 0.242067, 41.953 )
 
 [node name="Objects" type="Node" parent="."]
 
 [node name="Floor" type="CSGMesh" parent="Objects"]
 transform = Transform( -194.565, 0, -1.70094e-05, 0, 0.447265, 0, 1.70094e-05, 0, -194.565, -0.572408, -0.442058, -3.48848 )
 use_collision = true
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material = ExtResource( 2 )
 
 [node name="DECALS" type="Node" parent="Objects"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Objects/DECALS"]
+transform = Transform( -1.32466e-08, 0, 0.303047, 0, 0.303047, 0, -0.303047, 0, -1.32466e-08, 7.41211, 2.21883, 85.0719 )
+shaded = true
+texture = ExtResource( 45 )
 
 [node name="OilDirt" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 23.8664, 0.204366, 82.8142 )
@@ -1621,7 +1717,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -45.382
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -45.3826, -0.10463, 5.27913 )
 
 [node name="Building_v4" parent="Objects/Buildings" instance=ExtResource( 8 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -3.26123, -0.0143509, 85.1535 )
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -3.26123, -0.0233393, 85.1535 )
 
 [node name="Building_v5" parent="Objects/Buildings" instance=ExtResource( 8 )]
 transform = Transform( 1.42491e-07, 0, -1.0866, 0, 1.0866, 0, 1.0866, 0, 1.42491e-07, -21.4589, -0.00610424, 47.9203 )
@@ -1740,10 +1836,11 @@ transform = Transform( -0.105218, 0, -1.62618, 0, 1.62958, 0, 1.62618, 0, -0.105
 [node name="Roads" type="Node" parent="Objects"]
 
 [node name="Road_straight_long" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.0988698, 80.2332 )
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.8579, 0.0996948, 80.2272 )
 
 [node name="Road_straight_long2" parent="Objects/Roads" instance=ExtResource( 30 )]
 transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.0988698, 60.2477 )
+cast_shadow = 0
 
 [node name="Road_straight_long5" parent="Objects/Roads" instance=ExtResource( 30 )]
 transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 31.8778, 0.0988698, -39.7005 )
@@ -1908,11 +2005,11 @@ transform = Transform( 3.95165, 0, 0, 0, 1, 0, 0, 0, 3.95165, -6.58437, -1.88483
 [node name="Electric_box_v1" parent="Objects/Electric_Boxes" instance=ExtResource( 40 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9.48333, -0.00677037, 33.2584 )
 
-[node name="Conditioner" parent="." instance=ExtResource( 18 )]
+[node name="Conditioner" parent="Objects" instance=ExtResource( 18 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.0046, 0.957181, 42.0354 )
 
-[node name="Thick_Vent" parent="." instance=ExtResource( 42 )]
+[node name="Thick_Vent" parent="Objects" instance=ExtResource( 42 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5025, 10.271, -8.30674 )
 
-[node name="Thick_Vent2" parent="." instance=ExtResource( 42 )]
+[node name="Thick_Vent2" parent="Objects" instance=ExtResource( 42 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6212, 7.20968, -35.2839 )
