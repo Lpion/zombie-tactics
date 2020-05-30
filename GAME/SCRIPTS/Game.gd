@@ -12,8 +12,6 @@ func _ready() -> void:
 
 # Close Game on Esc
 func _input(_event):
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
 	if Input.is_action_just_pressed("RESTART"):
 		get_tree().reload_current_scene()
 
