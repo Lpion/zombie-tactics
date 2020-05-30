@@ -17,12 +17,12 @@ var isReloading = false
 var CAN_SHOOT = false # false if no bullets && mags anymore, no shoot before spawn anim is done
 var CAN_MOVE = false  # player can not move on init, but after spawn anim
 var CAN_FEED = false
-var FEED_AMOUNT = 1
+var FEED_AMOUNT = 2
 var feedDone = false
 
 var MAX_MAGS = 3 # can only pick up new mags if CURRENT_MAGS < MAX_MAGS
-var CURRENT_MAGS = 1 # currently owned mags, can only be <= MAX_MAGS
-var MAX_BULLETS_MAG = 100 # bullets in mag after reload
+var CURRENT_MAGS = 0 # currently owned mags, can only be <= MAX_MAGS
+var MAX_BULLETS_MAG = 50 # bullets in mag after reload
 var CURRENT_BULLETS_MAG = MAX_BULLETS_MAG # current bullets in mag
 var reloadTimer = 0
 
@@ -42,17 +42,30 @@ onready var DebugVel = $DebugHUD/Velocity
 onready var DebugDir = $DebugHUD/Direction
 onready var DebugHP  = $DebugHUD/HP
 onready var DebugAmmo  = $DebugHUD/Ammo
+
+onready var HUD_HP  = $PlayerHUD/HPFlask
+onready var HUD_MAG  = $PlayerHUD/Magazine/MagCount
+onready var HUD_AMMO  = $PlayerHUD/Bullets/BulletCount
+
 onready var PlayerBody = $"/root/Global"
 onready var ReloadBar
 
 
 func _ready():
+	# INIT VALUES
+	CURRENT_BULLETS_MAG = 10
+	HEALTH = 60
+
 	# disable player during spawn phase
-#	disable_player()
-#	# Things to do right after the Spawn anim
-#	# wait for the anim to finish
-#	yield($AnimationPlayer, "animation_finished")
+	disable_player()
+	# Things to do right after the Spawn anim
+	$AnimationPlayer.play("Spawn")
+	# wait for the anim to finish
+	yield($AnimationPlayer, "animation_finished")
+	$AnimationPlayer.play("Scream")
+	yield($AnimationPlayer, "animation_finished")
 	enable_player()
+	get_node("../SpawnCam").current = false
 
 	# Ignore parent node transforms
 	# This is so that the Cam and rig stays in place when the player transforms
@@ -79,6 +92,12 @@ func _physics_process(delta):
 	feed()
 	if healthRegenCounter >= 1:
 		increase_health_over_time()
+	update_HUD()
+
+func update_HUD():
+	HUD_HP.value = HEALTH
+	HUD_MAG.text = str(CURRENT_MAGS)
+	HUD_AMMO.text = str(CURRENT_BULLETS_MAG)
 
 func debug():
 	DebugDir.text = "Direction \n X = " + str(round(-Global.lookDirection.x)) + "\n z = " + str(round(-Global.lookDirection.z))
@@ -185,7 +204,7 @@ func check_ammo():
 
 # Reload, possible if there are any MAGs left
 func reload():
-	if Input.is_action_just_pressed("RELOAD") && (CURRENT_MAGS > 0):
+	if Input.is_action_just_pressed("RELOAD") && (CURRENT_MAGS > 0) && !isReloading:
 		isReloading = true
 
 		ReloadBar = ReloadProgBar.instance()
@@ -200,6 +219,7 @@ func reload():
 		CAN_SHOOT = true
 		isReloading = false
 		$Body/ReloadBarPos.remove_child(ReloadBar)
+
 	if isReloading:
 		var reloadProgress = min(((2.6 - reloadTimer.time_left) / 2.6 * 100), 100)
 		if(reloadProgress < 100):
@@ -235,9 +255,12 @@ func hit(dmg):
 		dead()
 
 func dead():
-	AnimTree["parameters/Transition/current"] = 2
-	disable_player()
 	Global.playerDead = true
+	disable_player()
+	AnimTree["parameters/Transition/current"] = 2
+	yield(get_tree().create_timer(2), "timeout")
+	$DeathScreen.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 
