@@ -3,10 +3,6 @@
 [ext_resource path="res://ASSETS/MATERIALS/Pickups/Magazine.material" type="Material" id=1]
 [ext_resource path="res://SCRIPTS/Magazine.gd" type="Script" id=2]
 
-
-
-
-
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.193278, 0.12472, 0.457503 )
 
@@ -55,7 +51,7 @@ anims/MagazineAction002 = SubResource( 3 )
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 0.474095, 0, 0, 0, 0.474095, 0, 0, 0, 0.474095, 0, 1.26194e-07, 0 )
 light_color = Color( 0.266667, 0, 0.623529, 1 )
-light_energy = 8.82
+light_energy = 11.81
 light_indirect_energy = 6.74
-omni_range = 1.0
+omni_range = 1.54048
 [connection signal="body_entered" from="." to="." method="body_enter"]
