@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Magazine.png-b235a7032d4ab553452dd598b8a4ce16.s3tc.stex"
-path.etc2="res://.import/Magazine.png-b235a7032d4ab553452dd598b8a4ce16.etc2.stex"
+path.s3tc="res://.import/Grafity1.png-797da58bda7dcb6490a7d3916f0c6789.s3tc.stex"
+path.etc2="res://.import/Grafity1.png-797da58bda7dcb6490a7d3916f0c6789.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://ASSETS/TEXTURES/Magazine.png"
-dest_files=[ "res://.import/Magazine.png-b235a7032d4ab553452dd598b8a4ce16.s3tc.stex", "res://.import/Magazine.png-b235a7032d4ab553452dd598b8a4ce16.etc2.stex" ]
+source_file="res://ASSETS/TEXTURES/Decals/Grafity1.png"
+dest_files=[ "res://.import/Grafity1.png-797da58bda7dcb6490a7d3916f0c6789.s3tc.stex", "res://.import/Grafity1.png-797da58bda7dcb6490a7d3916f0c6789.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
