@@ -17,7 +17,7 @@ var BulletDmg = 10
 var BulletDir
 var CAN_SHOOT = true
 var CAN_PATROL = false
-var isDead = false
+export var isDead = false
 var isHit = false
 var isPatroling = false
 var playerDetected = false
@@ -41,8 +41,13 @@ onready var BulletEmitter = $Body/Skeleton/BoneAttachment/Rifle/BulletEmitter
 onready var AnimTree = $AnimationTree
 
 func _ready():
+	# For dead enemy on init
+	if isDead:
+		dead()
+
 	# Add HP-Bar to Enemy
 	$Body/Skeleton/HPBarPos.add_child(HP)
+
 
 	# Tools
 	$RangeCircle.scale = Vector3(SHOOTING_RANGE, 1, SHOOTING_RANGE)
@@ -186,6 +191,8 @@ func hit(dmg):
 
 func dead():
 	isDead = true
+	# Add HP-Bar to Enemy
+	$Body/Skeleton/HPBarPos.visible = false
 	AnimTree["parameters/Transition/current"] = 3
 	$Running.playing = false
 	$CollisionShape.disabled = true
@@ -195,14 +202,16 @@ func dead():
 
 var player
 func _on_FeedArea_body_entered(body: Node) -> void:
-	if body.has_method("feed"):
+	if body.is_in_group("Player"):
+		$BloodRushLight.visible = true
 		body.feedDone = false
 		body.CAN_FEED = true
 		player = body
 		remove = true
 func _on_FeedArea_body_exited(body: Node) -> void:
-	if body.has_method("feed"):
+	if body.is_in_group("Player"):
 		body.CAN_FEED = false
+		$BloodRushLight.visible = false
 		remove = false
 
 func removeCorpse():
