@@ -4,8 +4,6 @@
 [ext_resource path="res://ASSETS/TEXTURES/LVL-Props/StreetMarks/RoadLine[NORM].jpg" type="Texture" id=2]
 [ext_resource path="res://ASSETS/TEXTURES/LVL-Props/StreetMarks/RoadLine[ROUGH].jpg" type="Texture" id=3]
 
-
-
 [resource]
 flags_transparent = true
 albedo_texture = ExtResource( 1 )

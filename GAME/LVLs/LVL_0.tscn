@@ -99,15 +99,12 @@ tracks/2/keys = {
 "values": [ Vector3( -39.596, 128.061, -2.21599e-06 ), Vector3( -39.596, 48.586, -2.21599e-06 ), Vector3( -69.5887, -14.5627, 11.0306 ) ]
 }
 
-[sub_resource type="BakedLightmapData" id=3]
-bounds = AABB( -10, -10, -10, 20, 20, 20 )
-cell_space_transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 40, 40, 40 )
-cell_subdiv = 8
-octree = PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255 )
+[sub_resource type="PlaneMesh" id=4]
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="ConcavePolygonShape" id=5]
+data = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.0710653, 1.57228, 2.29627 )
 
 [node name="LVL_0" type="Spatial"]
@@ -130,17 +127,16 @@ visible = false
 environment = ExtResource( 3 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
-transform = Transform( 0.121049, -0.788359, 0.60319, 0.151384, 0.615212, 0.773691, -0.981035, -0.00234123, 0.193816, 0, 21.0884, 0 )
-light_color = Color( 0.137255, 0.137255, 0.137255, 1 )
-light_energy = 0.36
-light_indirect_energy = 5.65
-shadow_color = Color( 0.101961, 0.101961, 0.101961, 1 )
-
-[node name="BakedLightmap" type="BakedLightmap" parent="WorldEnvironment"]
-bake_quality = 2
-bake_energy = 5.78
-bake_hdr = true
-light_data = SubResource( 3 )
+transform = Transform( 0.121049, -0.788359, 0.60319, 0.151384, 0.615212, 0.773691, -0.981035, -0.00234121, 0.193816, -0.000424385, 21.0889, -0.000976562 )
+light_color = Color( 0.121569, 0.121569, 0.121569, 1 )
+light_energy = 0.83
+light_indirect_energy = 1.11
+light_bake_mode = 0
+shadow_enabled = true
+shadow_color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+directional_shadow_normal_bias = 0.0
+directional_shadow_depth_range = 1
+directional_shadow_max_distance = 274.2
 
 [node name="ToolTips" type="Node" parent="."]
 
@@ -161,7 +157,7 @@ ToolTip = "SHOOT WITH LEFT MOUSE CLICK
 AT CURSOR POSITION"
 
 [node name="ToolTip (RELOAD)" parent="ToolTips" instance=ExtResource( 44 )]
-transform = Transform( 0.979966, 0, -0.199163, 0, 1, 0, 0.199163, 0, 0.979966, 24.9603, 5.51693, 66.9052 )
+transform = Transform( 0.979966, 0, -0.199163, 0, 1, 0, 0.199163, 0, 0.979966, 24.438, 5.22633, 67.9481 )
 ToolTip = "PRESS 'R' TO  RELOAD"
 
 [node name="ToolTip (WATCHOUT)" parent="ToolTips" instance=ExtResource( 44 )]
@@ -172,15 +168,19 @@ ToolTip = "WATCH FOR ENEMIES"
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.885296, 0, -0.465027, 0, 1, 0, 0.465027, 0, 0.885296, 11.7151, 0.106307, 43.6212 )
+isDead = true
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.892223, 0, 0.451594, 0, 1, 0, -0.451594, 0, 0.892223, -28.2987, 0.106307, 22.2777 )
+isDead = true
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( -0.785695, 0, -0.618614, 0, 1, 0, 0.618614, 0, -0.785695, 25.2866, 0.106307, -19.5351 )
+isDead = true
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.586712, 0, -0.809795, 0, 1, 0, 0.809795, 0, 0.586712, 23.83, 0.106307, -28.5481 )
+isDead = true
 
 [node name="EnemyDEAD" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.885296, 0, -0.465027, 0, 1, 0, 0.465027, 0, 0.885296, 9.73435, 0.106307, 84.918 )
@@ -188,6 +188,7 @@ isDead = true
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( -0.485664, 0, 0.874145, 0, 1, 0, -0.874145, 0, -0.485664, -22.8233, 0.106307, 32.8945 )
+isDead = true
 
 [node name="PatrolPoints" type="Node" parent="Enemies/Enemy2"]
 
@@ -199,6 +200,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0558, 0, 28.3307 )
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.94027, 0, 0.340429, 0, 1, 0, -0.340429, 0, 0.94027, -27.5989, 0.106307, -14.5685 )
+isDead = true
 
 [node name="PatrolPoints" type="Node" parent="Enemies/Enemy5"]
 
@@ -210,6 +212,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1822, 0, 7.91423 )
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( -0.485664, 0, 0.874145, 0, 1, 0, -0.874145, 0, -0.485664, 18.945, 0.106307, 28.705 )
+isDead = true
 
 [node name="PatrolPoints" type="Node" parent="Enemies/Enemy3"]
 
@@ -264,11 +267,15 @@ transform = Transform( 0.600451, 0, 1.06942, 0, 1.22646, 0, -1.06942, 0, 0.60045
 
 [node name="Objects" type="Node" parent="."]
 
-[node name="Floor" type="CSGMesh" parent="Objects"]
-transform = Transform( 101.507, 0, 8.87403e-06, 0, -0.233344, 0, -8.87403e-06, 0, 101.507, -0.572408, -0.442058, 16.6872 )
-use_collision = true
+[node name="Floor" type="MeshInstance" parent="Objects"]
+transform = Transform( 70.9084, 0, 0, 0, 70.9084, 0, 0, 0, -101.812, 0, 0, 14.4585 )
 mesh = SubResource( 4 )
-material = ExtResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Objects/Floor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Objects/Floor/StaticBody"]
+shape = SubResource( 5 )
 
 [node name="DECALS" type="Node" parent="Objects"]
 
@@ -278,17 +285,17 @@ shaded = true
 texture = ExtResource( 45 )
 
 [node name="OilDirt" type="Sprite3D" parent="Objects/DECALS"]
-transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 23.8664, 0.204366, 82.8142 )
+transform = Transform( 0.760547, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 24.5988, 0.204366, 82.8142 )
 shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt2" type="Sprite3D" parent="Objects/DECALS"]
-transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 23.8725, 0.204366, 68.1483 )
+transform = Transform( 0.760547, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 24.6046, 0.204366, 68.1483 )
 shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt3" type="Sprite3D" parent="Objects/DECALS"]
-transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 23.8367, 0.227718, 53.4692 )
+transform = Transform( 0.760547, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 24.5709, 0.227718, 53.4692 )
 shaded = true
 texture = ExtResource( 31 )
 
@@ -596,7 +603,7 @@ texture = ExtResource( 34 )
 
 [node name="Grass13" type="Sprite3D" parent="Objects/DECALS/Grass"]
 transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 58.8866, 0.0836967, 22.4797 )
-opacity = 0.31
+opacity = 0.3
 shaded = true
 texture = ExtResource( 34 )
 
@@ -625,7 +632,7 @@ shaded = true
 texture = ExtResource( 34 )
 
 [node name="Grass12" type="Sprite3D" parent="Objects/DECALS/Grass"]
-transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 58.8866, 0.0836967, 38.0113 )
+transform = Transform( 0.758607, 0, 0, 0, -3.31598e-08, 0.758607, 0, -0.758607, -3.31598e-08, 58.9071, 0.0836967, 37.9898 )
 opacity = 0.31
 shaded = true
 texture = ExtResource( 34 )
@@ -675,7 +682,7 @@ transform = Transform( -3.65719e-08, 0, 0.836668, 0, 1, 0, -1, 0, -4.37114e-08, 
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Fences/Concrete_fence_Gate6/Area"]
 transform = Transform( 1, 0, -2.84217e-14, 0, 1, 0, 0, 0, 1, 0, 1.62307, -3.09063 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Concrete_fence_Gate5" parent="Objects/Fences" instance=ExtResource( 7 )]
 transform = Transform( -6.88707e-08, 0, 1.57558, 0, 1, 0, -1, 0, -4.37114e-08, 16.6625, 0, 104.647 )
@@ -836,7 +843,7 @@ transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 35.7372
 transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 71.7844 )
 
 [node name="LampPost8" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 87.1953 )
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 87.3317 )
 
 [node name="LampPost9" parent="Objects/Lamps" instance=ExtResource( 6 )]
 transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 61.8208 )
@@ -854,7 +861,7 @@ transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 
 transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9917, -0.480625, 71.7844 )
 
 [node name="LampPost67" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9917, -0.480625, 87.1953 )
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9917, -0.480625, 87.3317 )
 
 [node name="LampPost13" parent="Objects/Lamps" instance=ExtResource( 6 )]
 transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 43.335 )
@@ -863,10 +870,16 @@ transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0
 transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9164, -0.480625, 43.335 )
 
 [node name="LampPost32" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 36.1091 )
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 33.9808 )
 
 [node name="LampPost31" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9164, -0.480625, 36.1091 )
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9164, -0.480625, 33.9808 )
+
+[node name="LampPost82" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.49012e-07, 0, 0.820141, 0, -1.49012e-07, 0, 0.820141, 18.6612, -0.480625, 31.5949 )
+
+[node name="LampPost83" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.49012e-07, 0, 0.820141, 0, -1.49012e-07, 0, 0.820141, 18.6612, -0.480625, 24.7707 )
 
 [node name="LampPost29" parent="Objects/Lamps" instance=ExtResource( 6 )]
 transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, -30.2636, -0.480625, 7.87933 )
@@ -956,10 +969,10 @@ transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0
 transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 33.9845, -0.480625, -49.2825 )
 
 [node name="LampPost36" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( 1.07548e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07548e-07, 1.78395, -0.480624, 23.2202 )
+transform = Transform( 1.07548e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07548e-07, 0.466446, -0.480624, 23.2202 )
 
 [node name="LampPost35" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 1.78395, -0.480624, 27.4242 )
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 0.466446, -0.480624, 27.4242 )
 
 [node name="LampPost38" parent="Objects/Lamps" instance=ExtResource( 6 )]
 transform = Transform( 1.07548e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07548e-07, -6.96146, -0.480624, 23.2202 )
@@ -997,14 +1010,125 @@ transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, 
 [node name="LampPost25" parent="Objects/Lamps" instance=ExtResource( 6 )]
 transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, -12.7135, -0.480625, 40.8953 )
 
-[node name="LampPost19" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 19.0071, -0.480625, 42.0833 )
+[node name="LampPost68" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 28.0545, -0.480625, 44.5481 )
 
-[node name="LampPost20" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( 2.50947e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.50947e-07, 19.0071, -0.480625, 16.2119 )
+[node name="LampPost69" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.50947e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.50947e-07, 28.0545, -0.480625, 47.6201 )
 
-[node name="LampPost18" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 47.107, -0.480625, 40.5228 )
+[node name="LampPost71" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 18.897, -0.480625, 44.5481 )
+
+[node name="LampPost70" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.50947e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.50947e-07, 18.897, -0.480625, 47.6201 )
+
+[node name="LampPost73" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 37.3183, -0.480625, 44.5481 )
+
+[node name="LampPost72" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.50947e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.50947e-07, 37.3183, -0.480625, 47.6201 )
+
+[node name="LampPost93" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 34.2511, -0.480625, 55.3939 )
+
+[node name="LampPost92" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15098e-07, 0, 0.820141, 0, 2.15098e-07, 0, -0.820141, 31.1791, -0.480625, 55.3939 )
+
+[node name="LampPost95" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 34.2511, -0.480625, 64.6654 )
+
+[node name="LampPost94" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15098e-07, 0, 0.820141, 0, 2.15098e-07, 0, -0.820141, 31.1791, -0.480625, 64.6654 )
+
+[node name="LampPost97" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 34.2511, -0.480625, 73.8472 )
+
+[node name="LampPost96" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15098e-07, 0, 0.820141, 0, 2.15098e-07, 0, -0.820141, 31.1791, -0.480625, 73.8472 )
+
+[node name="LampPost99" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 34.2511, -0.480625, 83.2075 )
+
+[node name="LampPost98" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15098e-07, 0, 0.820141, 0, 2.15098e-07, 0, -0.820141, 31.1791, -0.480625, 83.2075 )
+
+[node name="LampPost101" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 1.07549e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 1.07549e-07, 25.7732, -0.480625, 91.7377 )
+
+[node name="LampPost100" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 25.7732, -0.480625, 88.6657 )
+
+[node name="LampPost75" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 46.5304, -0.480625, 44.5481 )
+
+[node name="LampPost74" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.50947e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.50947e-07, 46.5304, -0.480625, 47.6201 )
+
+[node name="LampPost77" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15098e-07, 0, 0.820141, 0, 2.15098e-07, 0, -0.820141, 49.5227, -0.480625, 41.5026 )
+
+[node name="LampPost76" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 2.86797e-07, 0, 0.820141, 0, -2.86797e-07, 0, 0.820141, 52.5947, -0.480625, 41.5026 )
+
+[node name="LampPost79" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15098e-07, 0, 0.820141, 0, 2.15098e-07, 0, -0.820141, 49.5227, -0.480625, 32.329 )
+
+[node name="LampPost78" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 2.86797e-07, 0, 0.820141, 0, -2.86797e-07, 0, 0.820141, 52.5947, -0.480625, 32.329 )
+
+[node name="LampPost81" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15098e-07, 0, 0.820141, 0, 2.15098e-07, 0, -0.820141, 49.5227, -0.480625, 23.2109 )
+
+[node name="LampPost80" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 2.86797e-07, 0, 0.820141, 0, -2.86797e-07, 0, 0.820141, 52.5947, -0.480625, 23.2109 )
+
+[node name="LampPost85" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.68221e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.68221e-07, 46.1225, -0.480625, 14.8307 )
+
+[node name="LampPost84" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -3.27826e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -3.27826e-07, 46.1225, -0.480625, 11.7588 )
+
+[node name="LampPost87" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.68221e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.68221e-07, 37.3067, -0.480625, 14.8307 )
+
+[node name="LampPost86" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -3.27826e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -3.27826e-07, 37.3067, -0.480625, 11.7588 )
+
+[node name="LampPost89" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.68221e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.68221e-07, 28.1067, -0.480625, 14.8307 )
+
+[node name="LampPost88" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -3.27826e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -3.27826e-07, 28.1067, -0.480625, 11.7588 )
+
+[node name="LampPost91" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.68221e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.68221e-07, 18.8089, -0.480625, 14.8307 )
+
+[node name="LampPost90" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -3.27826e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -3.27826e-07, 18.8089, -0.480625, 11.7588 )
+
+[node name="LampPost103" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.68221e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.68221e-07, 9.80011, -0.480625, 14.8307 )
+
+[node name="LampPost102" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -3.27826e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -3.27826e-07, 9.80011, -0.480625, 11.7588 )
+
+[node name="LampPost105" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.68221e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.68221e-07, 0.629477, -0.480625, 14.8307 )
+
+[node name="LampPost104" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -3.27826e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -3.27826e-07, 0.629477, -0.480625, 11.7588 )
+
+[node name="LampPost107" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 2.68221e-07, 0, -0.820141, 0, 0.820141, 0, 0.820141, 0, 2.68221e-07, -8.58891, -0.480625, 14.8307 )
+
+[node name="LampPost106" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -3.27826e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -3.27826e-07, -8.58891, -0.480625, 11.7588 )
+
+[node name="LampPost109" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.32371e-07, 0, 0.820141, 0, 2.32371e-07, 0, -0.820141, -12.3904, -0.480625, 7.37964 )
+
+[node name="LampPost108" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 2.91976e-07, 0, 0.820141, 0, -2.91976e-07, 0, 0.820141, -9.31847, -0.480625, 7.37964 )
 
 [node name="LampPost16" parent="Objects/Lamps" instance=ExtResource( 6 )]
 transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 35.3292, -0.480625, 7.81248 )
@@ -1917,44 +2041,44 @@ transform = Transform( -0.105218, 0, -1.62618, 0, 1.62958, 0, 1.62618, 0, -0.105
 [node name="Roads" type="Node" parent="Objects"]
 
 [node name="Road_straight_long" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.8579, 0.0996948, 80.2272 )
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.8579, 0.131876, 80.2272 )
 
 [node name="Road_straight_long2" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.0988698, 60.2477 )
-cast_shadow = 0
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.131051, 60.2477 )
+use_in_baked_light = true
 
 [node name="Road_straight_long5" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 31.8778, 0.0988698, -39.7005 )
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 31.8778, 0.131051, -39.7005 )
 
 [node name="Road_straight_long9" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -1.31134e-07, 1, -4.37114e-08, 3.82137e-15, -4.37114e-08, -1, -1, -1.31134e-07, 1.91068e-15, 31.8778, -0.0423841, -58.6795 )
+transform = Transform( -1.31134e-07, 1, -4.37114e-08, 3.82137e-15, -4.37114e-08, -1, -1, -1.31134e-07, 1.91068e-15, 31.8778, -0.0102033, -58.6795 )
 
 [node name="Road_straight_long3" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.0988698, 40.262 )
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.131051, 40.262 )
 
 [node name="Road_straight_long7" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -1, -8.74228e-08, -3.82138e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -3.12269, 0.0988698, -24.7091 )
+transform = Transform( -1, -8.74228e-08, -3.82138e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -3.12269, 0.131051, -24.7091 )
 
 [node name="Road_straight_long8" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -1, -8.74228e-08, -3.82138e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 16.8822, 0.0988698, -24.7091 )
+transform = Transform( -1, -8.74228e-08, -3.82138e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 16.8822, 0.131051, -24.7091 )
 
 [node name="Road_straight_long6" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -28.1196, 0.0988698, 0.299622 )
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -28.1196, 0.131051, 0.299622 )
 
 [node name="Road_straight_long4" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -1, -8.74228e-08, -3.82138e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -3.14375, 0.0988698, 25.2723 )
+transform = Transform( -1, -8.74228e-08, -3.82138e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -3.14375, 0.131051, 25.2723 )
 
 [node name="Road_bend_round_small" parent="Objects/Roads" instance=ExtResource( 33 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11.8553, 0.102277, 25.268 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11.8553, 0.134458, 25.268 )
 
 [node name="Road_bend_round_small2" parent="Objects/Roads" instance=ExtResource( 33 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 31.8414, 0.102278, -24.7101 )
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 31.8414, 0.134459, -24.7101 )
 
 [node name="Road_set_v1_b_bend_4" parent="Objects/Roads" instance=ExtResource( 32 )]
-transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -23.1251, 0.116564, 20.2778 )
+transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -23.1251, 0.148745, 20.2778 )
 
 [node name="Road_set_v1_b_bend_5" parent="Objects/Roads" instance=ExtResource( 32 )]
-transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91068e-15, -23.1251, 0.116564, -19.7095 )
+transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91068e-15, -23.1251, 0.148745, -19.7095 )
 
 [node name="Palets" type="Node" parent="Objects"]
 
@@ -2085,12 +2209,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.68991, -0.0176278, 41.8827 
 
 [node name="Electric_box_v3" parent="Objects/Electric_Boxes" instance=ExtResource( 21 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 46.3631, -0.0335739, 27.3373 )
-
-[node name="Electric_box_v4" parent="Objects/Electric_Boxes" instance=ExtResource( 21 )]
-transform = Transform( 3.95165, 0, 0, 0, 1, 0, 0, 0, 3.95165, 8.57385, -1.88483, 16.7535 )
-
-[node name="Electric_box_v5" parent="Objects/Electric_Boxes" instance=ExtResource( 21 )]
-transform = Transform( 3.95165, 0, 0, 0, 1, 0, 0, 0, 3.95165, -6.58437, -1.88483, 16.7535 )
 
 [node name="Electric_box_v1" parent="Objects/Electric_Boxes" instance=ExtResource( 40 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9.48333, -0.00677037, 33.2584 )

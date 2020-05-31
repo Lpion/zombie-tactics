@@ -2,7 +2,8 @@
 
 [ext_resource path="res://ASSETS/TEXTURES/Weapons/Rifle/Rifle[DIFF].tga" type="Texture" id=3]
 
-
-
 [resource]
 albedo_texture = ExtResource( 3 )
+metallic = 0.16
+metallic_specular = 1.0
+roughness = 0.7

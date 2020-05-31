@@ -5,9 +5,6 @@
 [ext_resource path="res://ASSETS/TEXTURES/LVL-Props/ManholeCover/ManholeCover[NORM].jpg" type="Texture" id=3]
 [ext_resource path="res://ASSETS/TEXTURES/LVL-Props/ManholeCover/ManholeCover[ROUGH].jpg" type="Texture" id=4]
 
-
-
-
 [resource]
 flags_transparent = true
 albedo_texture = ExtResource( 1 )
