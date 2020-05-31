@@ -99,16 +99,11 @@ tracks/2/keys = {
 "values": [ Vector3( -39.596, 128.061, -2.21599e-06 ), Vector3( -39.596, 48.586, -2.21599e-06 ), Vector3( -69.5887, -14.5627, 11.0306 ) ]
 }
 
-[sub_resource type="GIProbeData" id=3]
-bounds = AABB( -236.203, -139.054, -249.606, 472.406, 278.108, 499.212 )
-cell_size = 1.95005
-to_cell_xform = Transform( 0.512808, 0, 0, 0, 0.512808, 0, 0, 0, 0.512808, 121.127, 71.308, 128 )
-dynamic_data = PoolIntArray( 0, 9, 256, 256, 256, 1, 0, 1, 165928, 0, 268566528, 31441975, 0, 520, 67372036, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
-dynamic_range = 4
-energy = 0.54
-bias = 0.15
-normal_bias = 0.0
-propagation = 0.7
+[sub_resource type="BakedLightmapData" id=3]
+bounds = AABB( -10, -10, -10, 20, 20, 20 )
+cell_space_transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 40, 40, 40 )
+cell_subdiv = 8
+octree = PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255 )
 
 [sub_resource type="CubeMesh" id=4]
 
@@ -134,19 +129,18 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
 
-[node name="GIProbe" type="GIProbe" parent="WorldEnvironment"]
-subdiv = 2
-extents = Vector3( 236.203, 139.054, 249.606 )
-energy = 0.54
-bias = 0.15
-data = SubResource( 3 )
-
 [node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
 transform = Transform( 0.121049, -0.788359, 0.60319, 0.151384, 0.615212, 0.773691, -0.981035, -0.00234123, 0.193816, 0, 21.0884, 0 )
 light_color = Color( 0.137255, 0.137255, 0.137255, 1 )
-light_energy = 8.48
-light_indirect_energy = 8.64
+light_energy = 0.36
+light_indirect_energy = 5.65
 shadow_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+
+[node name="BakedLightmap" type="BakedLightmap" parent="WorldEnvironment"]
+bake_quality = 2
+bake_energy = 5.78
+bake_hdr = true
+light_data = SubResource( 3 )
 
 [node name="ToolTips" type="Node" parent="."]
 
@@ -271,7 +265,7 @@ transform = Transform( 0.600451, 0, 1.06942, 0, 1.22646, 0, -1.06942, 0, 0.60045
 [node name="Objects" type="Node" parent="."]
 
 [node name="Floor" type="CSGMesh" parent="Objects"]
-transform = Transform( -194.565, 0, -1.70094e-05, 0, 0.447265, 0, 1.70094e-05, 0, -194.565, -0.572408, -0.442058, -3.48848 )
+transform = Transform( 101.507, 0, 8.87403e-06, 0, -0.233344, 0, -8.87403e-06, 0, 101.507, -0.572408, -0.442058, 16.6872 )
 use_collision = true
 mesh = SubResource( 4 )
 material = ExtResource( 2 )
@@ -285,62 +279,77 @@ texture = ExtResource( 45 )
 
 [node name="OilDirt" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 23.8664, 0.204366, 82.8142 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt2" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 23.8725, 0.204366, 68.1483 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt3" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, 23.8367, 0.227718, 53.4692 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt6" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.7443, 0.204366, 46.9369 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt5" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.7382, 0.204366, 32.271 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt4" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.774, 0.227718, 17.5919 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt9" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.2507, 0.204366, 2.93475 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt8" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.2446, 0.204366, -11.7312 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt7" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -41.2804, 0.227718, -26.4103 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt15" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -58.2855, 0.204366, 46.9369 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt14" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -58.2794, 0.204366, 32.271 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt13" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -58.3152, 0.227718, 17.5919 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt12" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -57.7919, 0.204366, 2.93475 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt11" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -57.7858, 0.204366, -11.7312 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="OilDirt10" type="Sprite3D" parent="Objects/DECALS"]
 transform = Transform( 0.808602, 0, 0, 0, -6.34239e-10, 0.0145097, 0, -0.716118, -3.13025e-08, -57.8216, 0.227718, -26.4103 )
+shaded = true
 texture = ExtResource( 31 )
 
 [node name="Grass" type="Node" parent="Objects/DECALS"]
@@ -824,7 +833,10 @@ transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 35.7372
 [node name="Lamps" type="Node" parent="Objects"]
 
 [node name="LampPost4" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 71.0479 )
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 71.7844 )
+
+[node name="LampPost8" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 87.1953 )
 
 [node name="LampPost9" parent="Objects/Lamps" instance=ExtResource( 6 )]
 transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 61.8208 )
@@ -839,7 +851,10 @@ transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 
 transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9917, -0.480625, 61.8219 )
 
 [node name="LampPost14" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9917, -0.480625, 71.0479 )
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9917, -0.480625, 71.7844 )
+
+[node name="LampPost67" parent="Objects/Lamps" instance=ExtResource( 6 )]
+transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 0, -0.820141, 13.9917, -0.480625, 87.1953 )
 
 [node name="LampPost13" parent="Objects/Lamps" instance=ExtResource( 6 )]
 transform = Transform( 0.820141, 0, 1.43398e-07, 0, 0.820141, 0, -1.43398e-07, 0, 0.820141, 9.71234, -0.480625, 43.335 )
@@ -994,11 +1009,8 @@ transform = Transform( -0.820141, 0, -2.15097e-07, 0, 0.820141, 0, 2.15097e-07, 
 [node name="LampPost16" parent="Objects/Lamps" instance=ExtResource( 6 )]
 transform = Transform( -1.79248e-07, 0, 0.820141, 0, 0.820141, 0, -0.820141, 0, -1.79248e-07, 35.3292, -0.480625, 7.81248 )
 
-[node name="LampPost8" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 14.3306, -0.480625, 84.5278 )
-
 [node name="LampPost5" parent="Objects/Lamps" instance=ExtResource( 6 )]
-transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 4.44887, -0.480625, 71.041 )
+transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 4.44887, -0.480625, 71.7775 )
 
 [node name="LampPost6" parent="Objects/Lamps" instance=ExtResource( 6 )]
 transform = Transform( -0.820141, 0, -7.1699e-08, 0, 0.820141, 0, 7.1699e-08, 0, -0.820141, 4.44887, -0.480625, 61.8138 )
