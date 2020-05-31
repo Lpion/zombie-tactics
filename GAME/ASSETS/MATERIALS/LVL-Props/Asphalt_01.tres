@@ -7,9 +7,6 @@
 albedo_color = Color( 0.619608, 0.615686, 0.615686, 1 )
 albedo_texture = ExtResource( 1 )
 roughness_texture = ExtResource( 2 )
-rim_enabled = true
-rim = 0.05
-rim_tint = 0.16
 ao_enabled = true
 ao_light_affect = 0.48
 ao_on_uv2 = false
