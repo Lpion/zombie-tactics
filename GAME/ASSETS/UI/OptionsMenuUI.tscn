@@ -29,8 +29,6 @@ func _on_back_pressed() -> void:
 	$AnimationPlayer.play(\"FadeOut\")
 	yield($AnimationPlayer, \"animation_finished\")
 	self.visible = false
-
-
 "
 
 [sub_resource type="StyleBoxTexture" id=2]
@@ -82,6 +80,7 @@ tracks/0/keys = {
 }
 
 [node name="OptionsMenu" type="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -2.85001
