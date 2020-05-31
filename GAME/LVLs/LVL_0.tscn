@@ -59,8 +59,11 @@ func _ready() -> void:
 	$BackgroudTrack.playing = true
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_pressed(\"RELOAD\") && $\"ToolTips/ToolTip (RELOAD)\".visible:
+	if Input.is_action_pressed(\"RELOAD\") && $\"ToolTips/ToolTip (RELOAD)\".visible && !$\"Pickups/Magazine/ToolTip(Pickup)\":
 		$\"ToolTips/ToolTip (RELOAD)\".visible = false
+
+	if Input.is_action_pressed(\"FEED\") && $\"ToolTips/ToolTip (HEAL)\".visible && $Enemies/EnemyDEAD.find_node(\"BloodRushLight\").visible:
+		$\"ToolTips/ToolTip (HEAL)\".visible = false
 
 func _on_Area_body_entered(body: Node) -> void:
 	if body.is_in_group(\"Player\"):
@@ -147,6 +150,7 @@ directional_shadow_max_distance = 274.2
 
 [node name="ToolTip (HEAL)" parent="ToolTips" instance=ExtResource( 44 )]
 transform = Transform( 0.999841, 0, -0.0178362, 0, 1, 0, 0.0178362, 0, 0.999841, 13.2392, 5.70118, 83.4973 )
+remove = false
 ToolTip = "PRESS 'Q' OVER CORPSE
 TO HEAL UP"
 
@@ -157,7 +161,7 @@ ToolTip = "MOVE : W A S D
 LOOK AROUND : MOVE MOUSE"
 
 [node name="ToolTip (SHOOT)" parent="ToolTips" instance=ExtResource( 44 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5484, 5.51693, 77.2315 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5484, -0.250632, 74.3288 )
 ToolTip = "SHOOT WITH LEFT MOUSE CLICK
 AT CURSOR POSITION"
 
@@ -167,7 +171,7 @@ remove = false
 ToolTip = "PRESS 'R' TO  RELOAD"
 
 [node name="ToolTip (WATCHOUT)" parent="ToolTips" instance=ExtResource( 44 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6947, 5.51693, 59.993 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5367, -0.277426, 61.9468 )
 ToolTip = "WATCH FOR ENEMIES"
 
 [node name="Enemies" type="Node" parent="."]
@@ -2050,7 +2054,7 @@ transform = Transform( -0.105218, 0, -1.62618, 0, 1.62958, 0, 1.62618, 0, -0.105
 transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.8579, 0.131876, 80.2272 )
 
 [node name="Road_straight_long2" parent="Objects/Roads" instance=ExtResource( 30 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.131051, 60.2477 )
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.84, 0.131051, 60.2663 )
 use_in_baked_light = true
 
 [node name="Road_straight_long5" parent="Objects/Roads" instance=ExtResource( 30 )]
