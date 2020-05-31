@@ -1,0 +1,7 @@
+[gd_resource type="ParticlesMaterial" format=2]
+
+[resource]
+emission_shape = 1
+emission_sphere_radius = 1.11
+gravity = Vector3( 0, 5, 0 )
+scale = 0.15
