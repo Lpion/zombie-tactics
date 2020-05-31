@@ -178,7 +178,15 @@ ToolTip = "WATCH FOR ENEMIES"
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.885296, 0, -0.465027, 0, 1, 0, 0.465027, 0, 0.885296, 11.7151, 0.106307, 43.6212 )
-isDead = true
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( 0.892223, 0, 0.451594, 0, 1, 0, -0.451594, 0, 0.892223, -28.2987, 0.106307, 22.2777 )
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( -0.785695, 0, -0.618614, 0, 1, 0, 0.618614, 0, -0.785695, 25.2866, 0.106307, -19.5351 )
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( 0.586712, 0, -0.809795, 0, 1, 0, 0.809795, 0, 0.586712, 23.83, 0.106307, -28.5481 )
 
 [node name="EnemyDEAD" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.885296, 0, -0.465027, 0, 1, 0, 0.465027, 0, 0.885296, 9.73435, 0.106307, 84.918 )
@@ -186,7 +194,6 @@ isDead = true
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( -0.485664, 0, 0.874145, 0, 1, 0, -0.874145, 0, -0.485664, -22.8233, 0.106307, 32.8945 )
-isDead = true
 
 [node name="PatrolPoints" type="Node" parent="Enemies/Enemy2"]
 
@@ -195,6 +202,52 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0182, 0, 20.3363 )
 
 [node name="Position3D2" type="Position3D" parent="Enemies/Enemy2/PatrolPoints"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0558, 0, 28.3307 )
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( 0.94027, 0, 0.340429, 0, 1, 0, -0.340429, 0, 0.94027, -27.5989, 0.106307, -14.5685 )
+
+[node name="PatrolPoints" type="Node" parent="Enemies/Enemy5"]
+
+[node name="Position3D" type="Position3D" parent="Enemies/Enemy5/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1446, 0, -17.8731 )
+
+[node name="Position3D2" type="Position3D" parent="Enemies/Enemy5/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1822, 0, 7.91423 )
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 4 )]
+transform = Transform( -0.485664, 0, 0.874145, 0, 1, 0, -0.874145, 0, -0.485664, 18.945, 0.106307, 28.705 )
+
+[node name="PatrolPoints" type="Node" parent="Enemies/Enemy3"]
+
+[node name="Position3D" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4082, 0, 28.8106 )
+
+[node name="Position3D2" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.719, 0, 25.3766 )
+
+[node name="Position3D3" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.719, 0, 17.2242 )
+
+[node name="Position3D4" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9902, 0, 15.6523 )
+
+[node name="Position3D5" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8167, 0, 15.6523 )
+
+[node name="Position3D6" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8167, 0, 35.0189 )
+
+[node name="Position3D7" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.758, 0, 42.874 )
+
+[node name="Position3D8" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8743, 0, 42.874 )
+
+[node name="Position3D9" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2221, 0, 37.6919 )
+
+[node name="Position3D10" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2221, 0, 30.1913 )
 
 [node name="Pickups" type="Node" parent="."]
 
@@ -1935,6 +1988,12 @@ transform = Transform( 0.996919, 0, -0.0784417, 0, 1, 0, 0.0784417, 0, 0.996919,
 
 [node name="Road_block4" parent="Objects/RoadBlocks" instance=ExtResource( 28 )]
 transform = Transform( 0.996919, 0, -0.0784417, 0, 1, 0, 0.0784417, 0, 0.996919, 9.65752, -0.0148805, 44.3969 )
+
+[node name="Road_block5" parent="Objects/RoadBlocks" instance=ExtResource( 28 )]
+transform = Transform( -0.0978782, 0, -0.995199, 0, 1, 0, 0.995199, 0, -0.0978782, 26.1996, -0.0148805, -22.641 )
+
+[node name="Road_block7" parent="Objects/RoadBlocks" instance=ExtResource( 28 )]
+transform = Transform( 0.328174, 0, -0.944617, 0, 1, 0, 0.944617, 0, 0.328174, 26.4664, 0.0365192, -26.6032 )
 
 [node name="Road_block6" parent="Objects/RoadBlocks" instance=ExtResource( 28 )]
 transform = Transform( 0.999903, 0, -0.0139447, 0, 1, 0, 0.0139447, 0, 0.999903, 11.8026, -0.0148805, 90.1899 )
