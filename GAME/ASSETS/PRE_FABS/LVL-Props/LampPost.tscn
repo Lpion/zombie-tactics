@@ -85,10 +85,11 @@ material/1 = null
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1.2193, 0, 0, 0, -5.32975e-08, 1.2193, 0, -1.2193, -5.32975e-08, 1.61135, 8.1425, 0 )
 light_color = Color( 0.937255, 1, 1, 1 )
-light_energy = 4.69
-light_indirect_energy = 15.33
+light_energy = 1.24
+light_indirect_energy = 2.07
 light_bake_mode = 2
 shadow_enabled = true
 shadow_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
-spot_range = 10.995
-spot_angle = 52.7339
+shadow_reverse_cull_face = true
+spot_range = 12.9735
+spot_angle = 59.0625
