@@ -4,6 +4,7 @@ extends KinematicBody
 var HPBar = preload("res://ASSETS/UI/ProgressBars/HPBar.tscn")
 var Bullet = preload("res://ASSETS/PRE_FABS/Weapons/Bullet.tscn")
 var MuzzleFlash = preload("res://ASSETS/PRE_FABS/Weapons/MuzzleFlash.tscn")
+var BloodPuddle = preload("res://ASSETS/TEXTURES/Decals/BloodPuddle.tscn")
 
 export var SHOOTING_RANGE = 10
 export var MAX_SPEED : float = 4
@@ -39,6 +40,7 @@ var i = 0
 onready var HEALTH = MAX_HEALTH
 onready var HP = HPBar.instance()
 onready var BulletEmitter = $Body/Skeleton/BoneAttachment/Rifle/BulletEmitter
+onready var BloodPuddlePosition = $BloodPuddlePosition
 onready var AnimTree = $AnimationTree
 
 func _ready():
@@ -199,9 +201,12 @@ func dead():
 	AnimTree["parameters/Transition/current"] = 3
 	$Running.playing = false
 	$CollisionShape.disabled = true
-
 	# Feed the player
 	$FeedArea/CollisionShape.disabled = false
+	yield(get_tree().create_timer(2), "timeout")
+	var bloodPuddle = BloodPuddle.instance()
+	BloodPuddlePosition.add_child(bloodPuddle)
+	bloodPuddle.set_as_toplevel(true)
 
 var player
 func _on_FeedArea_body_entered(body: Node) -> void:
@@ -220,7 +225,8 @@ func _on_FeedArea_body_exited(body: Node) -> void:
 func removeCorpse():
 	if player.feedDone:
 		player.CAN_FEED = false
-		queue_free()
+		$Body.visible = false
+		$FeedArea.queue_free()
 
 # Handle Animation States
 func enemy_anim():
