@@ -51,7 +51,6 @@ anims/MagazineAction002 = SubResource( 3 )
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 0.474095, 0, 0, 0, 0.474095, 0, 0, 0, 0.474095, 0, 1.26194e-07, 0 )
 light_color = Color( 0.266667, 0, 0.623529, 1 )
-light_energy = 11.81
-light_indirect_energy = 6.74
+light_energy = 2.07
 omni_range = 1.54048
 [connection signal="body_entered" from="." to="." method="body_enter"]
