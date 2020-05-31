@@ -27,7 +27,7 @@ texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 3 )
 fill_mode = 4
 tint_under = Color( 0.219608, 0.219608, 0.219608, 1 )
-radial_initial_angle = 110.0
+radial_initial_angle = 109.0
 
 [node name="Mesh" type="Sprite3D" parent="."]
 transform = Transform( 1.12938, 0, 0, 0, 1.12938, 0, 0, 0, 1.12938, 0, -0.462547, 0 )
