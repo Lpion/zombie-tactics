@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ASSETS/TEXTURES/Muzzle_flash.png" type="Texture" id=2]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
 
 
@@ -22,8 +22,7 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="Animation" id=1]
-resource_name = "Flash"
+[sub_resource type="Animation" id=2]
 length = 0.2
 loop = true
 step = 0.01
@@ -49,21 +48,20 @@ tracks/1/keys = {
 
 [node name="MuzzleFlash" type="Spatial"]
 transform = Transform( 0.01, 0, 0, 0, 0.007, 0, 0, 0, 0.007, 0, 0.0189587, 0 )
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 0.043, 0, 0, 0, 0.043, 0, 0, 0, 0.043, 9.93891, -0.456, -0.014 )
+transform = Transform( 0.037, 0, 0, 0, 0.0397143, 0, 0, 0, 0.0397143, 8.5558, -0.456, -0.014 )
 cast_shadow = 0
+modulate = Color( 1, 1, 1, 0.666667 )
 pixel_size = 1.0
-shaded = true
 texture = ExtResource( 2 )
 
 [node name="Sprite3D2" type="Sprite3D" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 cast_shadow = 0
 pixel_size = 1.0
-shaded = true
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Flash = SubResource( 1 )
+anims/Flash = SubResource( 2 )
