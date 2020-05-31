@@ -18,16 +18,26 @@ func _ready() -> void:
 func _on_MasterVolSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), value)
 
+func _on_MusicVolSlider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Music\"), value)
+
+func _on_EffectsVolSlider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Effects\"), value)
+
 
 func _on_back_pressed() -> void:
 	$AnimationPlayer.play(\"FadeOut\")
 	yield($AnimationPlayer, \"animation_finished\")
 	self.visible = false
+
+
 "
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 250, 17 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 modulate_color = Color( 0.662745, 0.662745, 0.662745, 1 )
 
 [sub_resource type="StyleBoxTexture" id=3]
@@ -36,9 +46,10 @@ content_margin_right = 0.0
 content_margin_top = 0.0
 content_margin_bottom = 0.0
 texture = ExtResource( 7 )
-region_rect = Rect2( 0, 0, 250, 17 )
+region_rect = Rect2( 0, 0, 240.077, 17 )
 axis_stretch_horizontal = 1
-modulate_color = Color( 0.360784, 0, 0, 1 )
+axis_stretch_vertical = 1
+modulate_color = Color( 0.360784, 0, 0, 0 )
 
 [sub_resource type="Animation" id=4]
 length = 0.1
@@ -71,7 +82,6 @@ tracks/0/keys = {
 }
 
 [node name="OptionsMenu" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -2.85001
@@ -86,8 +96,9 @@ __meta__ = {
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -0.814514
 margin_right = 896.0
-margin_bottom = 729.0
+margin_bottom = 728.185
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
@@ -114,32 +125,102 @@ align = 1
 
 [node name="centerRow" type="HBoxContainer" parent="Menu"]
 margin_top = 76.0
-margin_right = 300.0
-margin_bottom = 389.0
-size_flags_horizontal = 0
+margin_right = 864.0
+margin_bottom = 388.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/centerRow"]
-margin_right = 300.0
-margin_bottom = 313.0
-size_flags_horizontal = 0
+margin_right = 864.0
+margin_bottom = 312.0
+size_flags_horizontal = 3
 alignment = 1
 
-[node name="MasterVol" type="Label" parent="Menu/centerRow/Buttons"]
-margin_top = 136.0
-margin_right = 300.0
-margin_bottom = 177.0
-custom_fonts/font = ExtResource( 4 )
-text = "Sound Volume (Master)"
+[node name="Master" type="HBoxContainer" parent="Menu/centerRow/Buttons"]
+margin_top = 86.0
+margin_right = 415.0
+margin_bottom = 130.0
+size_flags_horizontal = 0
+custom_constants/separation = 21
 
-[node name="MasterVolSlider" type="HSlider" parent="Menu/centerRow/Buttons/MasterVol"]
+[node name="MasterVol" type="Label" parent="Menu/centerRow/Buttons/Master"]
+margin_right = 144.0
+margin_bottom = 41.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 4 )
+text = "Master Vol."
+
+[node name="MasterVolSlider" type="HSlider" parent="Menu/centerRow/Buttons/Master"]
 show_behind_parent = true
-anchor_top = 1.098
-anchor_right = 0.833
-anchor_bottom = 2.171
-margin_top = -0.0180016
-margin_right = 0.0999756
-margin_bottom = -0.0110016
+margin_left = 165.0
+margin_right = 415.0
+margin_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_clip_content = true
+custom_icons/grabber_highlight = ExtResource( 6 )
+custom_icons/grabber = ExtResource( 5 )
+custom_styles/slider = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
+min_value = -80.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Music" type="HBoxContainer" parent="Menu/centerRow/Buttons"]
+margin_top = 134.0
+margin_right = 415.0
+margin_bottom = 178.0
+size_flags_horizontal = 0
+custom_constants/separation = 20
+
+[node name="MusicVol" type="Label" parent="Menu/centerRow/Buttons/Music"]
+margin_top = 1.0
+margin_right = 145.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 4 )
+text = "Music Vol. "
+
+[node name="MusicVolSlider" type="HSlider" parent="Menu/centerRow/Buttons/Music"]
+show_behind_parent = true
+margin_left = 165.0
+margin_right = 415.0
+margin_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_clip_content = true
+custom_icons/grabber_highlight = ExtResource( 6 )
+custom_icons/grabber = ExtResource( 5 )
+custom_styles/slider = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
+min_value = -80.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Effects" type="HBoxContainer" parent="Menu/centerRow/Buttons"]
+margin_top = 182.0
+margin_right = 414.0
+margin_bottom = 226.0
+size_flags_horizontal = 0
+custom_constants/separation = 23
+
+[node name="EffectsVol" type="Label" parent="Menu/centerRow/Buttons/Effects"]
+margin_top = 1.0
+margin_right = 141.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 4 )
+text = "Effects Vol."
+
+[node name="EffectsVolSlider" type="HSlider" parent="Menu/centerRow/Buttons/Effects"]
+show_behind_parent = true
+margin_left = 164.0
+margin_right = 414.0
+margin_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = true
@@ -175,13 +256,17 @@ __meta__ = {
 }
 
 [node name="back" parent="Menu" instance=ExtResource( 2 )]
-margin_top = 393.0
+margin_top = 392.0
 margin_right = 128.0
-margin_bottom = 440.0
+margin_bottom = 439.0
 text = "<- BACK"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeIn = SubResource( 4 )
 anims/FadeOut = SubResource( 5 )
-[connection signal="value_changed" from="Menu/centerRow/Buttons/MasterVol/MasterVolSlider" to="." method="_on_MasterVolSlider_value_changed"]
+[connection signal="value_changed" from="Menu/centerRow/Buttons/Master/MasterVolSlider" to="." method="_on_MasterVolSlider_value_changed"]
+[connection signal="value_changed" from="Menu/centerRow/Buttons/Music/MusicVolSlider" to="." method="_on_MasterVolSlider_value_changed"]
+[connection signal="value_changed" from="Menu/centerRow/Buttons/Music/MusicVolSlider" to="." method="_on_MusicVolSlider_value_changed"]
+[connection signal="value_changed" from="Menu/centerRow/Buttons/Effects/EffectsVolSlider" to="." method="_on_MasterVolSlider_value_changed"]
+[connection signal="value_changed" from="Menu/centerRow/Buttons/Effects/EffectsVolSlider" to="." method="_on_EffectsVolSlider_value_changed"]
 [connection signal="pressed" from="Menu/back" to="." method="_on_back_pressed"]
