@@ -3,6 +3,7 @@ extends KinematicBody
 #imports
 var HPBar = preload("res://ASSETS/UI/ProgressBars/HPBar.tscn")
 var Bullet = preload("res://ASSETS/PRE_FABS/Weapons/Bullet.tscn")
+var MuzzleFlash = preload("res://ASSETS/PRE_FABS/Weapons/MuzzleFlash.tscn")
 
 export var SHOOTING_RANGE = 10
 export var MAX_SPEED : float = 4
@@ -164,8 +165,10 @@ func shooting():
 
 		# Bullet = Ref to Bullet Scene
 		var bullet = Bullet.instance()
+		var muzzleFlash = MuzzleFlash.instance()
 		# spawn bullet
 		BulletEmitter.add_child(bullet)
+		BulletEmitter.add_child(muzzleFlash)
 		var BulletDir = Vector3(Global.enemyLookDirection.x,0 , Global.enemyLookDirection.z)
 
 		bullet.on_pew(BulletDir, BulletDmg)

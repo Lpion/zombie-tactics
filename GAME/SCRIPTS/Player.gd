@@ -3,6 +3,7 @@ extends KinematicBody
 #imports
 var ReloadProgBar = preload("res://ASSETS/UI/ProgressBars/ReloadBar.tscn")
 var Bullet = preload("res://ASSETS/PRE_FABS/Weapons/Bullet.tscn")
+var MuzzleFlash = preload("res://ASSETS/PRE_FABS/Weapons/MuzzleFlash.tscn")
 
 export(float, 0, 1, 0.01) var WALK_FACTOR : float = 0.9
 export var MAX_SPEED : float = 6
@@ -232,10 +233,12 @@ func shooting():
 
 		# Bullet = Ref to Bullet Scene
 		var bullet = Bullet.instance()
+		var muzzleFlash = MuzzleFlash.instance()
 		# remove 1 bullet from current mag
 		CURRENT_BULLETS_MAG -= 1
 		# spawn bullet
 		BulletEmitter.add_child(bullet)
+		BulletEmitter.add_child(muzzleFlash)
 		BulletDir = Vector3(-Global.lookDirection.x,0 , -Global.lookDirection.z)
 		bullet.on_pew(BulletDir, BulletDmg)
 		bullet.set_as_toplevel(true)
