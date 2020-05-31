@@ -16,6 +16,7 @@ fog_enabled = true
 fog_color = Color( 0.0156863, 0.0313726, 0.101961, 1 )
 fog_sun_color = Color( 0, 0, 0, 1 )
 fog_depth_begin = 0.0
+fog_depth_end = 68.3
 fog_depth_curve = 0.784584
 tonemap_mode = 2
 tonemap_exposure = 0.87
