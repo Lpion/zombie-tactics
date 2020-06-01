@@ -67,6 +67,10 @@ func _ready():
 	yield($AnimationPlayer, "animation_finished")
 	enable_player()
 	get_node("../SpawnCam").current = false
+	get_node("../ToolTips/ToolTip (HEAL)").visible = true
+	get_node("../ToolTips/ToolTip (RELOAD)").visible = true
+	get_node("../Pickups/Magazine/ToolTip(Pickup)").visible = true
+	get_node("../Pickups/Magazine/ToolTip(Pickup)2").visible = true
 
 	# Ignore parent node transforms
 	# This is so that the Cam and rig stays in place when the player transforms

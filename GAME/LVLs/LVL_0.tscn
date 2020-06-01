@@ -154,24 +154,21 @@ bus = "Music"
 [node name="ToolTips" type="Node" parent="."]
 
 [node name="ToolTip (HEAL)" parent="ToolTips" instance=ExtResource( 44 )]
-transform = Transform( 0.999841, 0, -0.0178362, 0, 1, 0, 0.0178362, 0, 0.999841, 13.2392, 5.70118, 83.4973 )
+transform = Transform( 0.999841, 0, -0.0178362, 0, 1, 0, 0.0178362, 0, 0.999841, 12.7109, 1.05191, 84.767 )
+visible = false
 remove = false
 ToolTip = "PRESS 'Q' OVER CORPSE
 TO HEAL UP"
 
-[node name="ToolTip (MOVE)" parent="ToolTips" instance=ExtResource( 44 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5484, 5.51693, 82.5551 )
-visible = false
-ToolTip = "MOVE : W A S D
-LOOK AROUND : MOVE MOUSE"
-
 [node name="ToolTip (SHOOT)" parent="ToolTips" instance=ExtResource( 44 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5484, -0.250632, 74.3288 )
+visible = false
 ToolTip = "SHOOT WITH LEFT MOUSE CLICK
 AT CURSOR POSITION"
 
 [node name="ToolTip (RELOAD)" parent="ToolTips" instance=ExtResource( 44 )]
-transform = Transform( 0.979966, 0, -0.199163, 0, 1, 0, 0.199163, 0, 0.979966, 24.438, 5.22633, 67.9481 )
+transform = Transform( 0.979966, 0, -0.199163, 0, 1, 0, 0.199163, 0, 0.979966, 24.7448, -0.394198, 67.2014 )
+visible = false
 remove = false
 ToolTip = "PRESS 'R' TO  RELOAD"
 
@@ -267,13 +264,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2221, 0, 30.1913 )
 transform = Transform( 0.600451, 0, 1.06942, 0, 1.22646, 0, -1.06942, 0, 0.600451, 24.7029, 0.0264204, 69.0281 )
 
 [node name="ToolTip(Pickup)" parent="Pickups/Magazine" instance=ExtResource( 44 )]
-transform = Transform( 0.395318, 0, -0.713112, 0, 0.815354, 0, 0.713112, 0, 0.395318, -2.35552, 2.48218, -6.75905 )
+transform = Transform( 0.395318, 0, -0.713112, 0, 0.815353, 0, 0.713112, 0, 0.395318, -3.55765, 0.170568, -6.08411 )
+visible = false
 remove = false
 ToolTip = "YOU HAVE NOT MANY  BULLETS
 PICK UP THE  MAGAZINE  ---->"
 
 [node name="ToolTip(Pickup)2" parent="Pickups/Magazine" instance=ExtResource( 44 )]
 transform = Transform( 0.395318, 0, -0.713112, 0, 0.815352, 0, 0.713112, 0, 0.395318, 0.0504189, -0.482081, 1.66108 )
+visible = false
 remove = false
 ToolTip = "MAGAZINE"
 
