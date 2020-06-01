@@ -175,7 +175,7 @@ ToolTip = "PRESS 'R' TO  RELOAD"
 
 [node name="ToolTip (WATCHOUT)" parent="ToolTips" instance=ExtResource( 44 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5367, -0.277426, 61.9468 )
-ToolTip = "WATCH FOR ENEMIES"
+ToolTip = "WATCH OUT FOR ENEMIES!"
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -258,7 +258,7 @@ transform = Transform( 0.600451, 0, 1.06942, 0, 1.22646, 0, -1.06942, 0, 0.60045
 transform = Transform( 0.395318, 0, -0.713112, 0, 0.815353, 0, 0.713112, 0, 0.395318, -3.55765, 0.170568, -6.08411 )
 visible = false
 remove = false
-ToolTip = "YOU HAVE NOT MANY  BULLETS
+ToolTip = "YOU ARE LOW ON BULLETS
 PICK UP THE  MAGAZINE  ---->"
 
 [node name="ToolTip(Pickup)2" parent="Pickups/Magazine" instance=ExtResource( 44 )]

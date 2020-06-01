@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$Score/Killed.text = \"Killed: \" + str(Global.KillCount)
-	$Score/Time.text = \"Time needed: \" + str(Global.GameTime)
+	$Score/Time.text = \"Time: \" + str(floor(Global.GameTime/60)) + \"min \" +  str(Global.GameTime%60) + \"s\"
 
 func _on_MenuButton_pressed() -> void:
 	get_tree().quit()
@@ -86,7 +86,7 @@ size_flags_vertical = 7
 custom_fonts/font = ExtResource( 3 )
 text = "
 
-No brains where harmed by makeing this game."
+No brains where harmed by making this game."
 align = 1
 
 [node name="Score" type="HBoxContainer" parent="."]
@@ -111,8 +111,8 @@ text = "Killed: 5"
 align = 1
 
 [node name="Time" type="Label" parent="Score"]
-margin_left = 343.0
-margin_right = 814.0
+margin_left = 434.0
+margin_right = 864.0
 margin_bottom = 225.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
