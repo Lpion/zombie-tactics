@@ -67,7 +67,7 @@ func _ready():
 	$AnimationPlayer.play("Scream")
 	yield($AnimationPlayer, "animation_finished")
 	enable_player()
-	Global.KillCount = -1
+	Global.KillCount = 0
 	$GameTimer.start()
 
 	get_node("../SpawnCam").current = false
