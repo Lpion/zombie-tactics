@@ -56,7 +56,8 @@ func _ready():
 	# INIT VALUES
 	CURRENT_BULLETS_MAG = 10
 	HEALTH = 60
-
+	# Turn Off menu Sound
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("MenuSound"), -80)
 	# disable player during spawn phase
 	disable_player()
 	# Things to do right after the Spawn anim

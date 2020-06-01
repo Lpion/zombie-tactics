@@ -20,6 +20,7 @@ run/main_scene="res://LVLs/LVL_0.tscn"
 
 [autoload]
 
+AudioPlayer="*res://Global.tscn"
 Global="*res://SCRIPTS/Game.gd"
 
 [display]
