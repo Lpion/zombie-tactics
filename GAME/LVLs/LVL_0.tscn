@@ -180,19 +180,15 @@ ToolTip = "WATCH FOR ENEMIES"
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.885296, 0, -0.465027, 0, 1, 0, 0.465027, 0, 0.885296, 11.7151, 0.106307, 43.6212 )
-isDead = true
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.892223, 0, 0.451594, 0, 1, 0, -0.451594, 0, 0.892223, -28.2987, 0.106307, 22.2777 )
-isDead = true
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( -0.785695, 0, -0.618614, 0, 1, 0, 0.618614, 0, -0.785695, 25.2866, 0.106307, -19.5351 )
-isDead = true
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.586712, 0, -0.809795, 0, 1, 0, 0.809795, 0, 0.586712, 23.83, 0.106307, -28.5481 )
-isDead = true
 
 [node name="EnemyDEAD" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.885296, 0, -0.465027, 0, 1, 0, 0.465027, 0, 0.885296, 9.73435, 0.106307, 84.918 )
@@ -200,7 +196,6 @@ isDead = true
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( -0.485664, 0, 0.874145, 0, 1, 0, -0.874145, 0, -0.485664, -22.8233, 0.106307, 32.8945 )
-isDead = true
 
 [node name="PatrolPoints" type="Node" parent="Enemies/Enemy2"]
 
@@ -212,7 +207,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0558, 0, 28.3307 )
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( 0.94027, 0, 0.340429, 0, 1, 0, -0.340429, 0, 0.94027, -27.5989, 0.106307, -14.5685 )
-isDead = true
 
 [node name="PatrolPoints" type="Node" parent="Enemies/Enemy5"]
 
@@ -224,7 +218,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1822, 0, 7.91423 )
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 4 )]
 transform = Transform( -0.485664, 0, 0.874145, 0, 1, 0, -0.874145, 0, -0.485664, 18.945, 0.106307, 28.705 )
-isDead = true
 
 [node name="PatrolPoints" type="Node" parent="Enemies/Enemy3"]
 
