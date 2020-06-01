@@ -1,4 +1,6 @@
 extends Node
+# Release 01.06.2020
+# Version 1.0
 
 # This script is autoloaded as singleton.
 # It is set up in "ProectSettings/Autoload"
