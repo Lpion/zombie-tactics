@@ -12,17 +12,25 @@
 script/source = "extends Control
 
 func _ready() -> void:
-	pass
-
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), Global.MasterVol)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Music\"), Global.MusicVol)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Effects\"), Global.EffectsVol)
+	$Menu/centerRow/Buttons/Master/MasterVolSlider.value = Global.MasterVol
+	$Menu/centerRow/Buttons/Music/MusicVolSlider.value = Global.MusicVol
+	$Menu/centerRow/Buttons/Effects/EffectsVolSlider.value = Global.EffectsVol
 
 func _on_MasterVolSlider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), Global.MasterVol)
+	Global.MasterVol = value
+	print(Global.MasterVol)
 
 func _on_MusicVolSlider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Music\"), value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Music\"), Global.MusicVol)
+	Global.MusicVol = value
 
 func _on_EffectsVolSlider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Effects\"), value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Effects\"), Global.EffectsVol)
+	Global.EffectsVol = value
 
 
 func _on_back_pressed() -> void:

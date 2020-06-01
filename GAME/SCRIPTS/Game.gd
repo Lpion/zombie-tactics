@@ -7,6 +7,13 @@ var lookDirection = Vector3()
 var enemyLookDirection = Vector3()
 var PlayerPosition = Vector3()
 
+var test = "bin hier"
+
+var MasterVol = 0
+var MusicVol = 0
+var EffectsVol = 0
+
+
 func _ready() -> void:
 	pass
 
