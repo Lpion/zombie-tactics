@@ -222,34 +222,31 @@ transform = Transform( -0.485664, 0, 0.874145, 0, 1, 0, -0.874145, 0, -0.485664,
 [node name="PatrolPoints" type="Node" parent="Enemies/Enemy3"]
 
 [node name="Position3D" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4082, 0, 28.8106 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3311, 0, 28.0643 )
 
 [node name="Position3D2" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.719, 0, 25.3766 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0673, 0, 25.3126 )
 
 [node name="Position3D3" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.719, 0, 17.2242 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0673, 0, 16.0625 )
 
 [node name="Position3D4" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9902, 0, 15.6523 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.5476, 0, 16.0625 )
 
 [node name="Position3D5" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8167, 0, 15.6523 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.5476, 0, 35.9376 )
 
 [node name="Position3D6" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8167, 0, 35.0189 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8323, 0, 42.3363 )
 
 [node name="Position3D7" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.758, 0, 42.874 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6604, 0, 42.3363 )
 
 [node name="Position3D8" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8743, 0, 42.874 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6604, 0, 35.8958 )
 
 [node name="Position3D9" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2221, 0, 37.6919 )
-
-[node name="Position3D10" type="Position3D" parent="Enemies/Enemy3/PatrolPoints"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2221, 0, 30.1913 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4392, 0, 32.3538 )
 
 [node name="Pickups" type="Node" parent="."]
 
