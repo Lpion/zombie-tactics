@@ -211,7 +211,8 @@ func dead():
 var player
 func _on_FeedArea_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
-		$BloodRushLight.visible = true
+		if body.HEALTH < 100:
+			$BloodRushLight.visible = true
 		body.feedDone = false
 		body.CAN_FEED = true
 		player = body
