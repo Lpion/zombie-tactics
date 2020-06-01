@@ -67,6 +67,7 @@ func _ready():
 	$AnimationPlayer.play("Scream")
 	yield($AnimationPlayer, "animation_finished")
 	enable_player()
+	$GameTimer.start()
 	get_node("../SpawnCam").current = false
 	get_node("../ToolTips/ToolTip (HEAL)").visible = true
 	get_node("../ToolTips/ToolTip (RELOAD)").visible = true

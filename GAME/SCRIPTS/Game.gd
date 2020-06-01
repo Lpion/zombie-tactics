@@ -13,6 +13,7 @@ var MasterVol = 0
 var MusicVol = 0
 var EffectsVol = 0
 
+var KillCount = -1
 
 func _ready() -> void:
 	pass

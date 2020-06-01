@@ -196,6 +196,8 @@ func hit(dmg):
 
 func dead():
 	isDead = true
+	Global.KillCount += 1
+	print(Global.KillCount)
 	# Add HP-Bar to Enemy
 	$Body/Skeleton/HPBarPos.visible = false
 	AnimTree["parameters/Transition/current"] = 3
