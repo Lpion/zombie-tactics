@@ -14,6 +14,8 @@ var MusicVol = 0
 var EffectsVol = 0
 
 var KillCount = -1
+var GameTime = 0
+
 
 func _ready() -> void:
 	pass

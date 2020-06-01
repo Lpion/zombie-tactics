@@ -10,12 +10,16 @@ script/source = "extends Control
 func _ready() -> void:
 	pass
 
+func _process(delta: float) -> void:
+	$Score/Killed.text = \"Killed: \" + str(Global.KillCount)
+	$Score/Time.text = \"Time needed: \" + str(Global.GameTime)
 
 func _on_MenuButton_pressed() -> void:
 	get_tree().quit()
 "
 
 [node name="EndScreen" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 1 )
@@ -63,12 +67,12 @@ zombie-tactics"
 align = 1
 
 [node name="Menu2" type="VBoxContainer" parent="."]
-anchor_top = 0.321
-anchor_bottom = 0.396
+anchor_top = 0.411
+anchor_bottom = 0.47
 margin_left = 80.0
-margin_top = 80.4
+margin_top = 94.4
 margin_right = 944.0
-margin_bottom = 287.4
+margin_bottom = 212.0
 size_flags_horizontal = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -76,12 +80,43 @@ __meta__ = {
 
 [node name="RichTextLabel" type="Label" parent="Menu2"]
 margin_right = 864.0
-margin_bottom = 252.0
+margin_bottom = 153.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 custom_fonts/font = ExtResource( 3 )
 text = "
 
 No brains where harmed by makeing this game."
+align = 1
+
+[node name="Score" type="HBoxContainer" parent="."]
+anchor_top = 0.366
+anchor_bottom = 0.396
+margin_left = 80.0
+margin_top = 80.4
+margin_right = 944.0
+margin_bottom = 287.4
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Killed" type="Label" parent="Score"]
+margin_right = 430.0
+margin_bottom = 225.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 3 )
+text = "Killed: 5"
+align = 1
+
+[node name="Time" type="Label" parent="Score"]
+margin_left = 343.0
+margin_right = 814.0
+margin_bottom = 225.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 3 )
+text = "Time needed: 16"
 align = 1
 [connection signal="pressed" from="Background/MenuButton" to="." method="_on_MenuButton_pressed"]

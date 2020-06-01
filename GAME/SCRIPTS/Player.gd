@@ -67,7 +67,9 @@ func _ready():
 	$AnimationPlayer.play("Scream")
 	yield($AnimationPlayer, "animation_finished")
 	enable_player()
+	Global.KillCount = -1
 	$GameTimer.start()
+
 	get_node("../SpawnCam").current = false
 	get_node("../ToolTips/ToolTip (HEAL)").visible = true
 	get_node("../ToolTips/ToolTip (RELOAD)").visible = true
@@ -79,6 +81,8 @@ func _ready():
 	CamRig.set_as_toplevel(true)
 	Cursor.set_as_toplevel(true)
 
+func _on_GameTimer_timeout() -> void:
+	Global.GameTime += 1
 
 func _physics_process(delta):
 	Global.PlayerPosition = self.get_translation()

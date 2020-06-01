@@ -67,6 +67,7 @@ func _input(event: InputEvent) -> void:
 func _on_Area_body_entered(body: Node) -> void:
 	if body.is_in_group(\"Player\"):
 		$Moric.queue_free()
+		get_tree().paused = true
 		$EndScreen.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 "
