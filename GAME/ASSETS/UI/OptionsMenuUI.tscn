@@ -22,7 +22,6 @@ func _ready() -> void:
 func _on_MasterVolSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), Global.MasterVol)
 	Global.MasterVol = value
-	print(Global.MasterVol)
 
 func _on_MusicVolSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Music\"), Global.MusicVol)
