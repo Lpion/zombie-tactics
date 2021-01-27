@@ -5,4 +5,4 @@ It is a one level topdown-shooter game made with the [Godot Game Engine](https:/
 
 Feel free to use its source for your own projects. 
 
-The compiled Game to play can be downloaded at http://games.lpion.com
+The compiled Game to play can be downloaded at http://games.power-of-two.at
